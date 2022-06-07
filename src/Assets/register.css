@@ -57,7 +57,7 @@ body{
 }
 .container .main-content .second-header {
     margin-bottom: 20px;
-    margin-top: 20px;
+    margin-top: 2%;
 }
 .container .main-content .second-header p {
     color: grey;
@@ -65,7 +65,7 @@ body{
     font-family: verdana;
 }
 .container .main-content .third-header {
-    margin-bottom: 20px;
+    margin-bottom: 2%;
 }
 .container .main-content .third-header input[type=text] {
     width: 45%;
@@ -81,15 +81,23 @@ body{
     letter-spacing: 1px;
     font-family: verdana;
 }
+.container .main-content .fourth-header {
+    display: flex;
+}
+.container .main-content .fourth-header p{
+    letter-spacing: 1px;
+    font-family: verdana;
+}
 .container .main-content .fourth-header input[type=checkbox] {
     margin-right: 5px;
+    margin-top: 0.3%;
 }
 
 .container .main-content .fifth-header {
     margin-bottom: 20px;
     margin-top: 20px;
 }
-.container .main-content .fifth-header input[type=submit] {
+.container .main-content .fifth-header button {
    width: 45%;
    padding: 12px 20px;
    display: inline-block;
@@ -101,7 +109,7 @@ body{
    letter-spacing: 1px;
    font-family: verdana;
 }
-.container .main-content .fifth-header input[type=submit]:hover {
+.container .main-content .fifth-header button:hover {
     cursor: pointer;
     transform: translateY(1px);
     transition: transform 150ms;

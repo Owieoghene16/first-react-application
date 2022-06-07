@@ -229,7 +229,7 @@ nav .profile-details i{
  /* row 1 */
 .home-section .home-content .column .row1 {
     width: 60%;
-    height: 150vh;
+    max-height: 130vh;
     margin-right: 20px;
     background-color: silver;
     box-sizing: border-box;
@@ -338,15 +338,18 @@ nav .profile-details i{
     text-align: right;
 }
 .home-section .home-content .column .row1 .update .but1 {
-width: 35%;
-padding: 15px 40px;
-text-align: center;
-border-radius: 15px;
-font-weight: bold;
-background-color: #0A2558;
-color: white;
-margin: 2px;
-text-decoration: none;
+    width: 35%;
+    padding: 15px 40px;
+    text-align: center;
+    border-radius: 15px;
+    font-weight: bold;
+    background-color: #0A2558;
+    border:1px solid #0A2558;
+    letter-spacing: 1px;
+    font-family: verdana;
+    color: white;
+    margin: 2px;
+    text-decoration: none;
 }
 .home-section .home-content .column .row1 .update .but1:hover {
     cursor: pointer;

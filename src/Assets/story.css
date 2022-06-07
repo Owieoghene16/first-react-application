@@ -205,7 +205,7 @@ transition: transform 150ms
 .big-title {
   margin-bottom: 4%;
   border:none;
-  width: 90%;
+  width: 95%;
   height: 10%;
 }
 .text-space {
@@ -253,7 +253,7 @@ input[type=text] {
   height: 10%;
 }
 input[type=number] {
-  width: 90%;
+  width: 100%;
   height: 6vh;
   border-radius: 5px;
   outline: none;
@@ -263,7 +263,7 @@ input[type=number] {
 textarea {
 border: 1px solid silver;
 height: 40px;
-width: 90%;
+width: 100%;
 height: 25vh;
 outline: none;
 border-radius: 10px;
@@ -318,22 +318,34 @@ select {
   font-weight: 400;
 }
 footer {
-margin-top: 2rem;
+margin-top: 1px;
 background-color: #F5F6FA;
 text-align: center;
 padding: 1rem;
 }
-.create {
-margin-left: 50%;
-width: 33%;
-height: 7vh;
-background-color: #0A2558;
-border-radius: 10px;
+footer p {
+  letter-spacing: 1px;
+  font-family: verdana;
 }
-.create:hover {
-background-color: #081D45;
+.create {
+text-align: center;
+width: 80%;
+}
+.create button {
+  height: 7vh;
+  background-color: #0A2558;
+  border-radius: 10px;
+  width: 50%;
+  padding: 5px 10px;
+  color: white;
+  font-family: verdana;
+  font-size: 15px;
+  letter-spacing: 1px;
+  border: 1px solid #0A2558;
+}
+.create button:hover {
 cursor: pointer;
-transform: translateY(2px);
+transform: translateY(1px);
 transition: transform 150ms
 }
 .create p {
@@ -345,6 +357,7 @@ font-family: Verdana;
 form input {
 padding: 12px 20px;
 width: 90%;
+background-color: #fff;
 border: 1px solid #ccc;
 border-radius: 8px;
 }
