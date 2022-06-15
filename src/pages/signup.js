@@ -4,32 +4,32 @@ import { Register } from '../Components/inputs/index';
 import Header from '../Layouts/header/index';
 import '../Assets/register.css';
 
-const	Signup = () => {
+const Signup = () => {
   return (
-		<>
-      <div>
-        <Header />
-      </div>
-      <div className='container'>
-        <div className='main-content'>
-          <div className='first-header'>
-            <h>Account registration</h>
-          </div>
-          <div className='second-header'>
-            <p>Register with your email:</p>
-          </div>
-          <div>
-				   	<Register />
-          </div>
-          <div className='sixth-header'>
-            <p2>Already Registered?</p2>
-            <Link to='/signin' className='log2'>Log In</Link>
+    <>
+        <div>
+          <Header />
+        </div>
+        <div className='container'>
+          <div className='main-content'>
+            <div className='first-header'>
+              <h>Account registration</h>
+            </div>
+            <div className='second-header'>
+              <p>Register with your email:</p>
+            </div>
+            <div>
+               <Register />
+            </div>
+            <div className='sixth-header'>
+              <p2>Already Registered?</p2>
+              <Link to='/signin' className='log2'>Log In</Link>
+            </div>
           </div>
         </div>
-      </div>
       <Outlet />
-		</>
-	)
+    </>
+  )
 };
 
 export default Signup;

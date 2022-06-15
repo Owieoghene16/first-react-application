@@ -9,53 +9,53 @@ import { Footer } from '../Layouts/footer/index';
 import '../Assets/story.css';
 
 const Story = () => {
-  return (
+   return (
     <>
-        <div>
-          <Sidebar />
-        </div>
-        <section className='home-section'>
           <div>
-            <Navbar />
+            <Sidebar />
           </div>
-				  <div className='home-content'>
-            <div className='home-story'>
-              <div className='left'>
-					   		<i> <BsCardImage /> </i>
-                <p>Add a cover</p>
-                <div>
-                  <UploadImage />
+          <section className='home-section'>
+            <div>
+              <Navbar />
+            </div>
+            <div className='home-content'>
+              <div className='home-story'>
+                <div className='left'>
+                   <i> <BsCardImage /> </i>
+                  <p>Add a cover</p>
+                  <div>
+                    <UploadImage />
+                  </div>
+                </div>
+                <div className='right'>
+                  <div className='book-details'>
+                    <h className='books'>Books Details</h>
+                  </div>
+                  <div className='big-title'>
+                    <Title />
+                  </div>
+                  <div className='text-space'>
+                    <Description />
+                  </div>
+                  <div className='price'>
+                    <Price />
+                  </div>
+                  <div className='big-title'>
+                    <UploadBook />
+                  </div>
+                  <div className='create'>
+                    <CreateBookButton />
+                  </div>
                 </div>
               </div>
-              <div className='right'>
-                <div className='book-details'>
-                  <h className='books'>Books Details</h>
-                </div>
-                <div className='big-title'>
-                  <Title />
-                </div>
-                <div className='text-space'>
-                  <Description />
-                </div>
-                <div className='price'>
-                  <Price />
-                </div>
-                <div className='big-title'>
-                  <UploadBook />
-                </div>
-                <div className='create'>
-                  <CreateBookButton />
-                </div>
-							</div>
+              <div>
+                <Footer />
+              </div>
             </div>
-            <div>
-              <Footer />
-            </div>
-					</div>
-        </section>
+          </section>
       <Outlet />
     </>
   );
-}
+};
   
 export default Story;
