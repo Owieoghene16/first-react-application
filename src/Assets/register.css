@@ -1,0 +1,133 @@
+body{
+    background-color: #F5F6FA;
+}
+  
+.container nav{
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    margin-top: 25px;
+}
+.container nav .first-icon {
+    margin-left: 10%;
+    margin-right:20%;
+    margin-top: 10px;
+}
+.container nav .first-icon a i{
+    font-size: 65px;
+    color: rgb(32, 29, 29);
+} 
+.container nav ul {
+    font-family: verdana;
+    flex-wrap: wrap;
+    display: flex;
+    list-style: none;
+    justify-content: space-evenly;
+    width: 50%;
+    text-align: right;
+}
+.container nav ul li i {
+    margin-right: 7px;
+}
+.container nav ul li a{
+    color: black;
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: 500;
+    border-radius: 5px;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+    font-family: verdana;
+}
+.container nav ul li a.active,
+.container nav ul li a:hover{
+    color: gray;
+    transform: translateY(-1px);
+    transition: transform 150ms;
+}
+.container .main-content {
+    margin-left: 35%;
+    font-family: verdana;
+}
+.container .main-content .first-header h {
+    font-family: verdana;
+    font-size: 24px;
+    color: black;
+    letter-spacing: 1px;
+}
+.container .main-content .second-header {
+    margin-bottom: 20px;
+    margin-top: 2%;
+}
+.container .main-content .second-header p {
+    color: grey;
+    letter-spacing: 1px;
+    font-family: verdana;
+}
+.container .main-content .third-header {
+    margin-bottom: 2%;
+}
+.container .main-content .third-header input[type=text] {
+    width: 45%;
+    padding: 12px 20px;
+    display: inline-block;
+    outline: none;
+    border: 0.1px solid black;
+    border-radius: 4px;
+    font-size: 16px;
+    box-sizing: border-box;
+}
+.container .main-content .third-header label {
+    letter-spacing: 1px;
+    font-family: verdana;
+}
+.container .main-content .fourth-header {
+    display: flex;
+}
+.container .main-content .fourth-header p{
+    letter-spacing: 1px;
+    font-family: verdana;
+}
+.container .main-content .fourth-header input[type=checkbox] {
+    margin-top: 0.3%;
+}
+
+.container .main-content .fifth-header {
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
+.container .main-content .fifth-header button {
+   width: 45%;
+   padding: 12px 20px;
+   display: inline-block;
+   outline: none;
+   border: 0.1px solid black;
+   border-radius: 4px;
+   font-size: 16px;
+   box-sizing: border-box;
+   letter-spacing: 1px;
+   font-family: verdana;
+}
+.container .main-content .fifth-header button:hover {
+    cursor: pointer;
+    transform: translateY(1px);
+    transition: transform 150ms;
+}
+.container .main-content .sixth-header {
+    margin-left: 20px;
+}
+.container .main-content .sixth-header p2 {
+    margin-left: 20px;
+    letter-spacing: 1px;
+    font-family: verdana;
+}
+.container .main-content .sixth-header a {
+    margin-left: 10px;
+    text-decoration: none;
+    color: grey;
+    letter-spacing: 1px;
+    font-family: verdana;
+}
+.container .main-content .sixth-header a:hover {
+    text-decoration: underline;
+}
