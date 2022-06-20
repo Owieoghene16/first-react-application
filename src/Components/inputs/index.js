@@ -1,7 +1,7 @@
 import React from 'react';
-import { LoginButton, RegisterButton, ResetPasswordButton } from '../buttons';
+import { LoginButton, ResetPasswordButton, RegisterButton } from '../buttons/index';
 
-const	Register = () => {
+const	RegisterInput = () => {
   return (
 		<>
       <div className='third-header'>
@@ -31,24 +31,25 @@ const	Register = () => {
 	)
 };
 
+
 const	Login = () => {
   return (
 		<>
-      <div className='third-header'>
-        <label>Email:</label><br></br>
-        <input type='text' />
-      </div>
-      <div className='third-header'>
-        <label>Password:</label><br></br>
-        <input type='text' />
-      </div>
-      <div className='fourth-header'>
-        <input type='checkbox' name='remember'/>
-        <p>Remember me</p>
-      </div>
-      <div>
-        <LoginButton />
-      </div>
+        <div className='third-header'>
+          <label>Email:</label><br></br>
+          <input type='text' />
+        </div>
+        <div className='third-header'>
+          <label>Password:</label><br></br>
+          <input type='text' />
+        </div>
+        <div className='fourth-header'>
+          <input type='checkbox' name='remember'/>
+          <p>Remember me</p>
+        </div>
+        <div>
+          <LoginButton />
+        </div>
 		</>
 	)
 };
@@ -67,4 +68,4 @@ const ResetInput = () => {
   )
 };
 
-export { Login, Register, ResetInput };
+export { Login, RegisterInput, ResetInput };
