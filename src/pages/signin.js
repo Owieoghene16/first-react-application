@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link, Outlet } from 'react-router-dom';
-import { Login }from '../Components/inputs/index';
+import Login from '../Components/inputs/login';
 import Header from '../Layouts/header/index';
 import '../Assets/register.css';
 

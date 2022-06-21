@@ -1,6 +1,6 @@
 import React from 'react';
 import { Outlet, Link } from 'react-router-dom';
-import { ResetInput } from '../Components/inputs/index';
+import ResetInput from '../Components/inputs/index';
 import Header from '../Layouts/header/index';
 import '../Assets/register.css';
 

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Outlet, Link } from 'react-router-dom';
-import { RegisterInput } from '../Components/inputs/index';
+import RegisterInput from '../Components/inputs/register';
 import Header from '../Layouts/header/index';
 import '../Assets/register.css';
 
