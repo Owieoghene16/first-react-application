@@ -4,8 +4,7 @@ import ResetInput from '../Components/inputs/Index.jsx';
 import Header from '../Layouts/header/Index.jsx';
 import '../Assets/register.css';
 
-class Reset extends React.Component {
-  render() {
+const Reset = () => {
     return (
       <>
         <div>
@@ -28,10 +27,9 @@ class Reset extends React.Component {
             </div>
           </div>
         </div>
-        <Outlet />
-      </>
-    )
-  }
+      <Outlet />
+    </>
+  )
 };
 
 export default Reset;

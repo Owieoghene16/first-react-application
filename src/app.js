@@ -6,11 +6,15 @@ import Story from './pages/Story.jsx';
 import Profile from './pages/Profile.jsx';
 import Signup from './pages/Signup.jsx';
 import Signin from './pages/Signin.jsx';
-import Reset from './pages/Signin.jsx';
+import Reset from './pages/Reset.jsx';
+import token from './Components/inputs/Register'
 
 const Api = axios.create({
   baseURL: 'http://localhost:5000/api',
   timeout: 10000,
+  headers: {
+    'authorization': token.id
+  }
 });
 
 const App = () => {

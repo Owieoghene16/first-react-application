@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useNavigate } from "react-router-dom";
 import { Api } from '../../app';
 
 const	Login = () => {
@@ -9,6 +10,8 @@ const	Login = () => {
   const [emailReg, setEmail] = useState('');
   const [passwordReg, setPassword] = useState('');
 
+  const redirect = useNavigate();
+  
   const signIn = async (e) => {
     e.preventDefault();
     try {
@@ -16,7 +19,9 @@ const	Login = () => {
         email: emailReg,
         password: passwordReg,
       });
-      setResult(res.data.message)
+      setResult(res.data.message);
+      setError('');
+      redirect('/home');
     } catch (err) {
      setError(err.response.data.message);
     }

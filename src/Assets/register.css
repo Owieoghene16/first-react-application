@@ -81,6 +81,16 @@ body{
     font-size: 16px;
     box-sizing: border-box;
 }
+.container .main-content .third-header input[type=email] {
+    width: 45%;
+    padding: 12px 20px;
+    display: inline-block;
+    outline: none;
+    border: 0.1px solid black;
+    border-radius: 4px;
+    font-size: 16px;
+    box-sizing: border-box;
+}
 .container .main-content .third-header label {
     letter-spacing: 1px;
     font-family: verdana;

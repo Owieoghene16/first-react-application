@@ -1,5 +1,5 @@
 import React from 'react';
-import { ResetPasswordButton } from '../buttons/index';
+import { ResetPasswordButton } from '../buttons/Index.jsx';
 
 const ResetInput = () => {
   return (
