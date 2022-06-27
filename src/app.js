@@ -1,16 +1,16 @@
 import React from 'react';  
 import axios from 'axios';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import Homepage from './pages/home';
-import Story from './pages/story';
-import Profile from './pages/profile';
-import Signup from './pages/signup';
-import Signin from './pages/signin';
-import Reset from './pages/reset';
+import Homepage from './pages/Home.jsx';
+import Story from './pages/Story.jsx';
+import Profile from './pages/Profile.jsx';
+import Signup from './pages/Signup.jsx';
+import Signin from './pages/Signin.jsx';
+import Reset from './pages/Signin.jsx';
 
 const Api = axios.create({
   baseURL: 'http://localhost:5000/api',
-  timeout: 1000,
+  timeout: 10000,
 });
 
 const App = () => {

@@ -1,6 +1,6 @@
 import React from 'react';  
 import { HiMenu } from 'react-icons/hi';
-import Searchbar from '../../Components/inputs/search';
+import Searchbar from '../../Components/inputs/Search.jsx';
 
 const Navbar = () => {
   return (

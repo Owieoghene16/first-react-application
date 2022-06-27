@@ -2,10 +2,10 @@ import React from 'react';
 import { Outlet, Link } from 'react-router-dom';
 import { HiMenu } from 'react-icons/hi';
 import { MdArrowDropDown } from 'react-icons/md';
-import Navbar from '../Layouts/header/navbar';
-import Sidebar from '../Layouts/sidebar/index';
-import Image from '../Layouts/images/image';
-import { Button, Toggle } from '../Components/buttons/button';
+import Navbar from '../Layouts/header/Navbar';
+import Sidebar from '../Layouts/sidebar/Index.jsx';
+import Image from '../Layouts/images/Image.jsx';
+import { Button, Toggle } from '../Components/buttons/Button.jsx';
 import '../Assets/homepage.css';
 
 const Homepage = () => {

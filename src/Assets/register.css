@@ -67,7 +67,6 @@ body{
     margin-bottom: 2%;
 }
 .container .main-content .plain-header p{
-    display: none;
     color: red;
     letter-spacing: 2px;
     font-family: verdana;

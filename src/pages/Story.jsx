@@ -1,11 +1,11 @@
 import React from 'react';
 import { Outlet } from 'react-router-dom';
 import { BsCardImage } from 'react-icons/bs';
-import Navbar from '../Layouts/header/navbar';
-import Sidebar from '../Layouts/sidebar/index';
-import { Title, Description, Price, UploadBook, UploadImage } from '../Components/inputs/story';
-import { CreateBookButton } from '../Components/buttons/story';
-import { Footer } from '../Layouts/footer/index';
+import Navbar from '../Layouts/header/Navbar.jsx';
+import Sidebar from '../Layouts/sidebar/Index.jsx';
+import { Title, Description, Price, UploadBook, UploadImage } from '../Components/inputs/Story.jsx';
+import { CreateBookButton } from '../Components/buttons/Story.jsx';
+import { Footer } from '../Layouts/footer/Index.jsx';
 import '../Assets/story.css';
 
 const Story = () => {

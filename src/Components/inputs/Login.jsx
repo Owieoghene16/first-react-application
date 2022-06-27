@@ -2,6 +2,10 @@ import React, { useState } from 'react';
 import { Api } from '../../app';
 
 const	Login = () => {
+
+  const [result, setResult] = useState('');
+  const [error, setError] = useState('');
+
   const [emailReg, setEmail] = useState('');
   const [passwordReg, setPassword] = useState('');
 
@@ -12,15 +16,18 @@ const	Login = () => {
         email: emailReg,
         password: passwordReg,
       });
-      console.log(res)
+      setResult(res.data.message)
     } catch (err) {
-      console.log(err);
+     setError(err.response.data.message);
     }
   }
 
   return (
 		<>
       <form>
+        <div className='plain-header'>
+          <p> {result} {error} </p><br></br>
+        </div>
         <div className='third-header'>
           <label>Email:</label><br></br>
           <input 
@@ -38,10 +45,6 @@ const	Login = () => {
             setPassword(e.target.value)
           }}
         />
-        </div>
-        <div className='fourth-header'>
-          <input type='checkbox'/>
-          <p>Remember me</p>
         </div>
         <div className='fifth-header'> 
           <button onClick={ signIn }>Login</button>

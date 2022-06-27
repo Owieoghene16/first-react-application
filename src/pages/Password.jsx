@@ -1,7 +1,7 @@
 import React from 'react';
 import { Outlet, Link } from 'react-router-dom';
-import ResetInput from '../Components/inputs/index';
-import Header from '../Layouts/header/index';
+import ResetInput from '../Components/inputs/Index.jsx';
+import Header from '../Layouts/header/Index.jsx';
 import '../Assets/register.css';
 
 class Reset extends React.Component {

@@ -2,6 +2,10 @@ import React, { useState } from 'react';
 import { Api } from '../../app';
 
 const	RegisterInput = () => {
+ 
+  const [result, setResult] = useState('');
+  const [error, setError] = useState('');
+
   const [userNameReg, setuserName] = useState('');
   const [emailReg, setEmail] = useState('');
   const [passwordReg, setPassword] = useState('');
@@ -16,15 +20,19 @@ const	RegisterInput = () => {
         password: passwordReg,
         reEnterPassword: passwordagainReg
       });
-      console.log(res.data);
+      setResult(res.response.data.message);
     } catch (err) {
-      console.log(err);
+      setError(err.response.data.message);
     }
   }
+
 
   return (
 		<>
       <form>
+      <div className='plain-header'>
+        <p> {result} {error} </p><br></br>
+      </div>
       <div className='third-header'>
         <label>Username:</label><br></br>
         <input 
@@ -61,10 +69,6 @@ const	RegisterInput = () => {
           }}
         />
         </div>
-      <div className='fourth-header'>
-        <input type='checkbox' name='remember' />
-        <p>Remember me</p>
-      </div>
       <div className='fifth-header'>
         <button onClick={signUp}>Create Account</button>
       </div>

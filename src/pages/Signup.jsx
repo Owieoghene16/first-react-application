@@ -1,7 +1,7 @@
 import React from 'react';
 import { Outlet, Link } from 'react-router-dom';
-import RegisterInput from '../Components/inputs/register';
-import Header from '../Layouts/header/index';
+import RegisterInput from '../Components/inputs/Register.jsx';
+import Header from '../Layouts/header/Index.jsx';
 import '../Assets/register.css';
 
 const	Signup = () => {

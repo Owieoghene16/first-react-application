@@ -1,9 +1,9 @@
 import React from 'react';
 import { Outlet, Link } from "react-router-dom";
-import Navbar from '../Layouts/header/navbar';
-import Sidebar from '../Layouts/sidebar/index';
-import { Information, EditName } from '../Components/inputs/profile';
-import { UpdateUserInformation } from '../Components/buttons/profile';
+import Navbar from '../Layouts/header/Navbar.jsx';
+import Sidebar from '../Layouts/sidebar/Index.jsx';
+import { Information, EditName } from '../Components/inputs/Profile.jsx';
+import { UpdateUserInformation } from '../Components/buttons/Profile.jsx';
 import '../Assets/profile.css';
 
 const Profile = () => {
