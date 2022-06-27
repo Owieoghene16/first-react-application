@@ -1,21 +1,20 @@
 import React, { useState } from 'react';
-import axios from 'axios';
+import { Api } from '../../app';
 
 const	Login = () => {
-  
   const [emailReg, setEmail] = useState('');
   const [passwordReg, setPassword] = useState('');
 
-  const signIn = async () => {
+  const signIn = async (e) => {
+    e.preventDefault();
     try {
-      const res = await axios.post('http://localhost:5000/api/signin', {
+      const res = await Api.post('/signin', {
         email: emailReg,
         password: passwordReg,
       });
-      alert(emailReg, passwordReg);
-      alert(res);
+      console.log(res)
     } catch (err) {
-      alert(err);
+      console.log(err);
     }
   }
 

@@ -56,7 +56,6 @@ body{
     letter-spacing: 1px;
 }
 .container .main-content .second-header {
-    margin-bottom: 20px;
     margin-top: 2%;
 }
 .container .main-content .second-header p {
@@ -66,6 +65,12 @@ body{
 }
 .container .main-content .third-header {
     margin-bottom: 2%;
+}
+.container .main-content .plain-header p{
+    display: none;
+    color: red;
+    letter-spacing: 2px;
+    font-family: verdana;
 }
 .container .main-content .third-header input[type=text] {
     width: 45%;

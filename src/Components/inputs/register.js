@@ -1,6 +1,5 @@
-/* eslint-disable no-unused-vars */
 import React, { useState } from 'react';
-import axios from 'axios';
+import { Api } from '../../app';
 
 const	RegisterInput = () => {
   const [userNameReg, setuserName] = useState('');
@@ -8,14 +7,16 @@ const	RegisterInput = () => {
   const [passwordReg, setPassword] = useState('');
   const [passwordagainReg, setPasswordagain] = useState('');
 
-  const signUp = async () => {
+  const signUp = async (e) => {
+    e.preventDefault();
     try {
-      const res = await axios.post('http://localhost:5000/api/signup', {
+      const res = await Api.post('/signup', {
         userName: userNameReg,
         email: emailReg,
         password: passwordReg,
         reEnterPassword: passwordagainReg
       });
+      console.log(res.data);
     } catch (err) {
       console.log(err);
     }
@@ -23,7 +24,7 @@ const	RegisterInput = () => {
 
   return (
 		<>
-      <form  >
+      <form>
       <div className='third-header'>
         <label>Username:</label><br></br>
         <input 

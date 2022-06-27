@@ -1,4 +1,5 @@
 import React from 'react';  
+import axios from 'axios';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Homepage from './pages/home';
 import Story from './pages/story';
@@ -6,6 +7,11 @@ import Profile from './pages/profile';
 import Signup from './pages/signup';
 import Signin from './pages/signin';
 import Reset from './pages/reset';
+
+const Api = axios.create({
+  baseURL: 'http://localhost:5000/api',
+  timeout: 1000,
+});
 
 const App = () => {
   return (
@@ -22,4 +28,4 @@ const App = () => {
   );
 }
 
-export default App;
+export { Api, App};
