@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { useNavigate } from "react-router-dom";
 import { Api } from '../../app';
 
+const token = {};
+
 const	RegisterInput = () => {
   const [result, setResult] = useState('');
   const [error, setError] = useState('');
@@ -22,6 +24,7 @@ const	RegisterInput = () => {
         password: passwordReg,
         reEnterPassword: passwordagainReg
       });
+      token.id = res.data.token;
       setResult(res.data.message);
       setError('')
       redirect('/home');
@@ -85,4 +88,4 @@ const	RegisterInput = () => {
 	)
 };
 
-export default RegisterInput;
+export { RegisterInput , token};

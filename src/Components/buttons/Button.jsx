@@ -1,11 +1,27 @@
 import React from 'react';
 import { HiMenu } from 'react-icons/hi';
+import { Api } from '../../app';
+import { token } from '../inputs/Register';
+
 
 const Button = () => {
-    return (
+
+  const allUsers = async (e) => {
+    e.preventDefault();
+    try {
+      const res = await Api.get('/find', {
+        headers: {'authorization': token.id}
+      });
+      console.log(res);
+    } catch (err) {
+      console.log(err);
+    }
+  }
+
+  return (
     <>  
       <div>
-        <button>View</button>
+        <button onClick={allUsers}>View</button>
       </div>
     </>
   )

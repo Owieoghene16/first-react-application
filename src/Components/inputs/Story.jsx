@@ -1,61 +1,36 @@
 import React from 'react';
 
-const Title = () => {
+const TextInput = () => {
   return (
     <> 
-      <div className='big-title'>
-        <p className='title'>Title</p>
-        <form>
-          <input type='text' /><br></br>
-        </form>
-      </div>
+      <form>
+        <input type='text' />
+      </form>
     </>
   )
 };
 
-const Description = () => {
+const Textarea = () => {
   return (
     <> 
-    <div className='text-space'>
-      <h className='descrip'>Description</h>
-      <i className='fa fa-info'></i>
       <div>
-        <textarea className='text-area' name='text' type='text'></textarea>
+        <textarea></textarea>
       </div>
-    </div>
     </>
   )
 };
 
-const Price = () => {
+const NumberInput = () => {
   return (
     <> 
-    <div className="price">
-      <h className="descrip">Price</h>
-      <i className="fa fa-money"></i>
       <form>
         <input type="number" />
       </form>
-    </div>
     </>
   )
 };
 
-const UploadBook = () => {
-  return (
-    <> 
-    <div className='big-title'>
-      <h className='character'>PDF</h>
-      <i className='fa fa-info'></i>
-      <form>
-        <input id='files' type='file' multiple />
-      </form>
-    </div>
-    </>
-  )
-};
-
-const UploadImage = () => {
+const FileInput = () => {
   return (
     <>
       <div>
@@ -65,4 +40,4 @@ const UploadImage = () => {
   )
 };
 
-export { Title, Description, Price, UploadBook, UploadImage };
+export { FileInput, NumberInput, TextInput, Textarea };

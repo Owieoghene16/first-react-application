@@ -2,7 +2,7 @@ import React from 'react';
 import { Link, Outlet } from 'react-router-dom';
 import Login from '../Components/inputs/Login.jsx';
 import Header from '../Layouts/header/Index.jsx';
-import '../Assets/register.css';
+import '../Assets/register.scss';
 
 const Signin = () => {
   return (

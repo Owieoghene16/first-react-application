@@ -1,5 +1,5 @@
 import React from 'react';
-import '../../Assets/register.css';
+import '../../Assets/register.scss';
 import { Outlet, Link } from 'react-router-dom';
 import { FaBook, FaHome } from 'react-icons/fa';
 import { MdSpaceDashboard } from 'react-icons/md';

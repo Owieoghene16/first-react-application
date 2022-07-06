@@ -5,10 +5,10 @@ import { RiUserFill } from 'react-icons/ri';
 import { BiTask, BiLogOut } from 'react-icons/bi';
 import { AiFillSetting } from 'react-icons/ai';
 
-const Sidebar = () => {
+const Sidebar = ({ togglebar }) => {
   return (
     <> 
-		  <div className='sidebar'>
+	    <div className={togglebar ? 'sidebar active' : 'sidebar'}>
         <div className='logo-details'>
           <i><FaBook /></i>
           <span className='logo_name'>Bookstack</span>
@@ -28,7 +28,7 @@ const Sidebar = () => {
               </Link>
             </li>
             <li>
-              <Link to='#'>
+              <Link to='/book'>
                 <i><BiTask /></i>
                 <span className='links_name'>Books</span>
               </Link>

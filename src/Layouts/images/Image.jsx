@@ -1,13 +1,11 @@
 import React from 'react';
 
-class Image extends React.Component {
-  render() {
+const Image = () => {
     return (
-      <div className='image'>
-        <img src='https://demos.creative-tim.com/argon-dashboard/assets/img/team-3.jpg' alt=''></img>
+      <div>
+        <img src='https://cdn-icons-png.flaticon.com/512/685/685668.png' alt=''></img>
       </div>
     )
-  }
 };
 
 export default Image;

@@ -1,11 +1,13 @@
 import React from 'react';
 
-export const CreateBookButton = () => {
+const CreateBookButton = () => {
   return (
     <>
-      <div className='create'>
+      <div>
         <button>Create Book</button>
       </div>
     </>
   )
 };
+
+export default CreateBookButton;

@@ -1,61 +1,85 @@
-import React from 'react';
-import { Outlet } from 'react-router-dom';
-import { BsCardImage } from 'react-icons/bs';
-import Navbar from '../Layouts/header/Navbar.jsx';
-import Sidebar from '../Layouts/sidebar/Index.jsx';
-import { Title, Description, Price, UploadBook, UploadImage } from '../Components/inputs/Story.jsx';
-import { CreateBookButton } from '../Components/buttons/Story.jsx';
-import { Footer } from '../Layouts/footer/Index.jsx';
-import '../Assets/story.css';
+import React, { useState } from 'react';  
+import Myimage from '../Layouts/images/index';
+import Sidebar from '../Layouts/main/sidebar';
+import Navbar from '../Layouts/main/nav';
+import Image from '../Layouts/images/Image';
+import { FileInput, NumberInput, TextInput, Textarea } from '../Components/inputs/Story';
+import CreateBookButton from '../Components/buttons/Story';
+import '../Assets/story.scss';
 
 const Story = () => {
-   return (
-    <>
-          <div>
-            <Sidebar />
+
+  const [open, setOpen] = useState(false);
+
+  const handleToggle = () => {
+    setOpen(!open);
+  };
+
+  return (
+    <> 
+      <Sidebar 
+        togglebar={open}
+      />
+      <section className='home-section'>
+        <Navbar 
+          click={handleToggle}
+        />
+        <div className='main-story'>
+          <div className='img-story'>
+            <div className='single-img'>
+              <Myimage />
+              <div className='small-single-img'>
+                <div className='small-img'>
+                  <Image />
+                </div>
+                <div className='small-img'>
+                  <Image />
+                </div>
+                <div className='small-img'>
+                  <Image />
+                </div>
+                <div className='small-img'>
+                  <Image />
+                </div>
+              </div>
+            </div>
+            <div className='single-book-details'>
+              <div className='book-header'>
+                <h3>Book Details</h3>
+              </div>
+              <div className='book-title'>
+                <p>Title</p>
+              </div>
+              <div className='my-text'>
+                <TextInput />
+              </div>
+              <div className='price'>
+                <p>Price</p>
+              </div>
+              <div className='my-number'>
+                <NumberInput />
+              </div>
+              <div className='pdf'>
+                <p>Pdf</p>
+              </div>
+              <div className='my-file'>
+                <FileInput />
+              </div>
+              <div className='description'>
+                <p>Description</p>
+              </div>
+              <div className='my-texarea'>
+                <Textarea />
+              </div>
+              <div className='my-button'>
+                <CreateBookButton />
+              </div>
+            </div>
           </div>
-          <section className='home-section'>
-            <div>
-              <Navbar />
-            </div>
-            <div className='home-content'>
-              <div className='home-story'>
-                <div className='left'>
-                   <i> <BsCardImage /> </i>
-                  <p>Add a cover</p>
-                  <div>
-                    <UploadImage />
-                  </div>
-                </div>
-                <div className='right'>
-                  <div className='book-details'>
-                    <h className='books'>Books Details</h>
-                  </div>
-                  <div className='big-title'>
-                    <Title />
-                  </div>
-                  <div className='text-space'>
-                    <Description />
-                  </div>
-                  <div className='price'>
-                    <Price />
-                  </div>
-                  <div className='big-title'>
-                    <UploadBook />
-                  </div>
-                  <div className='create'>
-                    <CreateBookButton />
-                  </div>
-                </div>
-              </div>
-              <div>
-                <Footer />
-              </div>
-            </div>
-          </section>
-      <Outlet />
+        </div>
+      </section>
     </>
-  );
+  )
 };
-  
+
 export default Story;
