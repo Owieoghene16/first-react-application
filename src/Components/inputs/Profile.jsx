@@ -15,7 +15,7 @@ const Information = () => {
   return (
     <>
     <div className="sixth-header">
-      <textarea className="text-area" type="text">Owie — the name taken by Melbourne-raised, Brooklyn-based Nick Murphy - writes, performs and records all of his own music.</textarea>
+      <textarea>Owie — the name taken by Melbourne-raised, Brooklyn-based Nick Murphy - writes, performs and records all of his own music.</textarea>
     </div>
 		</> 
 	)

@@ -1,17 +1,25 @@
 import React, { useState }from 'react';  
 import { Outlet } from 'react-router-dom';
-import Myimage from '../Layouts/images/index';
 import Sidebar from '../Layouts/main/sidebar';
 import Navbar from '../Layouts/main/nav';
+import Image from '../Layouts/images/Image';
+import Myimage from '../Layouts/images/index';
+import { FileInput } from '../Components/inputs/Story';
+import { AiOutlinePlus } from 'react-icons/ai';
 import '../Assets/singlebook.scss';
 
 const SingleBook = () => {
 
   const [open, setOpen] = useState(false);
-
   const handleToggle = () => {
     setOpen(!open);
   };
+
+  /*const [image, setMainimg] = useState('');
+  const getmainImage = (image) => {
+    const mainimage = image.replace(/^.*\\/, '');
+    setMainimg(mainimage);
+  }  */
 
   return (
     <> 
@@ -22,42 +30,75 @@ const SingleBook = () => {
         <Navbar 
           click={handleToggle}
         />
-        <div className='home-con'>
-          <div className='single'>
-            <div className='single-pro-image'>
-              <Myimage />
-              <div className='small-img-group'>
-                <div className='small-img-col'>
-                  <Myimage />
+        <div className='main-story'>
+          <div className='img-story'>
+            <div className='single-img'>
+              <div className='book-header'>
+                <h3>Book Images</h3>
+              </div>
+              <div className='overlay-con'>
+                <Myimage/>
+                <div className="overlay">
+                  <label className="label-con" for="file-input">
+                    <i className='icon'><AiOutlinePlus/> </i>
+                  </label>
+                  <input
+                    id="file-input" 
+                    type="file"
+                  />
                 </div>
-                <div className='small-img-col'>
-                  <Myimage />
+              </div>
+              <div className='small-single-img'>
+                <div className='small-img'>
+                  <Image />
                 </div>
-                <div className='small-img-col'>
-                  <Myimage />
+                <div className='small-img'>
+                  <Image />
                 </div>
-                <div className='small-img-col'>
-                  <Myimage />
+                <div className='small-img'>
+                  <Image />
+                </div>
+                <div className='small-img'>
+                  <Image />
                 </div>
               </div>
             </div>
-            <div className='single-pro-details'>
-              <h6>Owie Airline</h6>
-              <h4>Return Of Ivar</h4>
-              <h2>$22.50</h2>
-              <div className='pdf-content'>
-                <img src='https://cdn-icons-png.flaticon.com/512/2921/2921451.png' alt='' />
+            <div className='single-book-details'>
+              <div className='book-header'>
+                <h3>Book Details</h3>
               </div>
-              <input type='number' value='1' />
-              <button class='normal'>Borrow Book</button>
-              <h3>Book Details</h3>
-              <span>
-                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum 
-                has been the industry's standard dummy text ever since the 1500s, when an unknown printers
-                took a galley of type and scrambled it to make a type specimen book. It has survived note 
-                only five centuries, but also the leap into electronic typesetting, remaining essentially 
-                Maker including versions of Lorem Ipsum
-              </span>
+              <div className='book-title'>
+                <p>Title</p>
+              </div>
+              <div className='my-text'>
+                <input type="text" placeholder='Owie Airline'/>
+              </div>
+              <div className='price'>
+                <p>Price</p>
+              </div>
+              <div className='my-number'>
+                <input type="number" placeholder='22' />
+              </div>
+              <div className='pdf'>
+                <p>Pdf</p>
+              </div>
+              <div className='my-file'>
+                <FileInput />
+              </div>
+              <div className='description'>
+                <p>Description</p>
+              </div>
+              <div className='my-texarea'>
+                <textarea>Owie — the name taken by Melbourne-raised, Brooklyn-based Nick Murphy - writes, performs and records all of his own music.</textarea>
+              </div>
+              <div className='buttons'>
+                <div className='my-button'>
+                  <button>Delete Book</button>
+                </div>
+                <div className='my-second-button'>
+                  <button>Update Book</button>
+                </div>
+              </div>
             </div>
           </div>
         </div>

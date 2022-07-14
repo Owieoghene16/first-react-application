@@ -1,19 +1,23 @@
 import React, { useState } from 'react';  
-import Myimage from '../Layouts/images/index';
 import Sidebar from '../Layouts/main/sidebar';
 import Navbar from '../Layouts/main/nav';
-import Image from '../Layouts/images/Image';
 import { FileInput, NumberInput, TextInput, Textarea } from '../Components/inputs/Story';
 import CreateBookButton from '../Components/buttons/Story';
+import { MainFile, File, SecondFile, ThirdFile, FourthFile  } from '../Components/inputs/file';
 import '../Assets/story.scss';
 
 const Story = () => {
 
   const [open, setOpen] = useState(false);
-
   const handleToggle = () => {
     setOpen(!open);
   };
+
+  const [image, setMainimg] = useState('');
+  const getmainImage = (image) => {
+    const mainimage = image.replace(/^.*\\/, '');
+    setMainimg(mainimage);
+  }  
 
   return (
     <> 
@@ -27,19 +31,35 @@ const Story = () => {
         <div className='main-story'>
           <div className='img-story'>
             <div className='single-img'>
-              <Myimage />
+              <div className='book-header'>
+                <h3>Book Images</h3>
+              </div>
+              <div class="image-upload">
+                <MainFile
+                  getMainFile = {getmainImage}
+                  mainImg = {image}
+                />
+              </div>
               <div className='small-single-img'>
                 <div className='small-img'>
-                  <Image />
+                  <div class="img-upload">
+                    <File />
+                  </div>
                 </div>
                 <div className='small-img'>
-                  <Image />
+                  <div class="img-upload">
+                    <SecondFile />
+                  </div>
                 </div>
                 <div className='small-img'>
-                  <Image />
+                  <div class="img-upload">
+                    <ThirdFile />
+                  </div>
                 </div>
                 <div className='small-img'>
-                  <Image />
+                  <div class="img-upload">
+                    <FourthFile />
+                  </div>
                 </div>
               </div>
             </div>
