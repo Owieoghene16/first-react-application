@@ -1,0 +1,151 @@
+body{
+    background-color: #F5F6FA;
+}
+  
+.container {
+  nav {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    margin-top: 25px;
+
+    .first-icon {
+        margin-left: 10%;
+        margin-right:20%;
+        margin-top: 10px;
+        
+        a i{
+            font-size: 65px;
+            color: rgb(32, 29, 29);
+        } 
+    }
+    ul {
+        font-family: verdana;
+        flex-wrap: wrap;
+        display: flex;
+        list-style: none;
+        justify-content: space-evenly;
+        width: 50%;
+        text-align: right;
+
+        li i {
+            margin-right: 7px;
+            a{
+                color: black;
+                text-decoration: none;
+                font-size: 18px;
+                font-weight: 500;
+                border-radius: 5px;
+                letter-spacing: 1px;
+                transition: all 0.3s ease;
+                font-family: verdana;
+            }
+            a.active, a:hover{
+                color: gray;
+                transform: translateY(-1px);
+                transition: transform 150ms;
+            }
+        }
+    }
+  }
+  .main-content {
+    margin-left: 35%;
+    font-family: verdana;
+
+    .first-header h {
+        font-family: verdana;
+        font-size: 24px;
+        color: black;
+        letter-spacing: 1px;
+    }
+    .second-header {
+        margin-top: 2%;
+        p {
+            color: grey;
+            letter-spacing: 1px;
+            font-family: verdana;
+        }
+    }
+    .third-header {
+        margin-bottom: 2%;
+        input[type=text] {
+            width: 45%;
+            padding: 12px 20px;
+            display: inline-block;
+            outline: none;
+            border: 0.1px solid black;
+            border-radius: 4px;
+            font-size: 16px;
+            box-sizing: border-box;
+        }
+        input[type=email] {
+            width: 45%;
+            padding: 12px 20px;
+            display: inline-block;
+            outline: none;
+            border: 0.1px solid black;
+            border-radius: 4px;
+            font-size: 16px;
+            box-sizing: border-box;
+        }
+        label {
+            letter-spacing: 1px;
+            font-family: verdana;
+        }
+    }
+    .plain-header p{
+        color: red;
+        letter-spacing: 2px;
+        font-family: verdana;
+    }
+    .fourth-header {
+       display: flex;
+       p{
+        letter-spacing: 1px;
+        font-family: verdana;
+       }
+       input[type=checkbox] {
+        margin-top: 0.3%;
+       }
+    }
+    .fifth-header {
+        margin-bottom: 20px;
+        margin-top: 20px;
+        button {
+            width: 45%;
+            padding: 12px 20px;
+            display: inline-block;
+            outline: none;
+            border: 0.1px solid black;
+            border-radius: 4px;
+            font-size: 16px;
+            box-sizing: border-box;
+            letter-spacing: 1px;
+            font-family: verdana;
+        }
+        button:hover {
+            cursor: pointer;
+            transform: translateY(1px);
+            transition: transform 150ms;
+        }
+    }
+    .sixth-header {
+        margin-left: 20px;
+        p2 {
+            margin-left: 20px;
+            letter-spacing: 1px;
+            font-family: verdana;
+        }
+        a {
+            margin-left: 10px;
+            text-decoration: none;
+            color: grey;
+            letter-spacing: 1px;
+            font-family: verdana;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+    }
+  }
+}

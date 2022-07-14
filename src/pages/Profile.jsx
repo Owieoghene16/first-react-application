@@ -1,21 +1,28 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Outlet, Link } from "react-router-dom";
-import Navbar from '../Layouts/header/navbar';
-import Sidebar from '../Layouts/sidebar/index';
-import { Information, EditName } from '../Components/inputs/profile';
-import { UpdateUserInformation } from '../Components/buttons/profile';
-import '../Assets/profile.css';
+import Sidebar from '../Layouts/main/sidebar';
+import Navbar from '../Layouts/main/nav';
+import { Information, EditName } from '../Components/inputs/Profile.jsx';
+import { UpdateUserInformation } from '../Components/buttons/Profile.jsx';
+import '../Assets/profile.scss';
 
 const Profile = () => {
+
+  const [open, setOpen] = useState(false);
+
+  const handleToggle = () => {
+    setOpen(!open);
+  };
+
   return ( 
     <>
-        <div>
-          <Sidebar />
-        </div>
+        <Sidebar 
+          togglebar={open}
+        />
         <section className='home-section'>
-          <div>
-            <Navbar />
-          </div>
+          <Navbar 
+            click={handleToggle}
+          />
           <div className="home-content">
             <div className="showcase">
               <h1>Hello Dear</h1>
