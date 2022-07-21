@@ -1,40 +1,61 @@
 import React from 'react';
 
-const TextInput = () => {
+const TextInput = ({getTitle}) => {
   return (
     <> 
       <form>
-        <input type='text' />
+        <input
+          type='text' 
+          onChange={(e) => {
+            getTitle(e.target.value)
+          }}
+        />
       </form>
     </>
   )
 };
 
-const Textarea = () => {
+const Textarea = ({getDescription}) => {
   return (
     <> 
       <div>
-        <textarea></textarea>
+        <textarea
+          onChange={(e) => {
+            getDescription(e.target.value)
+          }}
+        ></textarea>
       </div>
     </>
   )
 };
 
-const NumberInput = () => {
+const NumberInput = ({getPrice}) => {
   return (
     <> 
       <form>
-        <input type="number" />
+        <input
+          type="number" 
+          onChange={(e) => {
+            getPrice(e.target.value)
+          }}
+        />
       </form>
     </>
   )
 };
 
-const FileInput = () => {
+const FileInput = ({getPdf}) => {
   return (
     <>
       <div>
-        <input id='files' type='file' multiple />
+        <input 
+          id='files'
+          type='file' 
+          multiple 
+          onChange={(e) => {
+            getPdf(e.target.files[0])
+          }}
+        />
       </div>
     </>
   )

@@ -1,0 +1,238 @@
+.navigate {
+  nav {
+    margin-top: 10px;
+    .first-icon {
+      margin-left: 50px;
+    }
+    .first-icon i {
+      font-size: 60px;
+      color: #088178;
+    }
+  }
+}
+.main-container {
+  text-align: center;
+  width: 100%;
+
+  .second-container {
+    border: 0.5px solid rgb(218, 211, 211);
+    width: 550px;
+    height: 460px;
+    margin: auto;
+    text-align: start;
+    border-radius: 18px;
+
+    .error {
+      margin-right: 50px;
+      margin-left: 50px;
+      p1 {
+        color: red;
+        font-size: 15px;
+        letter-spacing: 1px;
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+      }
+    }
+
+    .first-head {
+      margin: 50px;
+
+      h2 {
+        font-family: verdana;
+        letter-spacing: 1px;
+        font-size: 25px;
+      }
+    }
+    .second-head {
+      margin: 0 50px;
+      display: flex;
+
+      .left {
+        text-align: start;
+
+        h6 {
+          font-family: verdana;
+          font-size: 15px;
+          letter-spacing: 1px;
+          font-weight: 500;
+        }
+      }
+      .right {
+        text-align: right;
+        width: 100%;
+
+        p1 {
+          font-family: verdana;
+          font-size: 14px;
+          letter-spacing: 1px;
+          font-weight: 100;
+          margin-right: 10px;
+          color: grey;
+        }
+        a {
+          color: green;
+          text-decoration: none;
+          font-family: verdana;
+          font-size: 13px;
+          letter-spacing: 1px;
+        }
+      }
+    }
+    
+    .third-header {
+      margin-top: 5px;
+      margin-right: 50px;
+      margin-left: 50px;
+
+      input[type='text'] {
+        height: 40px;
+        width: 100%;
+        outline: none;
+        border-radius: 5px;
+        font-size: 16px;
+        border: 1px solid grey;
+        padding: 0 10px;
+        font-family: verdana;
+      }
+    }
+    .fourth-head {
+      margin-top: 30px;
+      margin-left: 50px;
+      display: flex;
+
+      h6 {
+        font-family: verdana;
+        font-size: 15px;
+        letter-spacing: 1px;
+        font-weight: 500;
+      }
+      .right {
+        text-align: right;
+        width: 100%;
+        padding-right: 50px;
+
+        p {
+          font-size: 15px;
+          letter-spacing: 1px;
+          font-family: verdana;
+
+          i {
+            cursor: pointer;
+          }
+        }
+      }
+    }
+    
+    .fifth-header {
+      margin-top: 5px;
+      margin-right: 50px;
+      margin-left: 50px;
+
+      input[type='text'] {
+        height: 40px;
+        width: 100%;
+        outline: none;
+        border-radius: 5px;
+        font-size: 16px;
+        border: 1px solid grey;
+        padding: 0 10px;
+        font-family: verdana;
+      }
+      input[type='password'] {
+        height: 40px;
+        width: 100%;
+        outline: none;
+        border-radius: 5px;
+        font-size: 16px;
+        border: 1px solid grey;
+        padding: 0 10px;
+        font-family: verdana;
+      }
+    }
+    .sixth-head {
+      margin-top: 30px;
+      padding: 0 50px;
+
+      button {
+        background: #088178;
+        color: #fff;
+        letter-spacing: 2px;
+        font-family: verdana;
+        font-size: 16px;
+        border-radius: 30px;
+        border: none;
+        width: 100%;
+        height: 45px;
+        cursor: pointer;
+      }
+    }
+    .forgotten {
+      margin-top: 30px;
+      text-align: center;
+
+      a {
+        text-decoration: none;
+        font-family: verdana;
+        font-size: 15px;
+        color: black;
+        cursor: pointer;
+      }
+      a:hover {
+        color: green;
+      }
+    }
+  }
+}
+
+@media (max-width: 600px) {
+  .navigate {
+    nav { 
+      text-align: center;
+    }
+  }
+  .main-container {
+    text-align: center;
+    width: 100%;
+  
+    .second-container {
+      width: 100%;
+      height: 420px;
+      border: none;
+
+      .first-head {
+        margin-top: 40px;
+        margin-left: 20px;
+        margin-right: 20px;
+      }
+      .second-head {
+        margin-top: 5px;
+        margin-left: 20px;
+        margin-right: 20px;
+      }
+      .third-head {
+        margin-top: 5px;
+        margin-left: 20px;
+        margin-right: 20px;
+      }
+      .fourth-head {
+        margin-top:30px;
+        margin-left: 20px;
+        margin-right: 20px;
+
+        .right {
+          padding-right: 0;
+        }
+      }
+      .fifth-header {
+        margin-top: 5px;
+        margin-left: 20px;
+        margin-right: 20px;
+      }
+      .sixth-header {
+        margin-top: 20px;
+        margin-left: 20px;
+        margin-right: 20px;
+        padding: 0;
+      }
+    }
+  }
+}

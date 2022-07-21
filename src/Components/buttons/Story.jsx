@@ -1,10 +1,10 @@
 import React from 'react';
 
-const CreateBookButton = () => {
+const CreateBookButton = ({click}) => {
   return (
     <>
       <div>
-        <button>Create Book</button>
+        <button onClick={click} >Create Book</button>
       </div>
     </>
   )

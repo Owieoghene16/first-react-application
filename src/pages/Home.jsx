@@ -1,14 +1,14 @@
 import React, { useState } from 'react';  
 import { Outlet, Link } from 'react-router-dom';
-import { AiOutlineStar } from 'react-icons/ai';
-import { GrAdd } from 'react-icons/gr';
-import Myimage from '../Layouts/images/index';
+import { GrFormPrevious, GrFormNext } from 'react-icons/gr';
+import Box from '../Layouts/main/box';
 import Sidebar from '../Layouts/main/sidebar';
 import Navbar from '../Layouts/main/nav';
 import '../Assets/homepage.scss';
 
 const Homepage = () => {
 
+  /*Navbar toggle */
   const [open, setOpen] = useState(false);
 
   const handleToggle = () => {
@@ -42,119 +42,11 @@ const Homepage = () => {
               <h2>Your books</h2>
             </div>
             <div className='content'>
-              <div className='pro'>
-                <Myimage />
-                <div className='des'>
-                  <span>Adidaasas</span>
-                  <h5>Owie Airline</h5>
-                  <div className='star'>
-                    <i> <AiOutlineStar /> </i>
-                    <i> <AiOutlineStar /> </i>
-                    <i> <AiOutlineStar /> </i>
-                    <i> <AiOutlineStar /> </i>
-                    <i> <AiOutlineStar /> </i>
-                  </div>
-                  <h4>$22</h4>
-                </div>
-                <button> <i className='cart'> <GrAdd/> </i> </button>
+              <Box />
+              <Box />
+              <Box />
+              <Box />
               </div>
-              <div className='pro'>
-                <Myimage />
-                <div className='des'>
-                  <span>Adidas</span>
-                  <h5>Owie Airline</h5>
-                  <div className='star'>
-                    <i> <AiOutlineStar /> </i>
-                    <i> <AiOutlineStar /> </i>
-                    <i> <AiOutlineStar /> </i>
-                    <i> <AiOutlineStar /> </i>
-                    <i> <AiOutlineStar /> </i>
-                  </div>
-                  <h4>$22</h4>
-                </div>
-                <button> <i className='cart'> <GrAdd/> </i> </button>
-              </div>
-              <div className='pro'>
-                <Myimage />
-                <div className='des'>
-                  <span>Adidas</span>
-                  <h5>Owie Airline</h5>
-                  <div className='star'>
-                    <i> <AiOutlineStar /> </i>
-                    <i> <AiOutlineStar /> </i>
-                    <i> <AiOutlineStar /> </i>
-                    <i> <AiOutlineStar /> </i>
-                    <i> <AiOutlineStar /> </i>
-                  </div>
-                  <h4>$22</h4>
-                </div>
-                <button> <i className='cart'> <GrAdd/> </i> </button>
-              </div>
-              <div className='pro'>
-                <Myimage />
-                <div className='des'>
-                  <span>Adidas</span>
-                  <h5>Owie Airline</h5>
-                  <div className='star'>
-                    <i> <AiOutlineStar /> </i>
-                    <i> <AiOutlineStar /> </i>
-                    <i> <AiOutlineStar /> </i>
-                    <i> <AiOutlineStar /> </i>
-                    <i> <AiOutlineStar /> </i>
-                  </div>
-                  <h4>$22</h4>
-                </div>
-                <button> <i className='cart'> <GrAdd/> </i> </button>
-              </div>
-              <div className='pro'>
-                <Myimage />
-                <div className='des'>
-                  <span>Adidas</span>
-                  <h5>Owie Airline</h5>
-                  <div className='star'>
-                    <i> <AiOutlineStar /> </i>
-                    <i> <AiOutlineStar /> </i>
-                    <i> <AiOutlineStar /> </i>
-                    <i> <AiOutlineStar /> </i>
-                    <i> <AiOutlineStar /> </i>
-                  </div>
-                  <h4>$22</h4>
-                </div>
-                <button> <i className='cart'> <GrAdd/> </i> </button>
-              </div>
-              <div className='pro'>
-                <Myimage />
-                <div className='des'>
-                  <span>Adidas</span>
-                  <h5>Owie Airline</h5>
-                  <div className='star'>
-                    <i> <AiOutlineStar /> </i>
-                    <i> <AiOutlineStar /> </i>
-                    <i> <AiOutlineStar /> </i>
-                    <i> <AiOutlineStar /> </i>
-                    <i> <AiOutlineStar /> </i>
-                  </div>
-                  <h4>$22</h4>
-                </div>
-                <button> <i className='cart'> <GrAdd/> </i> </button>
-              </div>
-              <div className='pro'>
-                <Myimage />
-                <div className='des'>
-                  <span>Adidas</span>
-                  <h5>Owie Airline</h5>
-                  <div className='star'>
-                    <i> <AiOutlineStar /> </i>
-                    <i> <AiOutlineStar /> </i>
-                    <i> <AiOutlineStar /> </i>
-                    <i> <AiOutlineStar /> </i>
-                    <i> <AiOutlineStar /> </i>
-                  </div>
-                  <h4>$22</h4>
-                </div>
-                <button> <i className='cart'> <GrAdd/> </i> </button>
-              </div>
-            </div>
             </div>
             <div className='border'>
             </div>
@@ -166,143 +58,30 @@ const Homepage = () => {
                 <h>Borrowed History</h>
               </div>
               <div className='content'>
-                <div className='pro'>
-                  <Myimage />
-                  <div className='des'>
-                    <span>Adidas</span>
-                    <h5>Owie Airline</h5>
-                    <div className='star'>
-                      <i> <AiOutlineStar /> </i>
-                      <i> <AiOutlineStar /> </i>
-                      <i> <AiOutlineStar /> </i>
-                      <i> <AiOutlineStar /> </i>
-                      <i> <AiOutlineStar /> </i>
-                    </div>
-                    <h4>$22</h4>
-                  </div>
-                  <button> <i className='cart'> <GrAdd/> </i> </button>
-                </div>
-                <div className='pro'>
-                    <Myimage />
-                  <div className='des'>
-                    <span>Adidas</span>
-                    <h5>Owie Airline</h5>
-                    <div className='star'>
-                      <i> <AiOutlineStar /> </i>
-                      <i> <AiOutlineStar /> </i>
-                      <i> <AiOutlineStar /> </i>
-                      <i> <AiOutlineStar /> </i>
-                      <i> <AiOutlineStar /> </i>
-                    </div>
-                    <h4>$22</h4>
-                  </div>
-                  <button> <i className='cart'> <GrAdd/> </i> </button>
-                </div>
-                <div className='pro'>
-                    <Myimage />
-                  <div className='des'>
-                    <span>Adidas</span>
-                    <h5>Owie Airline</h5>
-                    <div className='star'>
-                      <i> <AiOutlineStar /> </i>
-                      <i> <AiOutlineStar /> </i>
-                      <i> <AiOutlineStar /> </i>
-                      <i> <AiOutlineStar /> </i>
-                      <i> <AiOutlineStar /> </i>
-                    </div>
-                    <h4>$22</h4>
-                  </div>
-                  <button> <i className='cart'> <GrAdd/> </i> </button>
-                </div>
-                <div className='pro'>
-                    <Myimage />
-                  <div className='des'>
-                    <span>Adidas</span>
-                    <h5>Owie Airline</h5>
-                    <div className='star'>
-                      <i> <AiOutlineStar /> </i>
-                      <i> <AiOutlineStar /> </i>
-                      <i> <AiOutlineStar /> </i>
-                      <i> <AiOutlineStar /> </i>
-                      <i> <AiOutlineStar /> </i>
-                    </div>
-                    <h4>$22</h4>
-                  </div>
-                  <button> <i className='cart'> <GrAdd/> </i> </button>
-                </div>
+                <Box />
+                <Box />
+                <Box />
+                <Box />
               </div>
-            <div className='border'>
-            </div>
+              <div className='border'>
+              </div>
               <div class='second-header'>
                 <h>Returned History</h>
               </div>
               <div className='content'>
-                <div className='pro'>
-                    <Myimage />
-                  <div className='des'>
-                    <span>Adidas</span>
-                    <h5>Owie Airline</h5>
-                    <div className='star'>
-                      <i> <AiOutlineStar /> </i>
-                      <i> <AiOutlineStar /> </i>
-                      <i> <AiOutlineStar /> </i>
-                      <i> <AiOutlineStar /> </i>
-                      <i> <AiOutlineStar /> </i>
-                    </div>
-                    <button>Return</button>
-                  </div>
-                  <button> <i className='cart'> <GrAdd/> </i> </button>
-                </div>
-                <div className='pro'>
-                    <Myimage />
-                  <div className='des'>
-                    <span>Adidas</span>
-                    <h5>Owie Airline</h5>
-                    <div className='star'>
-                      <i> <AiOutlineStar /> </i>
-                      <i> <AiOutlineStar /> </i>
-                      <i> <AiOutlineStar /> </i>
-                      <i> <AiOutlineStar /> </i>
-                      <i> <AiOutlineStar /> </i>
-                    </div>
-                    <button>Return</button>
-                  </div>
-                  <button> <i className='cart'> <GrAdd/> </i> </button>
-                </div>
-                <div className='pro'>
-                    <Myimage />
-                  <div className='des'>
-                    <span>Adidas</span>
-                    <h5>Owie Airline</h5>
-                    <div className='star'>
-                      <i> <AiOutlineStar /> </i>
-                      <i> <AiOutlineStar /> </i>
-                      <i> <AiOutlineStar /> </i>
-                      <i> <AiOutlineStar /> </i>
-                      <i> <AiOutlineStar /> </i>
-                    </div>
-                    <button>Return</button>
-                  </div>
-                  <button> <i className='cart'> <GrAdd/> </i> </button>
-                </div>
-                <div className='pro'>
-                    <Myimage />
-                  <div className='des'>
-                    <span>Adidas</span>
-                    <h5>Owie Airline</h5>
-                    <div className='star'>
-                      <i> <AiOutlineStar /> </i>
-                      <i> <AiOutlineStar /> </i>
-                      <i> <AiOutlineStar /> </i>
-                      <i> <AiOutlineStar /> </i>
-                      <i> <AiOutlineStar /> </i>
-                    </div>
-                    <button>Return</button>
-                  </div>
-                  <button> <i className='cart'> <GrAdd/> </i> </button>
-                </div>
+                <Box />
+                <Box />
+                <Box />
               </div>
             </div>
+            <div className='button-container'>
+              <div class='next'>
+                <button><i><GrFormPrevious /></i></button>
+              </div>
+              <div class='next'>
+                <button><i><GrFormNext /></i></button>
+              </div>
+          </div>
           </div>
         </section>
       <Outlet />
