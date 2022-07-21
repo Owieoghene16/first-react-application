@@ -1,4 +1,9 @@
+/* eslint-disable no-unused-vars */
+/* eslint-disable no-dupe-keys */
 import React, { useState } from 'react';  
+import FormData from 'form-data';
+import { Api } from '../app';
+import { token } from './signup';
 import Sidebar from '../Layouts/main/sidebar';
 import Navbar from '../Layouts/main/nav';
 import { FileInput, NumberInput, TextInput, Textarea } from '../Components/inputs/Story';
@@ -8,17 +13,57 @@ import '../Assets/story.scss';
 
 const Story = () => {
 
+  /*Navbar toggle */
   const [open, setOpen] = useState(false);
   const handleToggle = () => {
     setOpen(!open);
   };
+  
+  /*Image state */
+  const [image, setimage] = useState();
+  const [imagename, setimagename ] = useState('')
+  const getmainImage = (userimage) => {
+    setimage(userimage);
+    setimagename(userimage.name);
+  } ;
 
-  const [image, setMainimg] = useState('');
-  const getmainImage = (image) => {
-    const mainimage = image.replace(/^.*\\/, '');
-    setMainimg(mainimage);
-  }  
+  /*Pdf state */
+  const [pdf, setMainpdf] = useState();
+  const getmainPdf = (userpdf) => {
+    setMainpdf(userpdf);
+  }
 
+  /*Form state */
+  const [error, setError] = useState('');
+  const [title, setTitle] = useState('');
+  const [price, setPrice] = useState('');
+  const [description, setDescription] = useState('');
+
+  /*  Create book */
+  const createBook = async (e) => {
+    e.preventDefault();
+  
+    const form = new FormData();
+    form.append('title', title)
+    form.append('price', price)
+    form.append('author', 'Owie')
+    form.append('description', description)
+    form.append('file', image)
+    form.append('file', pdf);
+  
+    try {
+      const res = await Api.post('/book', form, {
+        headers: {
+          'content-type': 'multipart/form-data',
+          'authorization': token.id
+        }
+      });
+      console.log(res);
+    } catch (err) {
+      setError(err.response.data.message);
+    }
+  } 
+  
   return (
     <> 
       <Sidebar 
@@ -36,8 +81,8 @@ const Story = () => {
               </div>
               <div class="image-upload">
                 <MainFile
-                  getMainFile = {getmainImage}
-                  mainImg = {image}
+                  getImage = {getmainImage}
+                  message = {imagename}
                 />
               </div>
               <div className='small-single-img'>
@@ -71,28 +116,41 @@ const Story = () => {
                 <p>Title</p>
               </div>
               <div className='my-text'>
-                <TextInput />
+                <TextInput
+                  getTitle = {setTitle}
+                />
               </div>
               <div className='price'>
                 <p>Price</p>
               </div>
               <div className='my-number'>
-                <NumberInput />
+                <NumberInput 
+                  getPrice = {setPrice}
+                />
               </div>
               <div className='pdf'>
                 <p>Pdf</p>
               </div>
               <div className='my-file'>
-                <FileInput />
+                <FileInput 
+                  getPdf = {getmainPdf}
+                />
               </div>
               <div className='description'>
                 <p>Description</p>
               </div>
               <div className='my-texarea'>
-                <Textarea />
+                <Textarea 
+                  getDescription = {setDescription}
+                />
+              </div>
+              <div class='error'>
+                <p> {error} </p>
               </div>
               <div className='my-button'>
-                <CreateBookButton />
+                <CreateBookButton
+                  click = {createBook}
+                />
               </div>
             </div>
           </div>

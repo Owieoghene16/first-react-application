@@ -1,9 +1,7 @@
 import React, { useState } from 'react';
-import { Outlet, Link } from "react-router-dom";
+import { Outlet, Link } from 'react-router-dom';
 import Sidebar from '../Layouts/main/sidebar';
 import Navbar from '../Layouts/main/nav';
-import { Information, EditName } from '../Components/inputs/Profile.jsx';
-import { UpdateUserInformation } from '../Components/buttons/Profile.jsx';
 import '../Assets/profile.scss';
 
 const Profile = () => {
@@ -16,93 +14,115 @@ const Profile = () => {
 
   return ( 
     <>
-        <Sidebar 
-          togglebar={open}
+      <Sidebar 
+        togglebar={open}
+      />
+      <section className='home-section'>
+        <Navbar 
+          click={handleToggle}
         />
-        <section className='home-section'>
-          <Navbar 
-            click={handleToggle}
-          />
-          <div className="home-content">
-            <div className="showcase">
-              <h1>Hello Dear</h1>
-              <p>This is your profile page. You can see the progress you've made with<br></br> your work and manage your projects or assigned tasks</p>
-              <Link to="blogs" className="but2"><span></span>Edit Profile</Link>
+        <div className='main-profile'>
+          <div className='column'>
+            <div className='first-row'>
+              <div className='first-head'>
+                <h5>My account</h5>
+              </div>
+              <div className='second-head'>
+                <p1>User Information</p1>
+              </div>
+              <div class='column-con'>
+                <div className='content'>
+                  <div className='top'>
+                    <p>Username</p>
+                  </div>
+                  <div className='bottom'>
+                    <input type='text'/>
+                  </div>
+                </div>
+                <div className='second-content'>
+                  <div className='top'>
+                    <p>Email</p>
+                  </div>
+                  <div className='bottom'>
+                    <input type='text'/>
+                  </div>
+                </div>
+              </div>
+              <div class='column-con'>
+                <div className='content'>
+                  <div className='top'>
+                    <p>Password</p>
+                  </div>
+                  <div className='bottom'>
+                    <input type='password'/>
+                  </div>
+                </div>
+                <div className='second-content'>
+                  <div className='top'>
+                    <p>Reenter password</p>
+                  </div>
+                  <div className='bottom'>
+                    <input type='password'/>
+                  </div>
+                </div>
+              </div>
+              <div className='third-head'>
+                <p1>About me</p1>
+              </div>
+              <div className='fourth-head'>
+                <p>Description</p>
+              </div>
+              <div className='fifth-header'>
+                <textarea>Owie — the name taken by Melbourne-raised, 
+                  Brooklyn-based Nick Murphy - writes, performs, and
+                  records all of his own music.
+                </textarea>
+              </div>
+              <div className='sixth-header'>
+                <button>Update</button>
+              </div>
             </div>
-            <div className="column">
-              <div className="row1">
-                <div className="first-header">
-                  <h>My Account</h>
-                  <div className="set">
-                    <a href="./homepage.html"><span>Settings</span></a>
+            <div className='second-row'>
+                <div className='first-item'>
+                  <div className='connect'>
+                    <Link to='#'><span>Connect</span></Link>
                   </div>
-                </div>
-                <div className="second-header">
-                  <p>User Information:</p>
-                </div>
-                <div className="third-header">
-                  <p>Username</p>
-                  <p2>Email</p2>
-                </div>
-                <div className="fourth-header">
-                  <EditName />
-                </div>
-                <div className="third-header">
-                  <p>First Name</p>
-                  <p2>Last Name</p2>
-                </div>
-                <div className="fourth-header">
-                  <EditName />
-                </div>
-                <div className="fifth-header">
-                  <p>About Me</p>
-                </div>
-                <div className="third-header">
-                  <p>Description</p>
-                </div>
-                <div className="sixth-header">
-                  <Information />
-                </div>
-                <div className="update">
-                  <UpdateUserInformation />
-                </div>
-                <footer />
-              </div>
-              <div className="row2">
-                <div className="first-item">
-                  <div className="connect">
-                    <Link to="/contact"><span>Connect</span></Link>
-                  </div>
-                  <img className="rounded-circle" src="https://demos.creative-tim.com/argon-dashboard/assets/img/team-3.jpg" alt=""></img>
-                  <div className="connect">
-                    <Link to=""><span>Inbox</span></Link>
+                  <img src='https://demos.creative-tim.com/argon-dashboard/assets/img/team-3.jpg' alt=''></img>
+                  <div className='connect'>
+                    <Link to='#'><span>Inbox</span></Link>
                   </div>
                 </div>
                 <div className="second-item">
-                  <p>22</p>
-                  <p>10</p>
-                  <p>18</p>
+                  <div className='second-item-row'>
+                    <h5>12</h5>
+                    <p2>Books</p2>
+                  </div>
+                  <div className='second-item-row'>
+                    <h5>05</h5>
+                    <p2>Borrowed</p2>
+                  </div>
+                  <div className='second-item-row'>
+                    <h5>02</h5>
+                    <p2>Returned</p2>
+                  </div>
                 </div>
-                <div className="second-item">
-                  <p>Friends</p>
-                  <p>Video</p>
-                  <p>Comment</p>
+                <div className='third-item'>
+                  <p>Okpugie Kindness</p>
                 </div>
-                <div className="third-item">
-                   <p>Okpugie Kindness</p>
-                  <p1>Lagos Nigeria</p1>
+                <div className='fourth-item'>
+                  <p1>Lagos</p1>
+                  <p2>Nigeria</p2>
                 </div>
-                <div className="third-item">
-                  <p>Studying Computer Science</p>
-                  <p1>University of Technology</p1>
+                <div className='fifth-item'>
+                  <span>Owie — the name taken by Melbourne-raised,
+                    Brooklyn-based Nick Murphy - writes, performs,
+                    and records all of his own music.
+                  </span>
                 </div>
-                <div className="third-item">
-                  <p className="center5">Owie — the name taken by Melbourne-raised, <br></br>Brooklyn-based Nick Murphy —<br></br> writes, performs and records all of his own music.</p>
-                </div>
-              </div>
             </div>
           </div>
-        </section>
+        </div>
+      </section>
       <Outlet />
     </>
   )

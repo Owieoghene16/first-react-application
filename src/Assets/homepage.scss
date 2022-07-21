@@ -1,9 +1,3 @@
-*{
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: 'Poppins', sans-serif;
-}
 /*sidebar*/
 .sidebar {
   position: fixed;
@@ -35,6 +29,12 @@
   }
   .nav-links{
     margin-top: 10px;
+    
+    .log_out{
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+    }
 
     li {
       position: relative;
@@ -68,11 +68,6 @@
         text-align: center;
         font-size: 18px;
         color: #fff;
-      }
-      .log_out{
-        position: absolute;
-        bottom: 0;
-        width: 100%;
       }
     }
   }
@@ -177,6 +172,38 @@
     position: relative;
     padding-top: 14px;
 
+    .button-container {
+      display: flex;
+      flex-wrap: wrap;
+      text-align: center;
+      justify-content: center;
+      margin-bottom: 60px;
+      width: 100%;
+      margin: auto;
+    
+      .next {
+        margin-right: 15px;
+        margin-bottom: 30px;
+        button {
+          color: black;
+          background-color: #cce7d0;
+          border: none;
+          width: 50px;
+          height: 40px;
+          cursor: pointer;
+          i {
+            font-size: 16px;
+          }
+          i:hover {
+            color: white;
+          }
+        }
+        button:hover{
+          background-color: #088178;
+          color: white;
+        }
+      }
+    }
     .welcome {
       margin-top: 110px;
       margin-bottom: 50px;
@@ -236,7 +263,6 @@
     .picks {
       margin-left: 3%;
       margin-right: 3%;
-      margin-bottom: 3%;
 
       .title {
         margin-left: 3%;
@@ -341,9 +367,8 @@
       }
       .content {
         display: flex;
-        justify-content: space-between;
+        justify-content: space-evenly;
         flex-wrap: wrap;
-        text-align: center;
         margin-bottom: 50px;
         margin-left: 3%;
 
@@ -424,8 +449,11 @@
 /*media */
 @media( max-width: 1200px ) {
   .home-section .home-content .book-item .pro-container {
-      text-align: center;
-      justify-content: space-evenly;
+    text-align: center;
+    justify-content: space-evenly;
+  }
+  .home-section .home-content .history .content {
+    justify-content: space-evenly;
   }
 }
 
@@ -435,7 +463,7 @@
     text-align: center;
   }
   .home-section .home-content .history .content {
-    justify-content: space-around;
+    justify-content: space-evenly;
     text-align: center;
   }
   .home-section .home-content .welcome .heads {
