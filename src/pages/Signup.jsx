@@ -4,9 +4,9 @@ import { useNavigate } from 'react-router-dom';
 import { Api } from '../app';
 import { Outlet, Link } from 'react-router-dom';
 import { FaBook } from 'react-icons/fa';
-import { AiOutlineEyeInvisible } from 'react-icons/ai';
 import { FiEye } from 'react-icons/fi';
 import { Username, Email, Password, Reenterpassword } from '../Components/inputs/Register';
+import { useDispatch } from 'react-redux';
 import '../Assets/signup.scss';
 
 
@@ -25,6 +25,7 @@ const	Register = () => {
   const [passwordagainReg, setPasswordagain] = useState('');
    
   const redirect = useNavigate();
+  const dispatch = useDispatch();
 
   /* Register fucntion */
   const signUp = async (e) => {
@@ -37,7 +38,7 @@ const	Register = () => {
         reEnterPassword: passwordagainReg
       });
       token.id = res.data.token;
-      localStorage.setItem('jwtToken', JSON.stringify(res.data.token));
+      sessionStorage.setItem('jwtToken', JSON.stringify(res.data.token));
       setResult(res.data.message);
       setError('')
       redirect('/home');

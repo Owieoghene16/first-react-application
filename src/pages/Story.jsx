@@ -7,7 +7,7 @@ import { token } from './signup';
 import Sidebar from '../Layouts/main/sidebar';
 import Navbar from '../Layouts/main/nav';
 import { FileInput, NumberInput, TextInput, Textarea } from '../Components/inputs/Story';
-import CreateBookButton from '../Components/buttons/Story';
+import CreateBookButton from '../Components/buttons/index';
 import { MainFile, File, SecondFile, ThirdFile, FourthFile  } from '../Components/inputs/file';
 import '../Assets/story.scss';
 
@@ -58,7 +58,7 @@ const Story = () => {
           'authorization': token.id
         }
       });
-      console.log(res);
+      console.log(res, 'ooo');
     } catch (err) {
       setError(err.response.data.message);
     }

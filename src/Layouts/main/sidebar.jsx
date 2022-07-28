@@ -34,7 +34,7 @@ const Sidebar = ({ togglebar }) => {
               </Link>
             </li>
             <li>
-              <Link to='#'>
+              <Link to='/demo'>
                 <i><FaComment /></i>
                 <span className='links_name'>Friends</span>
               </Link>

@@ -106,13 +106,12 @@ const FourthFile = () => {
   )
 };
 
-
 /* */
 const MainFile = ({ getImage, message }) => {
   return (
     <>
       <label className="label-con" for="file-input">
-        <i className='icon'><AiOutlinePlus/> </i>
+        <i className='icon'><AiOutlinePlus/></i>
       </label>
       <input
         id="file-input" 

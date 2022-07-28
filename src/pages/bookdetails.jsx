@@ -1,17 +1,34 @@
-import React, { useState }from 'react';  
-import { Outlet } from 'react-router-dom';
+/* eslint-disable react-hooks/exhaustive-deps */
+import React, { useState, useEffect }from 'react';  
+import { Outlet, useParams } from 'react-router-dom';
 import Myimage from '../Layouts/images/index';
 import Sidebar from '../Layouts/main/sidebar';
 import Navbar from '../Layouts/main/nav';
+import { Api } from '../app';
 import '../Assets/bookdetails.scss';
 
 const BookDetails = () => {
+  
+  const { id } = useParams();
 
   const [open, setOpen] = useState(false);
-
   const handleToggle = () => {
     setOpen(!open);
   };
+
+  const [singleBook, setSingleBook] = useState({});
+  useEffect(() => {
+    const getBook = async () => {
+      try {
+        const res = await Api.get(`/book/${id}`);
+        setSingleBook(res.data.singleBook);
+        console.log(singleBook)
+      } catch (err) {
+        console.log(err)
+      }
+    }
+    getBook();
+  },[]);
 
   return (
     <> 
@@ -56,7 +73,7 @@ const BookDetails = () => {
                 has been the industry's standard dummy text ever since the 1500s, when an unknown printers
                 took a galley of type and scrambled it to make a type specimen book. It has survived note 
                 only five centuries, but also the leap into electronic typesetting, remaining essentially 
-                Maker including versions of Lorem Ipsum
+                Maker including versions of Lorem Ipsum.
               </span>
             </div>
           </div>

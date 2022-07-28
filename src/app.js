@@ -5,8 +5,8 @@ import Homepage from './pages/home';
 import Profile from './pages/profile';
 import Reset from './pages/Reset';
 import Book from './pages/book';
-import Story from './pages/story';
 import BookDetails from './pages/bookdetails';
+import Story from './pages/story';
 import { Login } from './pages/signin';
 import { Register } from './pages/signup';
 
@@ -26,7 +26,7 @@ const App = () => {
         <Route path='/profile' element={<Profile />}></Route>
         <Route path='/book' element={<Book />}></Route>
         <Route path='/story' element={<Story />}></Route>
-        <Route path='/single' element={<BookDetails />}></Route>
+        <Route path='/single/:id' element={<BookDetails />}></Route>
       </Routes>
     </BrowserRouter>
   );

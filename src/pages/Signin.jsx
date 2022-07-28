@@ -30,7 +30,7 @@ const	Login = () => {
         password: passwordReg,
       });
       token.id = res.data.token;
-      localStorage.setItem('jwtToken', JSON.stringify(res.data.token));
+      sessionStorage.setItem('jwtToken', JSON.stringify(res.data.token));
       setError('')
       redirect('/home');
     } catch (err) {
