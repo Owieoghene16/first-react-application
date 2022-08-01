@@ -1,13 +1,18 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { Api } from '../app';
-import { loadBookSuccess } from './reducer';
+import { updateBooks } from './reducer';
 
 export const loadBooks = createAsyncThunk(
   'loadBooks',
   async (_, thunkAPI) => {
     try {
-      const response = await Api.get('home');
-      thunkAPI.dispatch(loadBookSuccess(response.data.createdBooks));
+      const userToken = JSON.parse(sessionStorage.getItem('user'));
+      const response = await Api.get('home', {
+        headers: {
+          'authorization': userToken.token
+        }
+      });
+      thunkAPI.dispatch(updateBooks(response.data.createdBooks));
     } catch (err) {
       console.log(err);
     }

@@ -204,6 +204,39 @@
         }
       }
     }
+    .invalid {
+      margin-top: 190px;
+      margin-bottom: 50px;
+      display: block;
+      justify-content: center;
+      text-align: center;
+      .heads {
+        margin-bottom: 50px;
+
+        h {
+          font-size: 25px;
+          font-family: verdana;
+          font-weight: 300;
+          padding-top: 10px;
+        }
+      }
+      .again {
+        margin-top: 45px;
+        text-align: center;
+
+        a {
+          padding: 10px 10px;
+          letter-spacing: 1px;
+          text-decoration: none;
+          color: black;
+          cursor: pointer;
+          font-family: verdana;
+          border: none;
+          background-color: #cce7d0;
+          border: 1px solid #cce7d0;
+        }
+      }
+    }
     .welcome {
       margin-top: 110px;
       margin-bottom: 50px;

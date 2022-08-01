@@ -7,9 +7,6 @@ import { FiEye } from 'react-icons/fi';
 import { Email, Password } from '../Components/inputs/Register';
 import '../Assets/signin.scss';
 
-
-const token = {};
-
 const	Login = () => {
 
   /*Display state */
@@ -29,8 +26,7 @@ const	Login = () => {
         email: emailReg,
         password: passwordReg,
       });
-      token.id = res.data.token;
-      sessionStorage.setItem('jwtToken', JSON.stringify(res.data.token));
+      sessionStorage.setItem('user', JSON.stringify(res.data));
       setError('')
       redirect('/home');
     } catch (err) {
@@ -77,7 +73,7 @@ const	Login = () => {
             <div className='right'>
               <p1>Don't have an account?</p1>
               <Link to='/'>
-                Sign in
+                Sign up
               </Link>
             </div>
           </div>
@@ -111,4 +107,4 @@ const	Login = () => {
   )
 };
 
-export { Login, token};
+export default Login;

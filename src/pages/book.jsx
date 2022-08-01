@@ -1,5 +1,5 @@
 import React, { useState } from 'react';  
-import { Outlet } from 'react-router-dom';
+import { Outlet, Link } from 'react-router-dom';
 import { AiFillBackward } from 'react-icons/ai';
 import { TbPlayerTrackNext } from 'react-icons/tb';
 import { GrFormNext, GrFormPrevious, GrAdd } from 'react-icons/gr';
@@ -9,13 +9,13 @@ import Navbar from '../Layouts/main/nav';
 import '../Assets/book.scss';
 
 const Book = () => {
-
   /*Navbar toggle */
   const [open, setOpen] = useState(false);
 
   const handleToggle = () => {
     setOpen(!open);
   };
+  const storage = JSON.parse(sessionStorage.getItem('user'));
 
   return (
     <> 
@@ -26,7 +26,9 @@ const Book = () => {
         <Navbar 
           click={handleToggle}
         />
-        <div className='home-content'>
+        {
+          storage ? 
+          <div className='home-content'>
           <div className='wel'>
             <div className='heading'>
               <h>Your desired collections</h>
@@ -118,7 +120,18 @@ const Book = () => {
               <button><i><TbPlayerTrackNext /></i></button>
             </div>
           </div>
-        </div>
+          </div> : 
+          <div className='home-content'>
+            <div className='invalid'>
+              <div className='heads'>
+                <h>Login Expired</h>
+              </div>
+              <div className='again'>                 
+                <Link to='/signin'>Login Again</Link>
+              </div>
+            </div>
+          </div>
+        }
       </section>
       <Outlet />
     </> 

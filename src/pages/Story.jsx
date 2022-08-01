@@ -1,9 +1,7 @@
-/* eslint-disable no-unused-vars */
-/* eslint-disable no-dupe-keys */
 import React, { useState } from 'react';  
 import FormData from 'form-data';
+import { Outlet, Link } from 'react-router-dom';
 import { Api } from '../app';
-import { token } from './signup';
 import Sidebar from '../Layouts/main/sidebar';
 import Navbar from '../Layouts/main/nav';
 import { FileInput, NumberInput, TextInput, Textarea } from '../Components/inputs/Story';
@@ -38,7 +36,7 @@ const Story = () => {
   const [title, setTitle] = useState('');
   const [price, setPrice] = useState('');
   const [description, setDescription] = useState('');
-
+  const storage = JSON.parse(sessionStorage.getItem('user'));
   /*  Create book */
   const createBook = async (e) => {
     e.preventDefault();
@@ -52,13 +50,12 @@ const Story = () => {
     form.append('file', pdf);
   
     try {
-      const res = await Api.post('/book', form, {
+      await Api.post('/book', form, {
         headers: {
           'content-type': 'multipart/form-data',
-          'authorization': token.id
+          'authorization': storage.token
         }
       });
-      console.log(res, 'ooo');
     } catch (err) {
       setError(err.response.data.message);
     }
@@ -73,13 +70,16 @@ const Story = () => {
         <Navbar 
           click={handleToggle}
         />
-        <div className='main-story'>
-          <div className='img-story'>
-            <div className='single-img'>
-              <div className='book-header'>
-                <h3>Book Images</h3>
-              </div>
-              <div class="image-upload">
+        {
+          storage ?
+            
+            <div className='main-story'>
+              <div className='img-story'>
+                <div className='single-img'>
+                  <div className='book-header'>
+                    <h3>Book Images</h3>
+                  </div>
+                <div class="image-upload">
                 <MainFile
                   getImage = {getmainImage}
                   message = {imagename}
@@ -91,22 +91,22 @@ const Story = () => {
                     <File />
                   </div>
                 </div>
-                <div className='small-img'>
-                  <div class="img-upload">
-                    <SecondFile />
-                  </div>
-                </div>
-                <div className='small-img'>
-                  <div class="img-upload">
-                    <ThirdFile />
-                  </div>
-                </div>
-                <div className='small-img'>
-                  <div class="img-upload">
-                    <FourthFile />
-                  </div>
+              <div className='small-img'>
+                <div class="img-upload">
+                  <SecondFile />
                 </div>
               </div>
+              <div className='small-img'>
+                <div class="img-upload">
+                  <ThirdFile />
+                </div>
+              </div>
+              <div className='small-img'>
+                <div class="img-upload">
+                  <FourthFile />
+                </div>
+              </div>
+            </div>
             </div>
             <div className='single-book-details'>
               <div className='book-header'>
@@ -154,8 +154,20 @@ const Story = () => {
               </div>
             </div>
           </div>
-        </div>
+          </div> :
+          <div className='home-content'>
+            <div className='invalid'>
+              <div className='heads'>
+                <h>Login Expired</h>
+              </div>
+              <div className='again'>                 
+                <Link to='/signin'>Login Again</Link>
+              </div>
+            </div>
+          </div>
+        }
       </section>
+      <Outlet />
     </>
   )
 };
