@@ -4,27 +4,41 @@ import { Api } from '../app';
 import { Outlet, Link } from 'react-router-dom';
 import { FaBook } from 'react-icons/fa';
 import { FiEye } from 'react-icons/fi';
+import { AiOutlineEyeInvisible } from 'react-icons/ai';
 import { Email, Password } from '../Components/inputs/Register';
 import '../Assets/signin.scss';
 
 const	Login = () => {
 
-  /*Display state */
+  const myPasswordinput = useRef();
   const [error, setError] = useState('');
-
-  /*Form state */
-  const [emailReg, setEmail] = useState('');
-  const [passwordReg, setPassword] = useState('');
-   
+  const [formState, setformState] = useState({});
+  const [ passwordIcon, setpasswordIcon] = useState(false);
   const redirect = useNavigate();
 
-  /* Register fucntion */
+  //onchange function 
+  const formValue = (e) => {
+    setformState({...formState, [e.target.name] : e.target.value});
+  }
+   
+  // password visibility function
+  const toggleVisibility = () => { 
+    if (myPasswordinput.current.type === 'password') {  
+      myPasswordinput.current.type = 'text';   
+      setpasswordIcon(true);
+    } else {  
+      myPasswordinput.current.type = 'password';   
+      setpasswordIcon(false);
+    }  
+  }
+
+  // Login fucntion 
   const signIn = async (e) => {
     e.preventDefault();
     try {
       const res = await Api.post('/signin', {
-        email: emailReg,
-        password: passwordReg,
+        email: formState.email,
+        password: formState.password,
       });
       sessionStorage.setItem('user', JSON.stringify(res.data));
       setError('')
@@ -32,19 +46,6 @@ const	Login = () => {
     } catch (err) {
       setError(err.response.data.message);
     }
-  }
-
-  /* password input visibility */
-  const myPasswordinput = useRef();
-  const [ passwordHide, setpasswordHide] = useState('Show');
-  const toggleVisibility = () => { 
-    if (myPasswordinput.current.type === 'password') {  
-      myPasswordinput.current.type = 'text';   
-      setpasswordHide('Hide')
-    } else {  
-      myPasswordinput.current.type = 'password';   
-      setpasswordHide('Show')
-    }  
   }
 
   return (
@@ -78,18 +79,22 @@ const	Login = () => {
             </div>
           </div>
           <Email 
-            click={setEmail}
+            click={formValue}
           />
           <div className='fourth-head'>
             <div className='left'>
               <h6>Password</h6>
             </div>
             <div className='right'>
-              <p> <i onClick={toggleVisibility} > <FiEye /></i> { passwordHide } </p>
+                {
+                  passwordIcon ?
+                <p> <i onClick={toggleVisibility} ><AiOutlineEyeInvisible /></i> Hide</p> :
+                <p> <i onClick={toggleVisibility} ><FiEye /></i> Show</p>
+                }
             </div>
           </div>
           <Password 
-            click={setPassword}
+            click={formValue}
             toggle={myPasswordinput}
           />
           <div className='sixth-head'>

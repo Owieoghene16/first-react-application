@@ -9,13 +9,14 @@ import Navbar from '../Layouts/main/nav';
 import '../Assets/book.scss';
 
 const Book = () => {
-  /*Navbar toggle */
-  const [open, setOpen] = useState(false);
 
+  const storage = JSON.parse(sessionStorage.getItem('user'));
+  const [open, setOpen] = useState(false);
+  
+  /*Navbar toggle */
   const handleToggle = () => {
     setOpen(!open);
   };
-  const storage = JSON.parse(sessionStorage.getItem('user'));
 
   return (
     <> 

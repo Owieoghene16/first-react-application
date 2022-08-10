@@ -4,48 +4,49 @@ import { Outlet, Link } from 'react-router-dom';
 import { Api } from '../app';
 import Sidebar from '../Layouts/main/sidebar';
 import Navbar from '../Layouts/main/nav';
-import { FileInput, NumberInput, TextInput, Textarea } from '../Components/inputs/Story';
+import { Pdf, Title, Description, Price } from '../Components/inputs/Story';
 import CreateBookButton from '../Components/buttons/index';
 import { MainFile, File, SecondFile, ThirdFile, FourthFile  } from '../Components/inputs/file';
 import '../Assets/story.scss';
 
 const Story = () => {
-
-  /*Navbar toggle */
+  
+  const [state, setState] = useState({});
   const [open, setOpen] = useState(false);
+  const [image, setimage] = useState();
+  const [pdf, setpdf] = useState();
+  const [imagename, setimagename ] = useState('');
+  const [error, setError] = useState('');
+  const storage = JSON.parse(sessionStorage.getItem('user'));
+
   const handleToggle = () => {
     setOpen(!open);
   };
   
+  // onChange function
+  const formValue = (e) => {
+    setState({...state, [e.target.name] : e.target.value});
+  };
+
   /*Image state */
-  const [image, setimage] = useState();
-  const [imagename, setimagename ] = useState('')
-  const getmainImage = (userimage) => {
-    setimage(userimage);
-    setimagename(userimage.name);
-  } ;
+  const imageFile = (e) => {
+    setimage(e.target.files[0]);
+    setimagename(e.target.files[0].name);
+  };
 
   /*Pdf state */
-  const [pdf, setMainpdf] = useState();
-  const getmainPdf = (userpdf) => {
-    setMainpdf(userpdf);
+  const pdfFile = (e) => {
+    setpdf(e.target.files[0]);
   }
 
-  /*Form state */
-  const [error, setError] = useState('');
-  const [title, setTitle] = useState('');
-  const [price, setPrice] = useState('');
-  const [description, setDescription] = useState('');
-  const storage = JSON.parse(sessionStorage.getItem('user'));
-  /*  Create book */
+  /*  Create book function */
   const createBook = async (e) => {
     e.preventDefault();
-  
     const form = new FormData();
-    form.append('title', title)
-    form.append('price', price)
-    form.append('author', 'Owie')
-    form.append('description', description)
+    form.append('title', state.title)
+    form.append('price', state.price)
+    form.append('author', storage.username)
+    form.append('description', state.description)
     form.append('file', image)
     form.append('file', pdf);
   
@@ -59,7 +60,7 @@ const Story = () => {
     } catch (err) {
       setError(err.response.data.message);
     }
-  } 
+  };
   
   return (
     <> 
@@ -71,8 +72,7 @@ const Story = () => {
           click={handleToggle}
         />
         {
-          storage ?
-            
+          storage ?    
             <div className='main-story'>
               <div className='img-story'>
                 <div className='single-img'>
@@ -81,8 +81,8 @@ const Story = () => {
                   </div>
                 <div class="image-upload">
                 <MainFile
-                  getImage = {getmainImage}
-                  message = {imagename}
+                  getImage={imageFile}
+                  message={imagename}
                 />
               </div>
               <div className='small-single-img'>
@@ -116,40 +116,40 @@ const Story = () => {
                 <p>Title</p>
               </div>
               <div className='my-text'>
-                <TextInput
-                  getTitle = {setTitle}
+                <Title
+                  getTitle={formValue}
                 />
               </div>
               <div className='price'>
                 <p>Price</p>
               </div>
               <div className='my-number'>
-                <NumberInput 
-                  getPrice = {setPrice}
+                <Price 
+                  getPrice={formValue}
                 />
               </div>
               <div className='pdf'>
                 <p>Pdf</p>
               </div>
               <div className='my-file'>
-                <FileInput 
-                  getPdf = {getmainPdf}
+                <Pdf
+                  getPdf={pdfFile}
                 />
               </div>
               <div className='description'>
                 <p>Description</p>
               </div>
               <div className='my-texarea'>
-                <Textarea 
-                  getDescription = {setDescription}
+                <Description 
+                  getDescription={formValue}
                 />
               </div>
               <div class='error'>
-                <p> {error} </p>
+                <p>{error}</p>
               </div>
               <div className='my-button'>
                 <CreateBookButton
-                  click = {createBook}
+                  click={createBook}
                 />
               </div>
             </div>

@@ -7,20 +7,19 @@ import { useSelector } from 'react-redux';
 import '../Assets/bookdetails.scss';
 
 const BookDetails = () => {
-
-  const storage = JSON.parse(sessionStorage.getItem('user'));
   
   const { id } = useParams();
-
   const [open, setOpen] = useState(false);
-  const handleToggle = () => {
-    setOpen(!open);
-  };
-  
+  const storage = JSON.parse(sessionStorage.getItem('user'));  
   const books = useSelector((state) => state.database.books);
   // eslint-disable-next-line eqeqeq
   const book = books.find((item) => item.id == id);
 
+  console.log(id, book, 'kk')
+  const handleToggle = () => {
+    setOpen(!open);
+  };
+  
   return (
     <> 
       <Sidebar 

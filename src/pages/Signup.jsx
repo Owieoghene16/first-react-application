@@ -4,31 +4,46 @@ import { Api } from '../app';
 import { Outlet, Link } from 'react-router-dom';
 import { FaBook } from 'react-icons/fa';
 import { FiEye } from 'react-icons/fi';
+import { AiOutlineEyeInvisible } from 'react-icons/ai';
 import { Username, Email, Password, Reenterpassword } from '../Components/inputs/Register';
 import '../Assets/signup.scss';
 
 const	Register = () => {
 
-  /*Display state */
+  const redirect = useNavigate();
+  const myPasswordinput = useRef();
+  const myReenterpasswordinput = useRef();
+  const [ state, setState ] = useState({});
+  const [ passwordIcon, setpasswordIcon] = useState(false);
   const [error, setError] = useState('');
 
-  /*Form state */
-  const [userNameReg, setuserName] = useState('');
-  const [emailReg, setEmail] = useState('');
-  const [passwordReg, setPassword] = useState('');
-  const [passwordagainReg, setPasswordagain] = useState('');
-   
-  const redirect = useNavigate();
+  // password form visibility 
+  const toggleVisibility = () => { 
+    if (myPasswordinput.current.type === 'password') {  
+      myPasswordinput.current.type = 'text';   
+      myReenterpasswordinput.current.type = 'text';  
+      setpasswordIcon(true)
+    } else {  
+      myPasswordinput.current.type = 'password';   
+      myReenterpasswordinput.current.type = 'password';  
+      setpasswordIcon(false)
+    }  
+  }
+
+  // onChange function
+  const formValue = (e) => {
+    setState({...state, [e.target.name] : e.target.value});
+  }
 
   /* Register fucntion */
   const signUp = async (e) => {
     e.preventDefault();
     try {
       const res = await Api.post('/signup', {
-        userName: userNameReg,
-        email: emailReg,
-        password: passwordReg,
-        reEnterPassword: passwordagainReg
+        userName: state.username,
+        email: state.email,
+        password: state.password,
+        reEnterPassword: state.passwordAgain
       });
       sessionStorage.setItem('user', JSON.stringify(res.data));
       setError('');
@@ -36,23 +51,6 @@ const	Register = () => {
     } catch (err) {
       setError(err.response.data.message);
     }
-  }
-
-  /* password input visibility */
-  const myReenterpasswordinput = useRef();
-  const myPasswordinput = useRef();
-  const [ passwordHide, setpassowrdHide] = useState('Show');
-
-  const toggleVisibility = () => { 
-    if (myPasswordinput.current.type === 'password') {  
-      myPasswordinput.current.type = 'text';   
-      myReenterpasswordinput.current.type = 'text';  
-      setpassowrdHide('Hide')
-    } else {  
-      myPasswordinput.current.type = 'password';   
-      myReenterpasswordinput.current.type = 'password';  
-      setpassowrdHide('Show')
-    }  
   }
 
   return (
@@ -86,7 +84,7 @@ const	Register = () => {
               </div>
             </div>
             <Username 
-              click={setuserName}
+              click={formValue}
             />
             <div className='fourth-header'>
               <div className='left'>
@@ -94,18 +92,22 @@ const	Register = () => {
               </div>
             </div>
             <Email
-              click={setEmail}
+              click={formValue}
             />
             <div className='fourth-header'>
               <div className='left'>
                 <h6>Password</h6>
               </div>
               <div className='right'>
-                <p> <i onClick={toggleVisibility} > <FiEye /></i> { passwordHide } </p>
+                {
+                  passwordIcon ?
+                <p> <i onClick={toggleVisibility} ><AiOutlineEyeInvisible /></i> Hide</p> :
+                <p> <i onClick={toggleVisibility} ><FiEye /></i> Show</p>
+                }
               </div>
             </div>
             <Password 
-              click={setPassword}
+              click={formValue}
               toggle={myPasswordinput}
             />
             <div className='fourth-header'>
@@ -114,7 +116,7 @@ const	Register = () => {
               </div>
             </div>
             <Reenterpassword 
-              click={setPasswordagain}
+              click={formValue}
               toggle={myReenterpasswordinput}
             />
             <div className='sixth-header'>

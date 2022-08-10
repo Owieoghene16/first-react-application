@@ -5,9 +5,8 @@ const Username = ({click}) => {
     <>  
       <div className='third-header'>
         <input type='text' 
-          onChange={(e) => {
-            click(e.target.value)
-          }}
+          name='username'
+          onChange={click}
         />
       </div>
     </>
@@ -19,9 +18,8 @@ const Email = ({click}) => {
     <>  
       <div className='fifth-header'>
         <input type='text' 
-          onChange={(e) => {
-            click(e.target.value)
-          }}
+          name='email'
+          onChange={click}
         />
       </div>
     </>
@@ -33,10 +31,9 @@ const Password = ({click, toggle}) => {
     <>  
       <div className='fifth-header'>
         <input type='password' 
+          name='password'
           ref={toggle}
-          onChange={(e) => {
-            click(e.target.value)
-          }}
+          onChange={click}
         />
       </div>
     </>
@@ -48,10 +45,9 @@ const Reenterpassword = ({click, toggle}) => {
     <>  
       <div className='fifth-header'>
         <input type='password' 
-        ref={toggle}
-          onChange={(e) => {
-            click(e.target.value)
-          }}
+          name='passwordAgain'
+          ref={toggle}
+          onChange={click}
         />
       </div>
     </>

@@ -116,9 +116,7 @@ const MainFile = ({ getImage, message }) => {
       <input
         id="file-input" 
         type="file" 
-        onChange={(e) => {
-          getImage(e.target.files[0])
-        }}
+        onChange={getImage}
       />
       <div className="img-name">
         <p> { message } </p>

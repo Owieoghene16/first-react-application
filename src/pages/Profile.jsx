@@ -7,11 +7,11 @@ import '../Assets/profile.scss';
 const Profile = () => {
 
   const [open, setOpen] = useState(false);
+  const storage = JSON.parse(sessionStorage.getItem('user'));
 
   const handleToggle = () => {
     setOpen(!open);
-  }
-  const storage = JSON.parse(sessionStorage.getItem('user'));
+  };
 
   return ( 
     <>

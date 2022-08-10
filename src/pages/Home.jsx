@@ -12,22 +12,21 @@ import '../Assets/homepage.scss';
 
 const Demo = () => {
 
-  /*Navbar toggle */
   const [open, setOpen] = useState(false);
-
-  const handleToggle = () => {
-    setOpen(!open);
-  };
-
   const redirect = useNavigate();
-  const bookDetails = (id) => {
-    redirect(`/book/${id}`)
-    
-  }
   const dispatch = useDispatch();
   const books = useSelector((state) => state.database.books);
   const storage = JSON.parse(sessionStorage.getItem('user'));
 
+  /*Navbar toggle */
+  const handleToggle = () => {
+    setOpen(!open);
+  };
+
+  const bookDetails = (id) => {
+    redirect(`/book/${id}`)
+  }
+  
   useEffect(() => {
     dispatch(loadBooks());
   }, [dispatch])
@@ -67,7 +66,7 @@ const Demo = () => {
                     <div className='pro' key={item.id}>
                       <img src={item.imageUrl} alt='' />
                       <div className='des'>
-                        <span>Adidas</span>
+                        <span>{item.author}</span>
                         <h5>{item.title}</h5>
                         <div className='star'>
                           <i> <AiOutlineStar /> </i>

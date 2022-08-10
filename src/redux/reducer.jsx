@@ -1,10 +1,10 @@
-import { createSlice } from '@reduxjs/toolkit'
+import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
   books: [],
   user: '',
   isAuthenticated: false,
-}
+};
 
 export const bookSlice = createSlice({
   name: 'books',
@@ -20,7 +20,7 @@ export const bookSlice = createSlice({
       state.books = action.payload;
     },
   },
-})
+});
 
 export const { addUser, authenticateUser, updateBooks } = bookSlice.actions;
 
