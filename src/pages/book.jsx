@@ -1,35 +1,34 @@
-import React, { useState } from 'react';  
+import React from 'react';
 import { Outlet, Link } from 'react-router-dom';
 import { AiFillBackward } from 'react-icons/ai';
 import { TbPlayerTrackNext } from 'react-icons/tb';
 import { GrFormNext, GrFormPrevious, GrAdd } from 'react-icons/gr';
-import Box from '../Layouts/main/box';
-import Sidebar from '../Layouts/main/sidebar';
-import Navbar from '../Layouts/main/nav';
+import Box from '../Layouts/main/Box.jsx';
+import Sidebar from '../Layouts/main/Sidebar.jsx';
+import Navbar from '../Layouts/main/Nav.jsx';
+import useBoolean from '../utils/useTogglSidebar.jsx';
 import '../Assets/book.scss';
 
 const Book = () => {
-
-  const storage = JSON.parse(sessionStorage.getItem('user'));
-  const [open, setOpen] = useState(false);
-  
-  /*Navbar toggle */
-  const handleToggle = () => {
-    setOpen(!open);
-  };
+  const [
+    isToggle,
+    storage,
+    {
+      setToggle,
+    }] = useBoolean(false);
 
   return (
-    <> 
-      <Sidebar 
-        togglebar={open}
+    <>
+      <Sidebar
+        togglebar={isToggle}
       />
       <section className='home-section'>
-        <Navbar 
-          click={handleToggle}
+        <Navbar
+          click={setToggle}
         />
         {
-          storage ? 
-          <div className='home-content'>
+          storage
+            ? <div className='home-content'>
           <div className='wel'>
             <div className='heading'>
               <h>Your desired collections</h>
@@ -77,13 +76,17 @@ const Book = () => {
               <button><i><GrAdd /></i></button>
               <h3>Book Details</h3>
               <span>
-                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum 
-                has been the industry's standard dummy text ever since the 1500s, when an unknown printers
-                took a galley of type and scrambled it to make a type specimen book. It has survived note 
-                only five centuries, but also the leap into electronic typesetting, remaining essentially 
+                Lorem Ipsum is simply dummy text of the printing
+                and typesetting industry. Lorem Ipsum
+                has been the industry's standard dummy
+                 text ever since the 1500s, when an unknown printers
+                took a galley of type and scrambled it to make a type
+                specimen book. It has survived note
+                only five centuries, but also the leap into electronic
+                typesetting, remaining essentially
                 Maker including versions of Lorem Ipsum
               </span>
-            </div> 
+            </div>
           </div>
           <div className='border'>
           </div>
@@ -121,13 +124,13 @@ const Book = () => {
               <button><i><TbPlayerTrackNext /></i></button>
             </div>
           </div>
-          </div> : 
-          <div className='home-content'>
+          </div>
+            : <div className='home-content'>
             <div className='invalid'>
               <div className='heads'>
                 <h>Login Expired</h>
               </div>
-              <div className='again'>                 
+              <div className='again'>
                 <Link to='/signin'>Login Again</Link>
               </div>
             </div>
@@ -135,8 +138,8 @@ const Book = () => {
         }
       </section>
       <Outlet />
-    </> 
-  )
+    </>
+  );
 };
 
 export default Book;

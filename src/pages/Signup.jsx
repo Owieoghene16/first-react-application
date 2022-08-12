@@ -1,57 +1,33 @@
-import React, { useState, useRef } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { Api } from '../app';
+/* eslint-disable no-mixed-spaces-and-tabs */
+/* eslint-disable no-tabs */
+/* eslint-disable import/no-cycle */
+import React, { useRef } from 'react';
 import { Outlet, Link } from 'react-router-dom';
 import { FaBook } from 'react-icons/fa';
 import { FiEye } from 'react-icons/fi';
 import { AiOutlineEyeInvisible } from 'react-icons/ai';
-import { Username, Email, Password, Reenterpassword } from '../Components/inputs/Register';
+import {
+  Username, Email, Password, Reenterpassword,
+} from '../Components/inputs/Register.jsx';
+import useToggleVisibility from '../utils/usePasswordVisibility.jsx';
+import useSignUp from '../utils/useSignUp.jsx';
 import '../Assets/signup.scss';
 
 const	Register = () => {
+  // Password visiblity
+  const Passwordfield = useRef();
+  const Passwordfieldagain = useRef();
+  const [
+    switchIcon,
+    switchToggle,
+  ] = useToggleVisibility();
 
-  const redirect = useNavigate();
-  const myPasswordinput = useRef();
-  const myReenterpasswordinput = useRef();
-  const [ state, setState ] = useState({});
-  const [ passwordIcon, setpasswordIcon] = useState(false);
-  const [error, setError] = useState('');
-
-  // password form visibility 
-  const toggleVisibility = () => { 
-    if (myPasswordinput.current.type === 'password') {  
-      myPasswordinput.current.type = 'text';   
-      myReenterpasswordinput.current.type = 'text';  
-      setpasswordIcon(true)
-    } else {  
-      myPasswordinput.current.type = 'password';   
-      myReenterpasswordinput.current.type = 'password';  
-      setpasswordIcon(false)
-    }  
-  }
-
-  // onChange function
-  const formValue = (e) => {
-    setState({...state, [e.target.name] : e.target.value});
-  }
-
-  /* Register fucntion */
-  const signUp = async (e) => {
-    e.preventDefault();
-    try {
-      const res = await Api.post('/signup', {
-        userName: state.username,
-        email: state.email,
-        password: state.password,
-        reEnterPassword: state.passwordAgain
-      });
-      sessionStorage.setItem('user', JSON.stringify(res.data));
-      setError('');
-      redirect('/home');
-    } catch (err) {
-      setError(err.response.data.message);
-    }
-  }
+  // Creating users
+  const [
+    error,
+    handleFormValue,
+    registerUser,
+  ] = useSignUp();
 
   return (
 		<>
@@ -70,21 +46,21 @@ const	Register = () => {
               <h2>Sign up</h2>
             </div>
             <div className='error'>
-              <p1> {error} </p1>
+              <p> {error} </p>
             </div>
             <div className='second-header'>
               <div className='left'>
                 <h6>Username</h6>
               </div>
               <div className='right'>
-                <p1>Already have an account?</p1>
+                <p>Already have an account?</p>
                 <Link to='/signin'>
                   Log in
                 </Link>
               </div>
             </div>
-            <Username 
-              click={formValue}
+            <Username
+              click={handleFormValue}
             />
             <div className='fourth-header'>
               <div className='left'>
@@ -92,7 +68,7 @@ const	Register = () => {
               </div>
             </div>
             <Email
-              click={formValue}
+              click={handleFormValue}
             />
             <div className='fourth-header'>
               <div className='left'>
@@ -100,33 +76,35 @@ const	Register = () => {
               </div>
               <div className='right'>
                 {
-                  passwordIcon ?
-                <p> <i onClick={toggleVisibility} ><AiOutlineEyeInvisible /></i> Hide</p> :
-                <p> <i onClick={toggleVisibility} ><FiEye /></i> Show</p>
+                  switchIcon
+                    ? <p><i onClick={() => switchToggle(Passwordfield, Passwordfieldagain)
+                      }><AiOutlineEyeInvisible /></i> Hide</p>
+                    : <p><i onClick={() => switchToggle(Passwordfield, Passwordfieldagain)
+                      }><FiEye /></i> Show</p>
                 }
               </div>
             </div>
-            <Password 
-              click={formValue}
-              toggle={myPasswordinput}
+            <Password
+              click={handleFormValue}
+              toggle={Passwordfield}
             />
             <div className='fourth-header'>
               <div className='left'>
                 <h6>Reenter password</h6>
               </div>
             </div>
-            <Reenterpassword 
-              click={formValue}
-              toggle={myReenterpasswordinput}
+            <Reenterpassword
+              click={handleFormValue}
+              toggle={Passwordfieldagain}
             />
             <div className='sixth-header'>
-              <button onClick={signUp}>Sign Up</button>
+              <button onClick={() => registerUser()}>Sign Up</button>
             </div>
           </div>
         </div>
       <Outlet />
     </>
-  )
+  );
 };
 
 export default Register;

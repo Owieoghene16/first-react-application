@@ -1,48 +1,41 @@
-import React, { useState, useEffect } from 'react';  
-import { Outlet, Link, useNavigate } from 'react-router-dom';
-import { GrFormPrevious, GrFormNext } from 'react-icons/gr';
-import Box from '../Layouts/main/box';
-import Sidebar from '../Layouts/main/sidebar';
-import Navbar from '../Layouts/main/nav';
-import { useDispatch, useSelector } from 'react-redux';
+/* eslint-disable import/no-cycle */
+import React from 'react';
+import { Outlet, Link } from 'react-router-dom';
+import { GrFormPrevious, GrFormNext, GrAdd } from 'react-icons/gr';
 import { AiOutlineStar } from 'react-icons/ai';
-import { GrAdd } from 'react-icons/gr';
-import { loadBooks } from '../redux/actions';
+import Box from '../Layouts/main/Box.jsx';
+import Sidebar from '../Layouts/main/Sidebar.jsx';
+import Navbar from '../Layouts/main/Nav.jsx';
+import useBook from '../utils/useBook.jsx';
+import useBoolean from '../utils/useTogglSidebar.jsx';
 import '../Assets/homepage.scss';
 
-const Demo = () => {
+const Homepage = () => {
+  // sidebar toggle
+  const [
+    isToggle,
+    storage, {
+      setToggle,
+    }] = useBoolean(false);
 
-  const [open, setOpen] = useState(false);
-  const redirect = useNavigate();
-  const dispatch = useDispatch();
-  const books = useSelector((state) => state.database.books);
-  const storage = JSON.parse(sessionStorage.getItem('user'));
-
-  /*Navbar toggle */
-  const handleToggle = () => {
-    setOpen(!open);
-  };
-
-  const bookDetails = (id) => {
-    redirect(`/book/${id}`)
-  }
-  
-  useEffect(() => {
-    dispatch(loadBooks());
-  }, [dispatch])
+  // book
+  const [
+    books,
+    bookDetails,
+  ] = useBook();
 
   return (
-    <> 
-      <Sidebar 
-        togglebar={open}
+    <>
+      <Sidebar
+        togglebar={isToggle}
       />
       <section className='home-section'>
-        <Navbar 
-          click={handleToggle}
+        <Navbar
+          click={setToggle}
           />
           {
-            storage ?
-              <div className='home-content'>
+            storage
+              ? <div className='home-content'>
                 <div className='welcome'>
                   <div className='heads'>
                     <h>Welcome home, {storage.username}!</h>
@@ -61,27 +54,24 @@ const Demo = () => {
             </div>
             <div className='content'>
               {
-                books.map((item) => {
-                  return (
+                books.map((item) => (
                     <div className='pro' key={item.id}>
                       <img src={item.imageUrl} alt='' />
                       <div className='des'>
                         <span>{item.author}</span>
                         <h5>{item.title}</h5>
                         <div className='star'>
-                          <i> <AiOutlineStar /> </i>
-                          <i> <AiOutlineStar /> </i>
-                          <i> <AiOutlineStar /> </i>
-                          <i> <AiOutlineStar /> </i>
-                          <i> <AiOutlineStar /> </i>
+                          <i><AiOutlineStar /></i>
+                          <i><AiOutlineStar /></i>
+                          <i><AiOutlineStar /></i>
+                          <i><AiOutlineStar /></i>
+                          <i><AiOutlineStar /></i>
                         </div>
-                        <h4>$22</h4>
+                        <h4>${item.price}</h4>
                       </div>
-                      <button onClick={() => bookDetails(item.id)}> <i className='cart'> <GrAdd/> </i> </button>
+                      <button onClick={() => bookDetails(item.id)}><i className='cart'><GrAdd/></i></button>
                     </div>
-                    )
-                  }
-                )
+                ))
               }
               </div>
               </div>
@@ -114,13 +104,13 @@ const Demo = () => {
                   <button><i><GrFormNext /></i></button>
                 </div>
               </div>
-            </div> : 
-            <div className='home-content'>
+            </div>
+              : <div className='home-content'>
               <div className='invalid'>
                 <div className='heads'>
                   <h>Login Expired</h>
                 </div>
-                <div className='again'>                 
+                <div className='again'>
                   <Link to='/signin'>Login Again</Link>
                 </div>
               </div>
@@ -129,7 +119,7 @@ const Demo = () => {
         </section>
       <Outlet />
     </>
-  )
+  );
 };
 
-export default Demo;
+export default Homepage;

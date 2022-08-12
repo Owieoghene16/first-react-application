@@ -1,37 +1,37 @@
-import React, { useState }from 'react';  
-import { Outlet, useParams, Link } from 'react-router-dom';
-import Myimage from '../Layouts/images/index';
-import Sidebar from '../Layouts/main/sidebar';
-import Navbar from '../Layouts/main/nav';
-import { useSelector } from 'react-redux';
+import React from 'react';
+import { Outlet, Link } from 'react-router-dom';
+import Myimage from '../Layouts/images/Index.jsx';
+import Sidebar from '../Layouts/main/Sidebar.jsx';
+import Navbar from '../Layouts/main/Nav.jsx';
+import useBoolean from '../utils/useTogglSidebar.jsx';
+import useBookDetails from '../utils/useBookDetails.jsx';
 import '../Assets/bookdetails.scss';
 
 const BookDetails = () => {
-  
-  const { id } = useParams();
-  const [open, setOpen] = useState(false);
-  const storage = JSON.parse(sessionStorage.getItem('user'));  
-  const books = useSelector((state) => state.database.books);
-  // eslint-disable-next-line eqeqeq
-  const book = books.find((item) => item.id == id);
+  // sidebar toggle
+  const [
+    isToggle,
+    storage, {
+      setToggle,
+    }] = useBoolean(false);
 
-  console.log(id, book, 'kk')
-  const handleToggle = () => {
-    setOpen(!open);
-  };
-  
+  // book details
+  const [
+    book,
+  ] = useBookDetails();
+
   return (
-    <> 
-      <Sidebar 
-        togglebar={open}
+    <>
+      <Sidebar
+        togglebar={isToggle}
       />
       <section className='home-section'>
-        <Navbar 
-          click={handleToggle}
+        <Navbar
+          click={setToggle}
         />
         {
-          storage ?             
-            <div className='home-con'>
+          storage
+            ? <div className='home-con'>
               <div className='single'>
                 <div className='single-pro-image'>
                   <img src={ book.imageUrl } alt='' />
@@ -65,22 +65,22 @@ const BookDetails = () => {
               </span>
             </div>
           </div>
-          </div> :
-          <div className='home-content'>
-            <div className='invalid'>
-              <div className='heads'>
-                <h>Login Expired</h>
-              </div>
-              <div className='again'>                 
-                <Link to='/signin'>Login Again</Link>
-              </div>
-            </div>
           </div>
-        }
-      </section>
+            : <div className='home-content'>
+                <div className='invalid'>
+                  <div className='heads'>
+                    <h>Login Expired</h>
+                  </div>
+                  <div className='again'>
+                    <Link to='/signin'>Login Again</Link>
+                  </div>
+                </div>
+              </div>
+          }
+        </section>
       <Outlet />
     </>
-  )
+  );
 };
 
 export default BookDetails;

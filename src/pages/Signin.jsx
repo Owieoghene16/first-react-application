@@ -1,52 +1,27 @@
-import React, { useState, useRef } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { Api } from '../app';
+/* eslint-disable no-mixed-spaces-and-tabs */
+/* eslint-disable no-tabs */
+/* eslint-disable import/no-cycle */
+import React, { useRef } from 'react';
 import { Outlet, Link } from 'react-router-dom';
 import { FaBook } from 'react-icons/fa';
 import { FiEye } from 'react-icons/fi';
 import { AiOutlineEyeInvisible } from 'react-icons/ai';
-import { Email, Password } from '../Components/inputs/Register';
+import { Email, Password } from '../Components/inputs/Register.jsx';
+import useSignIn from '../utils/useSignIn.jsx';
 import '../Assets/signin.scss';
 
 const	Login = () => {
+  // Password visiblity
+  const Passwordfield = useRef();
 
-  const myPasswordinput = useRef();
-  const [error, setError] = useState('');
-  const [formState, setformState] = useState({});
-  const [ passwordIcon, setpasswordIcon] = useState(false);
-  const redirect = useNavigate();
-
-  //onchange function 
-  const formValue = (e) => {
-    setformState({...formState, [e.target.name] : e.target.value});
-  }
-   
-  // password visibility function
-  const toggleVisibility = () => { 
-    if (myPasswordinput.current.type === 'password') {  
-      myPasswordinput.current.type = 'text';   
-      setpasswordIcon(true);
-    } else {  
-      myPasswordinput.current.type = 'password';   
-      setpasswordIcon(false);
-    }  
-  }
-
-  // Login fucntion 
-  const signIn = async (e) => {
-    e.preventDefault();
-    try {
-      const res = await Api.post('/signin', {
-        email: formState.email,
-        password: formState.password,
-      });
-      sessionStorage.setItem('user', JSON.stringify(res.data));
-      setError('')
-      redirect('/home');
-    } catch (err) {
-      setError(err.response.data.message);
-    }
-  }
+  // Creating users
+  const [
+    error,
+    passwordicon,
+    switchField,
+    formInput,
+    logIn,
+  ] = useSignIn();
 
   return (
 		<>
@@ -54,7 +29,7 @@ const	Login = () => {
         <nav>
           <div className='first-icon'>
             <Link to='/'>
-					 	  <i><FaBook /></i>
+			    	  <i><FaBook /></i>
             </Link>
           </div>
         </nav>
@@ -65,40 +40,41 @@ const	Login = () => {
             <h2>Sign in</h2>
           </div>
           <div className='error'>
-            <p1> {error} </p1>
+            <p> {error} </p>
           </div>
           <div className='second-head'>
             <div className='left'>
               <h6>Email</h6>
             </div>
             <div className='right'>
-              <p1>Don't have an account?</p1>
+              <p>Don't have an account?</p>
               <Link to='/'>
                 Sign up
               </Link>
             </div>
           </div>
-          <Email 
-            click={formValue}
+          <Email
+            click={formInput}
           />
           <div className='fourth-head'>
             <div className='left'>
               <h6>Password</h6>
             </div>
             <div className='right'>
-                {
-                  passwordIcon ?
-                <p> <i onClick={toggleVisibility} ><AiOutlineEyeInvisible /></i> Hide</p> :
-                <p> <i onClick={toggleVisibility} ><FiEye /></i> Show</p>
-                }
+              {
+                passwordicon
+                  ? <p> <i onClick={() => switchField(Passwordfield)}>
+                    <AiOutlineEyeInvisible /></i> Hide</p>
+                  : <p> <i onClick={() => switchField(Passwordfield)} ><FiEye /></i> Show</p>
+              }
             </div>
           </div>
-          <Password 
-            click={formValue}
-            toggle={myPasswordinput}
+          <Password
+            click={formInput}
+            toggle={Passwordfield}
           />
           <div className='sixth-head'>
-            <button onClick={signIn}>Sign In</button>
+            <button onClick={() => logIn()}>Sign In</button>
           </div>
           <div className='forgotten'>
             <Link to='/reset'>
@@ -109,7 +85,7 @@ const	Login = () => {
       </div>
       <Outlet />
     </>
-  )
+  );
 };
 
 export default Login;

@@ -1,79 +1,49 @@
-import React, { useState } from 'react';  
-import FormData from 'form-data';
+/* eslint-disable import/no-cycle */
+import React from 'react';
 import { Outlet, Link } from 'react-router-dom';
-import { Api } from '../app';
-import Sidebar from '../Layouts/main/sidebar';
-import Navbar from '../Layouts/main/nav';
-import { Pdf, Title, Description, Price } from '../Components/inputs/Story';
-import CreateBookButton from '../Components/buttons/index';
-import { MainFile, File, SecondFile, ThirdFile, FourthFile  } from '../Components/inputs/file';
+import Sidebar from '../Layouts/main/Sidebar.jsx';
+import Navbar from '../Layouts/main/Nav.jsx';
+import {
+  Pdf, Title, Description, Price,
+} from '../Components/inputs/Story.jsx';
+import CreateBookButton from '../Components/buttons/Index.jsx';
+import {
+  MainFile, File, SecondFile, ThirdFile, FourthFile,
+} from '../Components/inputs/File.jsx';
+import useBoolean from '../utils/useTogglSidebar.jsx';
+import useStory from '../utils/useStory.jsx';
 import '../Assets/story.scss';
 
 const Story = () => {
-  
-  const [state, setState] = useState({});
-  const [open, setOpen] = useState(false);
-  const [image, setimage] = useState();
-  const [pdf, setpdf] = useState();
-  const [imagename, setimagename ] = useState('');
-  const [error, setError] = useState('');
-  const storage = JSON.parse(sessionStorage.getItem('user'));
+  // sidebar toggle
+  const [
+    isToggle,
+    storage, {
+      setToggle,
+    }] = useBoolean(false);
 
-  const handleToggle = () => {
-    setOpen(!open);
-  };
-  
-  // onChange function
-  const formValue = (e) => {
-    setState({...state, [e.target.name] : e.target.value});
-  };
+  // story
+  const [
+    error,
+    imagename,
+    storyContent,
+    imageFile,
+    pdfFile,
+    createBook,
+  ] = useStory();
 
-  /*Image state */
-  const imageFile = (e) => {
-    setimage(e.target.files[0]);
-    setimagename(e.target.files[0].name);
-  };
-
-  /*Pdf state */
-  const pdfFile = (e) => {
-    setpdf(e.target.files[0]);
-  }
-
-  /*  Create book function */
-  const createBook = async (e) => {
-    e.preventDefault();
-    const form = new FormData();
-    form.append('title', state.title)
-    form.append('price', state.price)
-    form.append('author', storage.username)
-    form.append('description', state.description)
-    form.append('file', image)
-    form.append('file', pdf);
-  
-    try {
-      await Api.post('/book', form, {
-        headers: {
-          'content-type': 'multipart/form-data',
-          'authorization': storage.token
-        }
-      });
-    } catch (err) {
-      setError(err.response.data.message);
-    }
-  };
-  
   return (
-    <> 
-      <Sidebar 
-        togglebar={open}
+    <>
+      <Sidebar
+        togglebar={isToggle}
       />
       <section className='home-section'>
-        <Navbar 
-          click={handleToggle}
+        <Navbar
+          click={setToggle}
         />
         {
-          storage ?    
-            <div className='main-story'>
+          storage
+            ? <div className='main-story'>
               <div className='img-story'>
                 <div className='single-img'>
                   <div className='book-header'>
@@ -117,15 +87,15 @@ const Story = () => {
               </div>
               <div className='my-text'>
                 <Title
-                  getTitle={formValue}
+                  getTitle={storyContent}
                 />
               </div>
               <div className='price'>
                 <p>Price</p>
               </div>
               <div className='my-number'>
-                <Price 
-                  getPrice={formValue}
+                <Price
+                  getPrice={storyContent}
                 />
               </div>
               <div className='pdf'>
@@ -140,8 +110,8 @@ const Story = () => {
                 <p>Description</p>
               </div>
               <div className='my-texarea'>
-                <Description 
-                  getDescription={formValue}
+                <Description
+                  getDescription={storyContent}
                 />
               </div>
               <div class='error'>
@@ -154,13 +124,13 @@ const Story = () => {
               </div>
             </div>
           </div>
-          </div> :
-          <div className='home-content'>
+          </div>
+            : <div className='home-content'>
             <div className='invalid'>
               <div className='heads'>
                 <h>Login Expired</h>
               </div>
-              <div className='again'>                 
+              <div className='again'>
                 <Link to='/signin'>Login Again</Link>
               </div>
             </div>
@@ -169,7 +139,7 @@ const Story = () => {
       </section>
       <Outlet />
     </>
-  )
+  );
 };
 
 export default Story;

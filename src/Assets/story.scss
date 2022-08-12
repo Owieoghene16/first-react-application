@@ -1,4 +1,4 @@
-$myWidth: 100%;
+$fullWidth: 100%;
 *{
   margin: 0;
   padding: 0;
@@ -83,7 +83,7 @@ body {
           cursor: pointer;
 
           img {
-            width: $myWidth;
+            width: $fullWidth;
           }
           .small-img {
             flex-basis: 24%;
@@ -151,7 +151,7 @@ body {
         margin-bottom: 30px;
 
         input[type="text"] {
-          width: $myWidth;
+          width: $fullWidth;
           height: 35px;
           outline: none;
           padding: 0 10px;
@@ -168,7 +168,7 @@ body {
         margin-bottom: 30px;
 
         input[type="number"] {
-          width: $myWidth;
+          width: $fullWidth;
           height: 35px;
           outline: none;
           padding: 0 10px;
@@ -183,14 +183,14 @@ body {
       }
       .my-file {
         margin-bottom: 30px;
-        width: $myWidth;
+        width: $fullWidth;
         height: 35px;
         background-color: #fff;
         border: 1px solid rgb(124, 107, 107);
         padding: 6px 12px;
         
         input[type=file] {
-          width: $myWidth;
+          width: $fullWidth;
           cursor: pointer;
         }
       }
@@ -203,7 +203,7 @@ body {
         margin-bottom: 10px;
 
         textarea {
-          width: $myWidth;
+          width: $fullWidth;
           height: 90px;
           font-size: 15px;
           padding: 3px 12px;
@@ -268,7 +268,7 @@ body {
         }
       }
       .single-book-details {
-        width: $myWidth;
+        width: $fullWidth;
         margin-top: 65px;
 
         .book-header{ 
@@ -282,7 +282,7 @@ body {
 @media(max-width: 750px) {
   .sidebar{
     position: fixed;
-    height: $myWidth;
+    height: $fullWidth;
     width: 60px;
     background: #0A2558;
     transition: all 0.5s ease;
@@ -291,15 +291,15 @@ body {
     width: 50px;
   }
   .home-section {
-    width: calc($myWidth - 60px);
+    width: calc($fullWidth - 60px);
     left: 60px;
   }
   .sidebar .active ~ .home-section {
-    width: calc($myWidth - 60px);
+    width: calc($fullWidth - 60px);
     left: 60px;
   }
   .home-section nav {
-    width: calc($myWidth - 60px);
+    width: calc($fullWidth - 60px);
     left: 60px;
   }
   .home-section nav .sidebar-button span {

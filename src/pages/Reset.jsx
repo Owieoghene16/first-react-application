@@ -1,12 +1,12 @@
+/* eslint-disable no-mixed-spaces-and-tabs */
+/* eslint-disable no-tabs */
 import React from 'react';
 import { Outlet, Link } from 'react-router-dom';
 import { FaBook } from 'react-icons/fa';
-import { Email } from '../Components/inputs/Register';
+import { Email } from '../Components/inputs/Register.jsx';
 import '../Assets/signin.scss';
 
-const Reset = () => {
-
-  return (
+const Reset = () => (
 		<>
       <div className='navigate'>
         <nav>
@@ -27,7 +27,7 @@ const Reset = () => {
               <h6>Email</h6>
             </div>
             <div className='right'>
-              <p1>Already have an account?</p1>
+              <p>Already have an account?</p>
               <Link to='/signin'>
                 Sign in
               </Link>
@@ -46,7 +46,6 @@ const Reset = () => {
       </div>
       <Outlet />
     </>
-  )
-};
+);
 
 export default Reset;

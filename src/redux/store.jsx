@@ -1,8 +1,10 @@
 import { configureStore } from '@reduxjs/toolkit';
-import bookReducer from './reducer';
+import bookReducer from './reducer.jsx';
 
-export const store = configureStore({
+const store = configureStore({
   reducer: {
     database: bookReducer,
   },
 });
+
+export default store;
