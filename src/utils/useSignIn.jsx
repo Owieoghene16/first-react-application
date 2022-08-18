@@ -25,7 +25,7 @@ const useSignIn = () => {
     }
   };
 
-  const logIn = async () => {
+  const logInUser = async () => {
     try {
       const res = await Api.post('/signin', {
         email: form.email,
@@ -44,7 +44,7 @@ const useSignIn = () => {
     passwordicon,
     switchField,
     formInput,
-    logIn,
+    logInUser,
   ];
 };
 

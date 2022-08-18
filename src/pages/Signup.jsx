@@ -16,7 +16,7 @@ import '../Assets/signup.scss';
 const	Register = () => {
   // Password visiblity
   const Passwordfield = useRef();
-  const Passwordfieldagain = useRef();
+  const Confirmpassword = useRef();
   const [
     switchIcon,
     switchToggle,
@@ -77,9 +77,9 @@ const	Register = () => {
               <div className='right'>
                 {
                   switchIcon
-                    ? <p><i onClick={() => switchToggle(Passwordfield, Passwordfieldagain)
+                    ? <p><i onClick={() => switchToggle(Passwordfield, Confirmpassword)
                       }><AiOutlineEyeInvisible /></i> Hide</p>
-                    : <p><i onClick={() => switchToggle(Passwordfield, Passwordfieldagain)
+                    : <p><i onClick={() => switchToggle(Passwordfield, Confirmpassword)
                       }><FiEye /></i> Show</p>
                 }
               </div>
@@ -90,12 +90,12 @@ const	Register = () => {
             />
             <div className='fourth-header'>
               <div className='left'>
-                <h6>Reenter password</h6>
+                <h6>Confirm password</h6>
               </div>
             </div>
             <Reenterpassword
               click={handleFormValue}
-              toggle={Passwordfieldagain}
+              toggle={Confirmpassword}
             />
             <div className='sixth-header'>
               <button onClick={() => registerUser()}>Sign Up</button>

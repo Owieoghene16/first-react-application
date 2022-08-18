@@ -16,7 +16,8 @@ const Homepage = () => {
     isToggle,
     storage, {
       setToggle,
-    }] = useBoolean(false);
+    },
+  ] = useBoolean(false);
 
   // book
   const [

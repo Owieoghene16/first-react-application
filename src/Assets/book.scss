@@ -1,20 +1,15 @@
-$fullWidth: 100%;
-$boxWidth: 230px;
 /* Slideshow container */
 .home-section {
   .home-content{
     position: relative;
     padding-top: 14px;
     text-align: center;
-
     .wel {
       margin-top: 105px;
       text-align: center;
       display: block;
-
       .heading {
         margin-bottom: 4px;
-
         h {
           font-size: 28px;
           font-family: verdana;
@@ -24,7 +19,6 @@ $boxWidth: 230px;
       }
       .second-heading {
         margin-bottom: 40px;
-
         p{
           font-size: 16px;
           font-family: verdana;
@@ -38,7 +32,6 @@ $boxWidth: 230px;
       text-align: start;
       margin-left: 3%;
       margin-right: 3%;
-
       h5 {
         letter-spacing: 1px;
         font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
@@ -58,21 +51,18 @@ $boxWidth: 230px;
       display: flex;
       justify-content: space-evenly;
       flex-wrap: wrap;
-
       .image-container {
-        height: fullWidth;
+        height: 100%;
         width: 400px;
-
         img {
-          max-width: fullWidth;
-          max-height: fullWidth;
+          max-width: 100%;
+          max-height: 100%;
         }
       }
       .details-container {
-        height: fullWidth;
+        height: 100%;
         width: 520px;
         text-align: start;
-
         h5 {
           margin-top: 35px;
           margin-bottom: 10px;
@@ -122,16 +112,14 @@ $boxWidth: 230px;
       margin-left: 5%;
       margin-right: 5%;
       margin-bottom: 3%;
-
       .pro-container {
         display: flex;
         justify-content: space-evenly;
         flex-wrap: wrap;
         text-align: center;
-
         .pro {
           width: 20%;
-          min-width: boxWidth;
+          min-width: 230px;
           padding: 10px 12px;
           border: 1px solid #cce7d0;
           border-radius: 25px;
@@ -139,9 +127,8 @@ $boxWidth: 230px;
           box-shadow: 20px 20px 30px rgba(0, 0, 0, 0.02);
           margin: 15px 0;
           transition: 0.2s ease;
-
           img {
-            width: fullWidth;
+            width: 100%;
             border-radius: 20px;
           }
           .cart {
@@ -160,7 +147,6 @@ $boxWidth: 230px;
           .des {
             text-align: start;
             padding: 10px 0;
-
             span { 
               color: #606063;
               font-size: 12px;
@@ -194,9 +180,8 @@ $boxWidth: 230px;
       text-align: center;
       justify-content: center;
       margin-bottom: 60px;
-      width: fullWidth;
+      width: 100%;
       margin: auto;
-    
       .next {
         margin-right: 15px;
         margin-bottom: 30px;
@@ -222,6 +207,7 @@ $boxWidth: 230px;
     }
   }
 } 
+
 @media(max-width: 1235px) {
   .home-section {
     .home-content {
@@ -229,13 +215,11 @@ $boxWidth: 230px;
         flex-direction: column;
         text-align: center;
         justify-content: center;
-        height: fullWidth;
+        height: 100%;
         position: relative;
-
         .image-container {
           margin: auto;
         }
-
         .details-container {
           margin: auto;
         }
@@ -250,7 +234,7 @@ $boxWidth: 230px;
       .trend-container {
         .details-container {
           margin-top: 20px;
-          width: fullWidth;
+          width: 100%;
         }
       }
       .book-item {

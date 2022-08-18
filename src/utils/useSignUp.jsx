@@ -21,7 +21,7 @@ const useSignUp = () => {
         userName: form.username,
         email: form.email,
         password: form.password,
-        reEnterPassword: form.passwordAgain,
+        reEnterPassword: form.confirmPassword,
       });
       sessionStorage.setItem('user', JSON.stringify(res.data));
       setError('');

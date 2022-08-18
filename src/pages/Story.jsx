@@ -20,7 +20,8 @@ const Story = () => {
     isToggle,
     storage, {
       setToggle,
-    }] = useBoolean(false);
+    },
+  ] = useBoolean(false);
 
   // story
   const [

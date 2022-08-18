@@ -1,6 +1,35 @@
+// variables
+$defaultWidth: 100%;
+$defaultDisplay: flex;
+$defaultCursor: pointer;
+
+// mixin
+@mixin margin_top ($space) {
+  margin-top: $space;
+}
+@mixin media_spaces ($left, $right) {
+  margin-left: $left;
+  margin-right: $right;
+}
+@mixin fontDesign($fontsize) {
+  font-family: verdana;
+  font-size: $fontsize;
+  letter-spacing: 1px;
+}
+@mixin inputDesign {
+  height: 40px;
+  width: $defaultWidth;
+  outline: none;
+  border-radius: 5px;
+  font-size: 16px;
+  border: 1px solid grey;
+  padding: 0 10px;
+  font-family: verdana;
+}
+
 .navigate {
   nav {
-    margin-top: 10px;
+    @include margin_top(10px);
     .first-icon {
       margin-left: 50px;
     }
@@ -12,8 +41,7 @@
 }
 .main-content {
   text-align: center;
-  width: 100%;
-
+  width: $defaultWidth;
   .second-content {
     border: 0.5px solid rgb(218, 211, 211);
     width: 550px;
@@ -21,21 +49,15 @@
     margin: auto;
     text-align: start;
     border-radius: 18px;
-
     .error {
-      margin-right: 50px;
-      margin-left: 50px;
+      margin: 0 50px;
       p {
         color: red;
-        font-size: 15px;
-        letter-spacing: 1px;
-        font-family: Verdana, Geneva, Tahoma, sans-serif;
+        @include fontDesign(15px);
       }
     }
-
     .first-header {
       margin: 50px;
-
       h2 {
         font-family: verdana;
         letter-spacing: 1px;
@@ -44,26 +66,20 @@
     }
     .second-header {
       margin: 0 50px;
-      display: flex;
-
+      display: $defaultDisplay;
+      justify-content: space-between;
       .left {
         text-align: start;
-
         h6 {
-          font-family: verdana;
-          font-size: 15px;
-          letter-spacing: 1px;
+          @include fontDesign(15px);
           font-weight: 500;
         }
       }
       .right {
         text-align: right;
-        width: 100%;
-
+        display: $defaultDisplay;
         p {
-          font-family: verdana;
-          font-size: 14px;
-          letter-spacing: 1px;
+          @include fontDesign(14px);
           font-weight: 100;
           margin-right: 10px;
           color: grey;
@@ -71,96 +87,58 @@
         a {
           color: green;
           text-decoration: none;
-          font-family: verdana;
-          font-size: 13px;
-          letter-spacing: 1px;
+          @include fontDesign(14px);
         }
       }
     }
     .third-header {
-      margin-top: 5px;
-      margin-right: 50px;
-      margin-left: 50px;
-
+      margin: 5px 50px 1px;
       input[type='text'] {
-        height: 40px;
-        width: 100%;
-        outline: none;
-        border-radius: 5px;
-        font-size: 16px;
-        border: 1px solid grey;
-        padding: 0 10px;
-        font-family: verdana;
+        @include inputDesign;
       }
     }
     .fourth-header {
-      margin-top: 10px;
+      @include margin_top(10px);
       margin-left: 50px;
-      display: flex;
-
+      display: $defaultDisplay;
       h6 {
-        font-family: verdana;
-        font-size: 15px;
-        letter-spacing: 1px;
+        @include fontDesign(15px);
         font-weight: 500;
       }
       .right {
         text-align: right;
-        width: 100%;
+        width: $defaultWidth;
         padding-right: 50px;
-
         p {
-          font-size: 15px;
-          letter-spacing: 1px;
-          font-family: verdana;
-
+          @include fontDesign(15px);
           i {
-            cursor: pointer;
+            cursor: $defaultCursor;
           }
         }
       }
     }
     .fifth-header {
-      margin-top: 5px;
-      margin-right: 50px;
-      margin-left: 50px;
-
+      margin: 5px 50px 1px;
       input[type='text'] {
-        height: 40px;
-        width: 100%;
-        outline: none;
-        border-radius: 5px;
-        font-size: 16px;
-        border: 1px solid grey;
-        padding: 0 10px;
-        font-family: verdana;
+        @include inputDesign;
       }
       input[type='password'] {
-        height: 40px;
-        width: 100%;
-        outline: none;
-        border-radius: 5px;
-        font-size: 16px;
-        border: 1px solid grey;
-        padding: 0 10px;
-        font-family: verdana;
+        @include inputDesign;
       }
     }
     .sixth-header {
-      margin-top: 18px;
+      @include margin_top(18px);
       padding: 0 50px;
-
       button {
+        @include fontDesign(16px);
         background: #088178;
         color: #fff;
         letter-spacing: 2px;
-        font-family: verdana;
-        font-size: 16px;
         border-radius: 30px;
         border: none;
-        width: 100%;
+        width: $defaultWidth;
         height: 45px;
-        cursor: pointer;
+        cursor: $defaultCursor;
       }
     }
   }
@@ -174,45 +152,36 @@
   }
   .main-content {
     text-align: center;
-    width: 100%;
-  
+    width: $defaultWidth;
     .second-content {
-      width: 100%;
+      width: $defaultWidth;
       border: none;
-
       .first-header {
-        margin-top: 40px;
-        margin-left: 20px;
-        margin-right: 20px;
+        @include margin_top(40px);
+        @include media_spaces(20px, 20px);
       }
       .second-header {
-        margin-top: 5px;
-        margin-left: 20px;
-        margin-right: 20px;
+        @include margin_top(5px);
+        @include media_spaces(20px, 20px);
       }
       .third-header {
-        margin-top: 5px;
-        margin-left: 20px;
-        margin-right: 20px;
+        @include margin_top(5px);
+        @include media_spaces(20px, 20px);
       }
       .fourth-header {
-        margin-top: 5px;
-        margin-left: 20px;
-        margin-right: 20px;
-
+        @include margin_top(5px);
+        @include media_spaces(20px, 20px);
         .right {
           padding-right: 0;
         }
       }
       .fifth-header {
-        margin-top: 5px;
-        margin-left: 20px;
-        margin-right: 20px;
+        @include margin_top(5px);
+        @include media_spaces(20px, 20px);
       }
       .sixth-header {
-        margin-top: 20px;
-        margin-left: 20px;
-        margin-right: 20px;
+        @include margin_top(20px);
+        @include media_spaces(20px, 20px);
         padding: 0;
       }
     }

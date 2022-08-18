@@ -61,7 +61,7 @@ const Profile = () => {
                   </div>
                   <div className='second-content'>
                     <div className='top'>
-                      <p>Reenter password</p>
+                      <p>Confirm password</p>
                     </div>
                     <div className='bottom'>
                       <input type='password'/>
@@ -113,7 +113,7 @@ const Profile = () => {
               </div>
               <div className='fourth-item'>
                 <p>Lagos</p>
-                <p2>Nigeria</p2>
+                <p>Nigeria</p>
               </div>
               <div className='fifth-item'>
                 <span>Owie — the name taken by Melbourne-raised,

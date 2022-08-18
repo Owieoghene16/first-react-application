@@ -1,19 +1,29 @@
+@import 'signup';
+@import 'homepage';
+
+@mixin inputForm () {
+  width: $defaultWidth;
+  height: 40px;
+  @include boxPadding(10px, 12px);
+  border-radius: 5px;
+  outline: none;
+  border: 1px solid grey;
+  @include fontDesign(16px)
+}
+
 .home-section {
   .main-profile{
     position: relative;
     padding-top: 14px;
-
     .column {
       margin-top: 90px;
       display: flex;
       justify-content: space-evenly;
-
       .first-row {
         width: 56%;
         background-color: silver;
         height: 520px;
         padding: 0 20px;
-
         .first-head {
           margin-top: 10px;
           h5 {
@@ -25,18 +35,15 @@
         .second-head {
           margin-top: 15px;
           text-align: center;
-
-          p1 {
+          p {
             color: grey;
-            letter-spacing: 1px;
-            font-family: verdana;
+            @include fontDesign(17px);
           }
         }
         .column-con {
           display: flex;
           justify-content: space-between;
           margin-top: 15px;
-
           .content {
             width: 48%;
             .top {
@@ -48,92 +55,51 @@
               }
             }
             .bottom input[type='text'] {
-              width: 100%;
-              height: 40px;
-              padding: 10px 12px;
-              border-radius: 5px;
-              outline: none;
-              border: 1px solid grey;
-              font-size: 16px;
-              letter-spacing: 1px;
-              font-family: verdana;
+              @include inputForm;
             }
             .bottom input[type='password'] {
-              width: 100%;
-              height: 40px;
-              padding: 10px 12px;
-              border-radius: 5px;
-              outline: none;
-              border: 1px solid grey;
-              font-size: 16px;
-              letter-spacing: 1px;
-              font-family: verdana;
+              @include inputForm;
             }
           }
           .second-content {
             width: 48%;
-
             .top {
               text-align: right;
               margin-bottom: 5px;
               p {
-                letter-spacing: 1px;
-                font-family: verdana;
-                font-size: 15px;
+                @include fontDesign(15px)
               }
             }
             .bottom input[type='text'] {
-              width: 100%;
-              padding: 10px 12px;
-              height: 40px;
-              border-radius: 5px;
-              outline: none;
-              border: 1px solid grey;
-              font-size: 16px;
-              letter-spacing: 1px;
-              font-family: verdana;
+              @include inputForm;
             }
             .bottom input[type='password'] {
-              width: 100%;
-              height: 40px;
-              padding: 10px 12px;
-              border-radius: 5px;
-              outline: none;
-              border: 1px solid grey;
-              font-size: 16px;
-              letter-spacing: 1px;
-              font-family: verdana;
+              @include inputForm;
             }
           }
         } 
         .third-head {
           margin-top: 35px;
           text-align: center;
-
-          p1 {
+          p {
             color: grey;
-            letter-spacing: 1px;
-            font-family: verdana;
+            @include fontDesign(16px);
           }
         }
         .fourth-head {
           margin-top: 15px;
           text-align: start;
-
           p {
-            letter-spacing: 1px;
-            font-family: verdana;
+            @include fontDesign(17px);
           }
         }
         .fifth-header {
           margin-top: 3px;
           textarea {
-            width: 100%;
+            width: $defaultWidth;
             height: 100px;
-            font-size: 14px;
             padding: 10px 12px;
-            letter-spacing: 1px;
-            font-family: verdana;
+            @include fontDesign(14px);
             border: 1px solid grey;
             outline: none;
             border-radius: 10px;
@@ -148,9 +114,7 @@
             border: none;
             width: 150px;
             height: 40px;
-            letter-spacing: 1px;
-            font-size: 15px;
-            font-family: verdana;
+            @include fontDesign(15px);
             cursor: pointer;
           }
         }
@@ -194,7 +158,6 @@
           .second-item-row {
             display: block;
             text-align: center;
-
             h5 {
               font-family: verdana;
               font-size: 16px;
@@ -220,17 +183,9 @@
         }
         .fourth-item {
           text-align: center;
-          p1 {
-            font-family: verdana;
-            letter-spacing: 1px;
-            font-size: 13px;
+          p {
+            @include fontDesign(13px);
             margin-right: 4px;
-            color: grey;
-          }
-          p2 {
-            font-family: verdana;
-            letter-spacing: 1px;
-            font-size: 14px;
             color: grey;
           }
         }
@@ -249,13 +204,13 @@
     }
   }
 }
-@media( max-width: 1000px ) {
+@media(max-width: 1000px) {
   .home-section {
     .main-profile{
       .column { 
         flex-direction: column;
         .first-row {
-          width: 100%;
+          width: $defaultWidth;
           margin-bottom: 20px;
         }
       }
@@ -266,7 +221,7 @@
   }
 }
 
-@media( max-width: 800px ) {
+@media(max-width: 800px) {
   .home-section {
     .main-profile{
       .column { 
@@ -275,16 +230,16 @@
           text-align: start;
           margin-bottom: 20px;
           height: 650px;
-          width: 100%;
+          width: $defaultWidth;
           .column-con { 
-            width: 100%;
+            width: $defaultWidth;
             flex-direction: column;
             text-align: start;
             .content {
-              width: 100%;
+              width: $defaultWidth;
             }
             .second-content {
-              width: 100%;
+              width: $defaultWidth;
               .top {
                 text-align: start;
                 margin-top: 5px;

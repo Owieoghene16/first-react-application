@@ -38,7 +38,7 @@ const Reenterpassword = ({ click, toggle }) => (
   <>
     <div className='fifth-header'>
       <input type='password'
-        name='passwordAgain'
+        name='confirmPassword'
         ref={toggle}
         onChange={click}
       />
