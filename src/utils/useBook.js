@@ -3,7 +3,7 @@
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import loadBooks from '../redux/actions.jsx';
+import loadBooks from '../redux/actions';
 
 const useBook = () => {
   const redirect = useNavigate();
@@ -18,10 +18,10 @@ const useBook = () => {
     dispatch(loadBooks());
   }, []);
 
-  return [
+  return {
     books,
     bookDetails,
-  ];
+  };
 };
 
 export default useBook;

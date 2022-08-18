@@ -4,24 +4,32 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Api } from '../app';
 
-const useSignUp = () => {
+const useSignIn = () => {
   const redirect = useNavigate();
   const [form, setForm] = useState({});
   const [error, setError] = useState('');
+  const [passwordicon, setPasswordIcon] = useState(false);
 
-  // onChange function
-  const handleFormValue = (e) => {
+  const formInput = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 
-  // Register function
-  const registerUser = async () => {
+  // login field
+  const switchField = (input) => {
+    if (input.current.type === 'password') {
+      input.current.type = 'text';
+      setPasswordIcon(true);
+    } else {
+      input.current.type = 'password';
+      setPasswordIcon(false);
+    }
+  };
+
+  const logInUser = async () => {
     try {
-      const res = await Api.post('/signup', {
-        userName: form.username,
+      const res = await Api.post('/signin', {
         email: form.email,
         password: form.password,
-        reEnterPassword: form.confirmPassword,
       });
       sessionStorage.setItem('user', JSON.stringify(res.data));
       setError('');
@@ -31,11 +39,13 @@ const useSignUp = () => {
     }
   };
 
-  return [
+  return {
     error,
-    handleFormValue,
-    registerUser,
-  ];
+    passwordicon,
+    switchField,
+    formInput,
+    logInUser,
+  };
 };
 
-export default useSignUp;
+export default useSignIn;

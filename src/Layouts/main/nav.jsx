@@ -8,7 +8,7 @@ const Navbar = ({ click }) => (
   <>
     <nav>
       <div className='sidebar-button'>
-        <i onClick={ click }> <HiMenu /> </i>
+        <i onClick={click }> <HiMenu /> </i>
         <span className='dashboard'>Book</span>
       </div>
       <div className='search-box'>

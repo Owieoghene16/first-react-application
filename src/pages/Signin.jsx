@@ -7,7 +7,7 @@ import { FaBook } from 'react-icons/fa';
 import { FiEye } from 'react-icons/fi';
 import { AiOutlineEyeInvisible } from 'react-icons/ai';
 import { Email, Password } from '../Components/inputs/Register.jsx';
-import useSignIn from '../utils/useSignIn.jsx';
+import useSignIn from '../utils/useSignIn';
 import '../Assets/signin.scss';
 
 const	Login = () => {
@@ -15,13 +15,13 @@ const	Login = () => {
   const Passwordfield = useRef();
 
   // Creating users
-  const [
+  const {
     error,
     passwordicon,
     switchField,
     formInput,
-    logIn,
-  ] = useSignIn();
+    logInUser,
+  } = useSignIn();
 
   return (
 		<>
@@ -74,7 +74,7 @@ const	Login = () => {
             toggle={Passwordfield}
           />
           <div className='sixth-head'>
-            <button onClick={() => logIn()}>Sign In</button>
+            <button onClick={() => logInUser()}>Sign In</button>
           </div>
           <div className='forgotten'>
             <Link to='/reset'>

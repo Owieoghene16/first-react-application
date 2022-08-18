@@ -2,7 +2,7 @@
 /* eslint-disable import/no-cycle */
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { Api } from '../app';
-import { updateBooks } from './reducer.jsx';
+import { updateBooks } from './reducer';
 
 const loadBooks = createAsyncThunk(
   'loadBooks',

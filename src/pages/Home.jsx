@@ -6,33 +6,32 @@ import { AiOutlineStar } from 'react-icons/ai';
 import Box from '../Layouts/main/Box.jsx';
 import Sidebar from '../Layouts/main/Sidebar.jsx';
 import Navbar from '../Layouts/main/Nav.jsx';
-import useBook from '../utils/useBook.jsx';
-import useBoolean from '../utils/useTogglSidebar.jsx';
+import useBook from '../utils/useBook';
+import useBoolean from '../utils/useTogglSidebar';
 import '../Assets/homepage.scss';
 
 const Homepage = () => {
   // sidebar toggle
-  const [
-    isToggle,
-    storage, {
-      setToggle,
-    },
-  ] = useBoolean(false);
+  const {
+    toggle,
+    storage,
+    handleToggle,
+  } = useBoolean(false);
 
   // book
-  const [
+  const {
     books,
     bookDetails,
-  ] = useBook();
+  } = useBook();
 
   return (
     <>
       <Sidebar
-        togglebar={isToggle}
+        togglebar={toggle}
       />
       <section className='home-section'>
         <Navbar
-          click={setToggle}
+          click={handleToggle}
           />
           {
             storage

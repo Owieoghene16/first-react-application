@@ -16,10 +16,10 @@ const useToggleVisibility = () => {
     }
   };
 
-  return [
+  return {
     passwordIcon,
     handleToggle,
-  ];
+  };
 };
 
 export default useToggleVisibility;

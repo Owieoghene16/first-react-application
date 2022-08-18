@@ -3,31 +3,31 @@ import { Outlet, Link } from 'react-router-dom';
 import Myimage from '../Layouts/images/Index.jsx';
 import Sidebar from '../Layouts/main/Sidebar.jsx';
 import Navbar from '../Layouts/main/Nav.jsx';
-import useBoolean from '../utils/useTogglSidebar.jsx';
-import useBookDetails from '../utils/useBookDetails.jsx';
+import useBoolean from '../utils/useTogglSidebar';
+import useBookDetails from '../utils/useBookDetails';
 import '../Assets/bookdetails.scss';
 
 const BookDetails = () => {
   // sidebar toggle
-  const [
-    isToggle,
-    storage, {
-      setToggle,
-    }] = useBoolean(false);
+  const {
+    toggle,
+    storage,
+    handleToggle,
+  } = useBoolean(false);
 
   // book details
-  const [
+  const {
     book,
-  ] = useBookDetails();
+  } = useBookDetails();
 
   return (
     <>
       <Sidebar
-        togglebar={isToggle}
+        togglebar={toggle}
       />
       <section className='home-section'>
         <Navbar
-          click={setToggle}
+          click={handleToggle}
         />
         {
           storage

@@ -2,16 +2,14 @@ import { useState } from 'react';
 
 const useBoolean = (initialState = false) => {
   const storage = JSON.parse(sessionStorage.getItem('user'));
-  const [open, setOpen] = useState(initialState);
-  const handleToggle = () => setOpen(!open);
+  const [toggle, setToggle] = useState(initialState);
+  const handleToggle = () => setToggle(!toggle);
 
-  return [
-    open,
+  return {
+    toggle,
     storage,
-    {
-      setToggle: handleToggle,
-    },
-  ];
+    handleToggle,
+  };
 };
 
 export default useBoolean;

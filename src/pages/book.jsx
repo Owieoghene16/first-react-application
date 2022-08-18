@@ -6,25 +6,24 @@ import { GrFormNext, GrFormPrevious, GrAdd } from 'react-icons/gr';
 import Box from '../Layouts/main/Box.jsx';
 import Sidebar from '../Layouts/main/Sidebar.jsx';
 import Navbar from '../Layouts/main/Nav.jsx';
-import useBoolean from '../utils/useTogglSidebar.jsx';
+import useBoolean from '../utils/useTogglSidebar';
 import '../Assets/book.scss';
 
 const Book = () => {
-  const [
-    isToggle,
+  const {
+    toggle,
     storage,
-    {
-      setToggle,
-    }] = useBoolean(false);
+    handleToggle,
+  } = useBoolean(false);
 
   return (
     <>
       <Sidebar
-        togglebar={isToggle}
+        togglebar={toggle}
       />
       <section className='home-section'>
         <Navbar
-          click={setToggle}
+          click={handleToggle}
         />
         {
           storage

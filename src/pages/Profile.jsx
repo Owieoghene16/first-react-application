@@ -2,24 +2,24 @@ import React from 'react';
 import { Outlet, Link } from 'react-router-dom';
 import Sidebar from '../Layouts/main/Sidebar.jsx';
 import Navbar from '../Layouts/main/Nav.jsx';
-import useBoolean from '../utils/useTogglSidebar.jsx';
+import useBoolean from '../utils/useTogglSidebar';
 import '../Assets/profile.scss';
 
 const Profile = () => {
-  const [
-    isToggle,
-    storage, {
-      setToggle,
-    }] = useBoolean(false);
+  const {
+    toggle,
+    storage,
+    handleToggle,
+  } = useBoolean(false);
 
   return (
     <>
       <Sidebar
-        togglebar={isToggle}
+        togglebar={toggle}
       />
       <section className='home-section'>
         <Navbar
-          click={setToggle}
+          click={handleToggle}
         />
         {
           storage
@@ -97,15 +97,15 @@ const Profile = () => {
               <div className="second-item">
                 <div className='second-item-row'>
                   <h5>12</h5>
-                  <p2>Books</p2>
+                  <p>Books</p>
                 </div>
                 <div className='second-item-row'>
                   <h5>05</h5>
-                  <p2>Borrowed</p2>
+                  <p>Borrowed</p>
                 </div>
                 <div className='second-item-row'>
                   <h5>02</h5>
-                  <p2>Returned</p2>
+                  <p>Returned</p>
                 </div>
               </div>
               <div className='third-item'>

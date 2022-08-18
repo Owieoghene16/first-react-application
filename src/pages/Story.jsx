@@ -10,37 +10,36 @@ import CreateBookButton from '../Components/buttons/Index.jsx';
 import {
   MainFile, File, SecondFile, ThirdFile, FourthFile,
 } from '../Components/inputs/File.jsx';
-import useBoolean from '../utils/useTogglSidebar.jsx';
-import useStory from '../utils/useStory.jsx';
+import useBoolean from '../utils/useTogglSidebar';
+import useStory from '../utils/useStory';
 import '../Assets/story.scss';
 
 const Story = () => {
   // sidebar toggle
-  const [
-    isToggle,
-    storage, {
-      setToggle,
-    },
-  ] = useBoolean(false);
+  const {
+    toggle,
+    storage,
+    handleToggle,
+  } = useBoolean(false);
 
   // story
-  const [
+  const {
     error,
     imagename,
     storyContent,
     imageFile,
     pdfFile,
     createBook,
-  ] = useStory();
+  } = useStory();
 
   return (
     <>
       <Sidebar
-        togglebar={isToggle}
+        togglebar={toggle}
       />
       <section className='home-section'>
         <Navbar
-          click={setToggle}
+          click={handleToggle}
         />
         {
           storage

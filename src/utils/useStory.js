@@ -48,14 +48,14 @@ const useStory = () => {
     }
   };
 
-  return [
+  return {
     error,
     imagename,
     storyContent,
     imageFile,
     pdfFile,
     createBook,
-  ];
+  };
 };
 
 export default useStory;

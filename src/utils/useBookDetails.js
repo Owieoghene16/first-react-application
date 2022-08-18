@@ -7,9 +7,7 @@ const useBookDetails = () => {
   // eslint-disable-next-line eqeqeq
   const book = books.find((item) => item.id == id);
 
-  return [
-    book,
-  ];
+  return { book };
 };
 
 export default useBookDetails;

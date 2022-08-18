@@ -9,25 +9,25 @@ import { AiOutlineEyeInvisible } from 'react-icons/ai';
 import {
   Username, Email, Password, Reenterpassword,
 } from '../Components/inputs/Register.jsx';
-import useToggleVisibility from '../utils/usePasswordVisibility.jsx';
-import useSignUp from '../utils/useSignUp.jsx';
+import useToggleVisibility from '../utils/usePasswordVisibility';
+import useSignUp from '../utils/useSignUp';
 import '../Assets/signup.scss';
 
 const	Register = () => {
   // Password visiblity
   const Passwordfield = useRef();
   const Confirmpassword = useRef();
-  const [
+  const {
     switchIcon,
     switchToggle,
-  ] = useToggleVisibility();
+  } = useToggleVisibility();
 
   // Creating users
-  const [
+  const {
     error,
     handleFormValue,
     registerUser,
-  ] = useSignUp();
+  } = useSignUp();
 
   return (
 		<>
