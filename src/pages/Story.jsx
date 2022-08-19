@@ -7,9 +7,7 @@ import {
   Pdf, Title, Description, Price,
 } from '../Components/inputs/Story.jsx';
 import CreateBookButton from '../Components/buttons/Index.jsx';
-import {
-  MainFile, File, SecondFile, ThirdFile, FourthFile,
-} from '../Components/inputs/File.jsx';
+import MainFile from '../Components/inputs/File.jsx';
 import useBoolean from '../utils/useTogglSidebar';
 import useStory from '../utils/useStory';
 import '../Assets/story.scss';
@@ -55,28 +53,6 @@ const Story = () => {
                   message={imagename}
                 />
               </div>
-              <div className='small-single-img'>
-                <div className='small-img'>
-                  <div class="img-upload">
-                    <File />
-                  </div>
-                </div>
-              <div className='small-img'>
-                <div class="img-upload">
-                  <SecondFile />
-                </div>
-              </div>
-              <div className='small-img'>
-                <div class="img-upload">
-                  <ThirdFile />
-                </div>
-              </div>
-              <div className='small-img'>
-                <div class="img-upload">
-                  <FourthFile />
-                </div>
-              </div>
-            </div>
             </div>
             <div className='single-book-details'>
               <div className='book-header'>
