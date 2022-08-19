@@ -1,0 +1,189 @@
+// variables
+$defaultWidth: 100%;
+$defaultDisplay: flex;
+$defaultCursor: pointer;
+
+// mixin
+@mixin margin_top ($space) {
+  margin-top: $space;
+}
+@mixin media_spaces ($left, $right) {
+  margin-left: $left;
+  margin-right: $right;
+}
+@mixin fontDesign($fontsize) {
+  font-family: verdana;
+  font-size: $fontsize;
+  letter-spacing: 1px;
+}
+@mixin inputDesign {
+  height: 40px;
+  width: $defaultWidth;
+  outline: none;
+  border-radius: 5px;
+  font-size: 16px;
+  border: 1px solid grey;
+  padding: 0 10px;
+  font-family: verdana;
+}
+
+.navigate {
+  nav {
+    @include margin_top(10px);
+    .first-icon {
+      margin-left: 50px;
+    }
+    .first-icon i {
+      font-size: 60px;
+      color: #088178;
+    }
+  }
+}
+.main-content {
+  text-align: center;
+  width: $defaultWidth;
+  .second-content {
+    border: 0.5px solid rgb(218, 211, 211);
+    width: 550px;
+    height: 515px;
+    margin: auto;
+    text-align: start;
+    border-radius: 18px;
+    .error {
+      margin: 0 50px;
+      p {
+        color: red;
+        @include fontDesign(15px);
+      }
+    }
+    .first-header {
+      margin: 50px;
+      h2 {
+        font-family: verdana;
+        letter-spacing: 1px;
+        font-size: 25px;
+      }
+    }
+    .second-header {
+      margin: 0 50px;
+      display: $defaultDisplay;
+      justify-content: space-between;
+      .left {
+        text-align: start;
+        h6 {
+          @include fontDesign(15px);
+          font-weight: 500;
+        }
+      }
+      .right {
+        text-align: right;
+        display: $defaultDisplay;
+        p {
+          @include fontDesign(14px);
+          font-weight: 100;
+          margin-right: 10px;
+          color: grey;
+        }
+        a {
+          color: green;
+          text-decoration: none;
+          @include fontDesign(14px);
+        }
+      }
+    }
+    .third-header {
+      margin: 5px 50px 1px;
+      input[type='text'] {
+        @include inputDesign;
+      }
+    }
+    .fourth-header {
+      @include margin_top(10px);
+      margin-left: 50px;
+      display: $defaultDisplay;
+      h6 {
+        @include fontDesign(15px);
+        font-weight: 500;
+      }
+      .right {
+        text-align: right;
+        width: $defaultWidth;
+        padding-right: 50px;
+        p {
+          @include fontDesign(15px);
+          i {
+            cursor: $defaultCursor;
+          }
+        }
+      }
+    }
+    .fifth-header {
+      margin: 5px 50px 1px;
+      input[type='text'] {
+        @include inputDesign;
+      }
+      input[type='password'] {
+        @include inputDesign;
+      }
+    }
+    .sixth-header {
+      @include margin_top(18px);
+      padding: 0 50px;
+      button {
+        @include fontDesign(16px);
+        background: #088178;
+        color: #fff;
+        letter-spacing: 2px;
+        border-radius: 30px;
+        border: none;
+        width: $defaultWidth;
+        height: 45px;
+        cursor: $defaultCursor;
+      }
+    }
+  }
+}
+
+@media (max-width: 600px) {
+  .navigate {
+    nav { 
+      text-align: center;
+    }
+  }
+  .main-content {
+    text-align: center;
+    width: $defaultWidth;
+    .second-content {
+      width: $defaultWidth;
+      border: none;
+      .first-header {
+        @include margin_top(40px);
+        @include media_spaces(20px, 20px);
+      }
+      .second-header {
+        @include margin_top(5px);
+        @include media_spaces(20px, 20px);
+      }
+      .third-header {
+        @include margin_top(5px);
+        @include media_spaces(20px, 20px);
+      }
+      .fourth-header {
+        @include margin_top(5px);
+        @include media_spaces(20px, 20px);
+        .right {
+          padding-right: 0;
+        }
+      }
+      .fifth-header {
+        @include margin_top(5px);
+        @include media_spaces(20px, 20px);
+      }
+      .sixth-header {
+        @include margin_top(20px);
+        @include media_spaces(20px, 20px);
+        padding: 0;
+      }
+    }
+  }
+}

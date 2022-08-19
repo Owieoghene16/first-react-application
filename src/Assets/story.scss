@@ -1,27 +1,31 @@
-$myWidth: 100%;
+@import 'signup';
+@import 'homepage';
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+body {
+  background: #f5f5f5;
+}
 /*main-content*/
 .home-section {
   .main-story {
     position: relative;
-    padding-top: 14px;
     text-align: center;
-
+    padding-top: 14px;
+    border: 1px solid #f5f5f5;;
     .img-story{
-      margin-left: 3%;
-      margin-right: 3%;
-      margin-bottom: 100px;
-      margin-top: 100px;
-      display: flex;
-      
-      
+      @include marginSpaces(100px, 100px, 3%, 3%);
+      display: $defaultDisplay;
       .single-img {
         width: 40%;
         margin-right: 50px;
-
         .book-header {
           margin-bottom: 30px;
           text-align: start;
-  
           h3 {
             letter-spacing: 2px;
             font-size: 22px;
@@ -42,7 +46,7 @@ $myWidth: 100%;
           .img-name p {
             letter-spacing: 1px;
             font-size: 14px;
-            font-family: verdana;  
+            font-family: verdana;    
             color: black;          
           }
           .label-con {
@@ -71,21 +75,18 @@ $myWidth: 100%;
           display: flex;
           justify-content: space-between;
           cursor: pointer;
-
           img {
-            width: $myWidth;
+            width: $defaultWidth;
           }
           .small-img {
             flex-basis: 24%;
             cursor: pointer;
-            
             .img-upload > [type="file"] {
               display: none;
             }
             .img-upload {
               width: 100%;
               text-align: center;
-
               .label-con {
                 i {
                   font-size: 22px;
@@ -104,7 +105,6 @@ $myWidth: 100%;
                 display: block;
                 width: 100%;
                 position: relative;
-
                 p{
                   height: auto;
                   word-break: break-all;
@@ -121,11 +121,9 @@ $myWidth: 100%;
     .single-book-details{
       width: 50%;
       text-align: start;
-
       .book-header {
         margin-bottom: 50px;
         text-align: center;
-
         h3 {
           letter-spacing: 2px;
           font-size: 22px;
@@ -139,9 +137,8 @@ $myWidth: 100%;
       }
       .my-text {
         margin-bottom: 30px;
-
         input[type="text"] {
-          width: $myWidth;
+          width: $defaultWidth;
           height: 35px;
           outline: none;
           padding: 0 10px;
@@ -156,9 +153,8 @@ $myWidth: 100%;
       }
       .my-number {
         margin-bottom: 30px;
-
         input[type="number"] {
-          width: $myWidth;
+          width: $defaultWidth;
           height: 35px;
           outline: none;
           padding: 0 10px;
@@ -173,14 +169,13 @@ $myWidth: 100%;
       }
       .my-file {
         margin-bottom: 30px;
-        width: $myWidth;
+        width: $defaultWidth;
         height: 35px;
         background-color: #fff;
         border: 1px solid rgb(124, 107, 107);
         padding: 6px 12px;
-        
         input[type=file] {
-          width: $myWidth;
+          width: $defaultWidth;
           cursor: pointer;
         }
       }
@@ -190,10 +185,9 @@ $myWidth: 100%;
         font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
       }
       .my-texarea {
-        margin-bottom: 30px;
-
+        margin-bottom: 10px;
         textarea {
-          width: $myWidth;
+          width: $defaultWidth;
           height: 90px;
           font-size: 15px;
           padding: 3px 12px;
@@ -201,9 +195,15 @@ $myWidth: 100%;
           font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
         }
       }
+      .error{
+        p {
+          color: red;
+          letter-spacing: 1px;
+          font-family: verdana;
+        }
+      }
       .my-button {
         text-align: right;
-
         button {
           background: #088178;
           color: #fff;
@@ -230,30 +230,26 @@ $myWidth: 100%;
       }
     }
   }
-
 }
 
-@media( max-width: 940px ) {
+@media(max-width: 940px) {
   .home-section {
     .main-story {
       .img-story {
         flex-direction: column;
         text-align: center;
-
         .single-img {
           width: 100%;
           text-align: center;
           height: auto;
-
           .book-header {
             text-align: center;
           }
         }
       }
       .single-book-details {
-        width: $myWidth;
+        width: $defaultWidth;
         margin-top: 65px;
-
         .book-header{ 
           text-align: center;
         }
@@ -261,43 +257,42 @@ $myWidth: 100%;
     }
   }
 }
-/*media*/
 
-@media( max-width: 750px ) {
-    .sidebar{
-      position: fixed;
-      height: $myWidth;
-      width: 60px;
-      background: #0A2558;
-      transition: all 0.5s ease;
-    }
-    .sidebar .active {
-      width: 50px;
-    }
-    .home-section {
-      width: calc($myWidth - 60px);
-      left: 60px;
-    }
-    .sidebar .active ~ .home-section {
-      width: calc($myWidth - 60px);
-      left: 60px;
-    }
-    .home-section nav {
-      width: calc($myWidth - 60px);
-      left: 60px;
-    }
-    .home-section nav .sidebar-button span {
-      display: none;
-    }
-    .sidebar .logo-details .logo_name{ 
-      display: none;
-    }
-    .sidebar .nav-links li a .links_name{
-        display: none;
-    }
-    .home-section .main-storytent .welcome {
-      flex-direction: column;
-      justify-content: space-evenly;
-    }
+@media(max-width: 750px) {
+  .sidebar{
+    position: fixed;
+    height: $defaultWidth;
+    width: 60px;
+    background: #0A2558;
+    transition: all 0.5s ease;
   }
+  .sidebar .active {
+    width: 50px;
+  }
+  .home-section {
+    width: calc($defaultWidth - 60px);
+    left: 60px;
+  }
+  .sidebar .active ~ .home-section {
+    width: calc($defaultWidth - 60px);
+    left: 60px;
+  }
+  .home-section nav {
+    width: calc($defaultWidth - 60px);
+    left: 60px;
+  }
+  .home-section nav .sidebar-button span {
+    display: none;
+  }
+  .sidebar .logo-details .logo_name{ 
+    display: none;
+  }
+  .sidebar .nav-links li a .links_name{
+    display: none;
+  }
+  .home-section .main-storytent .welcome {
+    flex-direction: column;
+    justify-content: space-evenly;
+  }
+}
 /*media */

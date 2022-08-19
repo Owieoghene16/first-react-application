@@ -1,25 +1,37 @@
-*{
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: 'Poppins', sans-serif;
+@import 'signup';
+
+$homepageFont: verdana;
+$boxFont: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+
+@mixin marginSpaces ($top, $bottom, $left, $right) {
+  margin-top: $top;
+  margin-bottom: $bottom;
+  margin-left: $left;
+  margin-right: $right;
 }
+@mixin boxFontDesign($spacing, $fontsize) {
+  letter-spacing: $spacing;
+  font-size: $fontsize;
+  font-family: $boxFont;
+}
+@mixin boxPadding($top, $side) {
+  padding: $top $side;
+}
+
 /*sidebar*/
 .sidebar {
   position: fixed;
-  height: 100%;
+  height: $defaultWidth;
   width: 240px;
   background: #0A2558;
   transition: all 0.5s ease;
-
   .active {
     width: 60px;
   }
   .logo-details{
     height: 70px;
-    display: flex;
+    display: $defaultDisplay;
     align-items: center;
-
     i {
       font-size: 30px;
       font-weight: 500;
@@ -35,20 +47,22 @@
   }
   .nav-links{
     margin-top: 10px;
-
+    .log_out {
+      position: absolute;
+      bottom: 0;
+      width: $defaultWidth;
+    }
     li {
       position: relative;
       list-style: none;
       height: 50px;
-
       a {
-        height: 100%;
-        width: 100%;
-        display: flex;
+        height: $defaultWidth;
+        width: $defaultWidth;
+        display: $defaultDisplay;
         align-items: center;
         text-decoration: none;
         transition: all 0.4s ease;
-
         .links_name {
           color: #fff;
           font-size: 15px;
@@ -62,64 +76,52 @@
       a:hover{
         background: #081D45;
       }
-
       i{
         min-width: 60px;
         text-align: center;
         font-size: 18px;
         color: #fff;
       }
-      .log_out{
-        position: absolute;
-        bottom: 0;
-        width: 100%;
-      }
     }
   }
 }
 /*Sidebar closing*/
 .sidebar.active ~ .home-section {
-  width: calc(100% - 60px);
+  width: calc($defaultWidth - 60px);
   left: 60px;
 }
-
 .sidebar.active ~ .home-section nav{
   left: 60px;
-  width: calc(100% - 60px);
+  width: calc($defaultWidth - 60px);
 }
-
 /*Home*/
-
 .home-section {
   position: relative;
   min-height: 100vh;
   background: #f5f5f5;
-  width: calc(100% - 240px);
+  width: calc($defaultWidth - 240px);
   left: 240px;
   transition: all 0.5s ease;
   /* nav */
   nav {
-    display: flex;
+    display: $defaultDisplay;
     justify-content: space-between;
     height: 80px;
     background: #fff;
-    display: flex;
     align-items: center;
     position: fixed;
-    width: calc(100% - 240px);
+    width: calc($defaultWidth - 240px);
     left: 240px;
     z-index: 100;
-    padding: 0 20px;
+    @include boxPadding(0, 20px);
     box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
     transition: all 0.5s ease;
-
     .sidebar-button {
-      display: flex;
+      display: $defaultDisplay;
       align-items: center;
       font-size: 24px;
       font-weight: 500;
-      cursor: pointer;
-
+      cursor: $defaultCursor;
       i {
         font-size: 35px;
         margin-right: 10px;
@@ -129,18 +131,18 @@
       position: relative;
       height: 50px;
       max-width: 550px;
-      width: 100%;
+      width: $defaultWidth;
       margin: 0 20px;
 
       input {
-        height: 100%;
-        width: 100%;
+        height: $defaultWidth;
+        width: $defaultWidth;
         outline: none;
         background: #F5F6FA;
         border: 2px solid #EFEEF1;
         border-radius: 6px;
         font-size: 18px;
-        padding: 0 15px;
+        @include boxPadding(0, 15px);
       }
       .bx-search {
         position: absolute;
@@ -156,13 +158,12 @@
         color: #fff;
         font-size: 22px;
         transition: all 0.4 ease;
-        cursor: pointer;
+        cursor: $defaultCursor;
       }
     }
     .profile-details {
       height: 45px;
       width: 45px;
-
       img{
         height: 40px;
         width: 40px;
@@ -176,21 +177,78 @@
   .home-content{
     position: relative;
     padding-top: 14px;
-
+    .button-container {
+      display: $defaultDisplay;
+      flex-wrap: wrap;
+      text-align: center;
+      justify-content: center;
+      margin-bottom: 60px;
+      width: $defaultWidth;
+      margin: auto;  
+      .next {
+        @include marginSpaces(0px, 30px, 0px, 15px);
+        button {
+          color: black;
+          background-color: #cce7d0;
+          border: none;
+          width: 50px;
+          height: 40px;
+          cursor: $defaultCursor;
+          i {
+            font-size: 16px;
+          }
+          i:hover {
+            color: white;
+          }
+        }
+        button:hover{
+          background-color: #088178;
+          color: white;
+        }
+      }
+    }
+    .invalid {
+      @include marginSpaces(190px, 50px, 0px, 0px);
+      display: block;
+      justify-content: center;
+      text-align: center;
+      .heads {
+        margin-bottom: 50px;
+        h {
+          font-size: 25px;
+          font-family: $homepageFont;
+          font-weight: 300;
+          padding-top: 10px;
+        }
+      }
+      .again {
+        margin-top: 45px;
+        text-align: center;
+        a {
+          @include boxPadding(10px, 10px);
+          letter-spacing: 1px;
+          text-decoration: none;
+          color: black;
+          cursor: $defaultCursor;
+          font-family: $homepageFont;
+          border: none;
+          background-color: #cce7d0;
+          border: 1px solid #cce7d0;
+        }
+      }
+    }
     .welcome {
-      margin-top: 110px;
-      margin-bottom: 50px;
-      display: flex;
+      @include marginSpaces(110px, 50px, 0px, 0px);
+      display: $defaultDisplay;
       justify-content: space-evenly;
       text-align: center;
 
       .heads {
         width: 50%;
         margin-top: 10px;
-
         h {
           font-size: 25px;
-          font-family: verdana;
+          font-family: $homepageFont;
           font-weight: 300;
           padding-top: 10px;
         }
@@ -201,14 +259,13 @@
         text-align: center;
         position: relative;
         right: 10px;
-
         .link-project{
           color: black;
           width: 80%;
-          height: 100%;
+          height: $defaultWidth;
           background-color: #fff;
           font-size: 20px;
-          font-family: verdana;
+          font-family: $homepageFont;
           text-decoration: none;
           font-weight: 500;
           position: absolute;
@@ -216,11 +273,10 @@
           border-radius: 12px;
           padding-top: 13px;
           right: 20px;
-
           span {
             text-align: center;
             letter-spacing: 1px;
-            font-family: verdana;
+            font-family: $homepageFont;
             margin-top: 10px;
           }
         }
@@ -228,47 +284,37 @@
     }
     .border {
       border-bottom:  0.1px solid gray;
-      border-width: 94%;
-      margin-left: 3%;
-      margin-right: 3%;
-      margin-bottom: 4%;
+      @include marginSpaces(0px, 3%, 3%, 3%);
     }
     .picks {
-      margin-left: 3%;
-      margin-right: 3%;
-      margin-bottom: 3%;
-
+      @include marginSpaces(0px, 0px, 3%, 3%);
       .title {
-        margin-left: 3%;
-        margin-bottom: 3%;
+        @include marginSpaces(0px, 0px, 3%, 3%);
         text-align: center;
-
         h2 {
-          font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+          font-family: $boxFont;
           font-size: 22px;
           letter-spacing: 2px;
         }
       }
       .content {
         margin-left: 3%;
-        display: flex;
+        display: $defaultDisplay;
         justify-content: space-evenly;
         flex-direction: row;
         flex-wrap: wrap;
-
         .pro {
           width: 20%;
           min-width: 230px;
-          padding: 10px 12px;
+          @include boxPadding(10px, 12px);
           border: 1px solid #cce7d0;
           border-radius: 25px;
-          cursor: pointer;
           position: relative;
-          box-shadow: 20px 20px 30px rgba(0, 0, 0, 0.02);
           margin: 15px 0;
+          box-shadow: 20px 20px 20px 20px rgba(0, 0, 0, 0.02);
           transition: 0.2s ease;
           img {
-            width: 100%;
+            width: $defaultWidth;
             border-radius: 20px;
           }
           .cart {
@@ -282,11 +328,11 @@
             position: absolute;
             bottom: 15px;
             right: 10px;
+            cursor: $defaultCursor;
           }
           .des {
             text-align: start;
-            padding: 10px 0;
-
+            @include boxPadding(10px, 0px);
             span { 
               color: #606063;
               font-size: 12px;
@@ -313,54 +359,40 @@
         }
       }
     }
-    
     /* history */
    .history {
-      margin-left: 3%;
-      margin-right: 3%;
-      margin-bottom: 3%;
-
+    @include marginSpaces(0px, 3%, 3%, 3%);
       .first-header {
         margin-bottom: 30px;
-
         h {
-          letter-spacing: 1px;
-          font-size: 25px;
-          font-weight: 600;
-          font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+          font-family: $boxFont;
+          @include boxFontDesign(1px, 25px)
         }
       }
       .second-header{
         text-align: start;
-
         h {
-          letter-spacing: 1px;
-          font-size: 21px;
-          font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+          @include boxFontDesign(1px, 21px)
         }
       }
       .content {
-        display: flex;
-        justify-content: space-between;
+        display: $defaultDisplay;
+        justify-content: space-evenly;
         flex-wrap: wrap;
-        text-align: center;
-        margin-bottom: 50px;
-        margin-left: 3%;
-
+        @include marginSpaces(0px, 50px, 3%, 0px);
         .pro {
           width: 20%;
           min-width: 230px;
-          padding: 10px 12px;
+          @include boxPadding(10px, 12px);
           border: 1px solid #cce7d0;
           border-radius: 25px;
-          cursor: pointer;
+          cursor: $defaultCursor;
           position: relative;
           box-shadow: 20px 20px 30px rgba(0, 0, 0, 0.02);
           margin: 15px 0;
           transition: 0.2s ease;
-
           img {
-            width: 100%;
+            width: $defaultWidth;
             border-radius: 20px;
           }
           .cart {
@@ -377,8 +409,7 @@
           }
           .des {
             text-align: start;
-            padding: 10px 0;
-
+            @include boxPadding(10px, 0px);
             span { 
               color: #606063;
               font-size: 12px;
@@ -398,8 +429,8 @@
               width: 90px;
               height: 35px;
               letter-spacing: 1px;
-              cursor: pointer;
-              font-family: verdana;
+              cursor: $defaultCursor;
+              font-family: $homepageFont;
               border-radius: 10px;
               border: none;
               background-color: #cce7d0;
@@ -417,41 +448,42 @@
         }
       }
     }
-    /* history closing */
-  }
-  /* first container closing*/ 
-}
-/*media */
-@media( max-width: 1200px ) {
-  .home-section .home-content .book-item .pro-container {
-      text-align: center;
-      justify-content: space-evenly;
   }
 }
 
-@media( max-width: 800px ) {
+@media(max-width: 1200px) {
+  .home-section .home-content .book-item .pro-container {
+    text-align: center;
+    justify-content: space-evenly;
+  }
+  .home-section .home-content .history .content {
+    justify-content: space-evenly;
+  }
+}
+
+@media(max-width: 800px) {
   .home-section .home-content .welcome {
-    flex-direction: column;
+    $defaultDisplay-direction: column;
     text-align: center;
   }
   .home-section .home-content .history .content {
-    justify-content: space-around;
+    justify-content: space-evenly;
     text-align: center;
   }
   .home-section .home-content .welcome .heads {
     margin-bottom: 40px;
     text-align: center;
-    width: 100%;
+    width: $defaultWidth;
   }
   .home-section .home-content .welcome .second-heads{
     text-align: center;
-    width: 100%;
+    width: $defaultWidth;
   }
 }
-@media( max-width: 750px ) {
+@media (max-width: 750px) {
   .sidebar{
     position: fixed;
-    height: 100%;
+    height: $defaultWidth;
     width: 60px;
     background: #0A2558;
     transition: all 0.5s ease;
@@ -460,15 +492,15 @@
     width: 50px;
   }
   .home-section {
-    width: calc(100% - 60px);
+    width: calc($defaultWidth - 60px);
     left: 60px;
   }
   .sidebar .active ~ .home-section {
-    width: calc(100% - 60px);
+    width: calc($defaultWidth - 60px);
     left: 60px;
   }
   .home-section nav {
-    width: calc(100% - 60px);
+    width: calc($defaultWidth - 60px);
     left: 60px;
   }
   .home-section nav .sidebar-button span {

@@ -1,43 +1,53 @@
 import React from 'react';
 
-const TextInput = () => {
-  return (
-    <> 
-      <form>
-        <input type='text' />
-      </form>
-    </>
-  )
-};
+const Title = ({ getTitle }) => (
+  <>
+    <form>
+      <input
+        name='title'
+        type='text'
+        onChange={getTitle}
+      />
+    </form>
+  </>
+);
 
-const Textarea = () => {
-  return (
-    <> 
-      <div>
-        <textarea></textarea>
-      </div>
-    </>
-  )
-};
+const Description = ({ getDescription }) => (
+  <>
+    <div>
+      <textarea
+        name='description'
+        onChange={getDescription}
+      ></textarea>
+    </div>
+  </>
+);
 
-const NumberInput = () => {
-  return (
-    <> 
-      <form>
-        <input type="number" />
-      </form>
-    </>
-  )
-};
+const Price = ({ getPrice }) => (
+  <>
+    <form>
+      <input
+        type="number"
+        name='price'
+        onChange={getPrice}
+      />
+    </form>
+  </>
+);
 
-const FileInput = () => {
-  return (
-    <>
-      <div>
-        <input id='files' type='file' multiple />
-      </div>
-    </>
-  )
-};
+const Pdf = ({ getPdf }) => (
+  <>
+    <div>
+      <input
+        id='files'
+        type='file'
+        multiple
+        onChange={getPdf}
+      />
+    </div>
+  </>
+);
 
-export { FileInput, NumberInput, TextInput, Textarea };
+export {
+  Pdf, Title, Description, Price,
+};

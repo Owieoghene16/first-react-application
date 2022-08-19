@@ -1,35 +1,91 @@
-import React from 'react';
-import { Link, Outlet } from 'react-router-dom';
-import Login from '../Components/inputs/Login.jsx';
-import Header from '../Layouts/header/Index.jsx';
-import '../Assets/register.scss';
+/* eslint-disable no-mixed-spaces-and-tabs */
+/* eslint-disable no-tabs */
+/* eslint-disable import/no-cycle */
+import React, { useRef } from 'react';
+import { Outlet, Link } from 'react-router-dom';
+import { FaBook } from 'react-icons/fa';
+import { FiEye } from 'react-icons/fi';
+import { AiOutlineEyeInvisible } from 'react-icons/ai';
+import { Email, Password } from '../Components/inputs/Register.jsx';
+import useSignIn from '../utils/useSignIn';
+import '../Assets/signin.scss';
 
-const Signin = () => {
+const	Login = () => {
+  // Password visiblity
+  const Passwordfield = useRef();
+
+  // Creating users
+  const {
+    error,
+    passwordicon,
+    switchField,
+    formInput,
+    logInUser,
+  } = useSignIn();
+
   return (
-    <>
-        <div>
-          <Header />
-        </div>
-        <div className='container'>
-          <div className='main-content'>
-            <div className='first-header'>
-              <h>Account Login</h>
+		<>
+      <div className='navigate'>
+        <nav>
+          <div className='first-icon'>
+            <Link to='/'>
+			    	  <i><FaBook /></i>
+            </Link>
+          </div>
+        </nav>
+			</div>
+      <div className='main-container'>
+        <div className='second-container'>
+          <div className='first-head'>
+            <h2>Sign in</h2>
+          </div>
+          <div className='error'>
+            <p> {error} </p>
+          </div>
+          <div className='second-head'>
+            <div className='left'>
+              <h6>Email</h6>
             </div>
-            <div className='second-header'>
-              <p>Login with your email:</p>
-            </div>
-            <div>
-              <Login />
-            </div>
-            <div className='sixth-header'>
-              <p2>Forgotten Password?</p2>
-              <Link to='/reset' className='log2'>Click here</Link>
+            <div className='right'>
+              <p>Don't have an account?</p>
+              <Link to='/'>
+                Sign up
+              </Link>
             </div>
           </div>
+          <Email
+            click={formInput}
+          />
+          <div className='fourth-head'>
+            <div className='left'>
+              <h6>Password</h6>
+            </div>
+            <div className='right'>
+              {
+                passwordicon
+                  ? <p> <i onClick={() => switchField(Passwordfield)}>
+                    <AiOutlineEyeInvisible /></i> Hide</p>
+                  : <p> <i onClick={() => switchField(Passwordfield)} ><FiEye /></i> Show</p>
+              }
+            </div>
+          </div>
+          <Password
+            click={formInput}
+            toggle={Passwordfield}
+          />
+          <div className='sixth-head'>
+            <button onClick={() => logInUser()}>Sign In</button>
+          </div>
+          <div className='forgotten'>
+            <Link to='/reset'>
+              Forgotten Password?
+            </Link>
+          </div>
         </div>
+      </div>
       <Outlet />
     </>
-  )
+  );
 };
 
-export default Signin;
+export default Login;

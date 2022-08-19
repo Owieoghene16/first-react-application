@@ -1,66 +1,57 @@
-import React, { useState } from 'react';  
-import Sidebar from '../Layouts/main/sidebar';
-import Navbar from '../Layouts/main/nav';
-import { FileInput, NumberInput, TextInput, Textarea } from '../Components/inputs/Story';
-import CreateBookButton from '../Components/buttons/Story';
-import { MainFile, File, SecondFile, ThirdFile, FourthFile  } from '../Components/inputs/file';
+/* eslint-disable import/no-cycle */
+import React from 'react';
+import { Outlet, Link } from 'react-router-dom';
+import Sidebar from '../Layouts/main/Sidebar.jsx';
+import Navbar from '../Layouts/main/Nav.jsx';
+import {
+  Pdf, Title, Description, Price,
+} from '../Components/inputs/Story.jsx';
+import CreateBookButton from '../Components/buttons/Index.jsx';
+import MainFile from '../Components/inputs/File.jsx';
+import useBoolean from '../utils/useTogglSidebar';
+import useStory from '../utils/useStory';
 import '../Assets/story.scss';
 
 const Story = () => {
+  // sidebar toggle
+  const {
+    toggle,
+    storage,
+    handleToggle,
+  } = useBoolean(false);
 
-  const [open, setOpen] = useState(false);
-  const handleToggle = () => {
-    setOpen(!open);
-  };
-
-  const [image, setMainimg] = useState('');
-  const getmainImage = (image) => {
-    const mainimage = image.replace(/^.*\\/, '');
-    setMainimg(mainimage);
-  }  
+  // story
+  const {
+    error,
+    imagename,
+    storyContent,
+    imageFile,
+    pdfFile,
+    createBook,
+  } = useStory();
 
   return (
-    <> 
-      <Sidebar 
-        togglebar={open}
+    <>
+      <Sidebar
+        togglebar={toggle}
       />
       <section className='home-section'>
-        <Navbar 
+        <Navbar
           click={handleToggle}
         />
-        <div className='main-story'>
-          <div className='img-story'>
-            <div className='single-img'>
-              <div className='book-header'>
-                <h3>Book Images</h3>
-              </div>
-              <div class="image-upload">
+        {
+          storage
+            ? <div className='main-story'>
+              <div className='img-story'>
+                <div className='single-img'>
+                  <div className='book-header'>
+                    <h3>Book Images</h3>
+                  </div>
+                <div class="image-upload">
                 <MainFile
-                  getMainFile = {getmainImage}
-                  mainImg = {image}
+                  getImage={imageFile}
+                  message={imagename}
                 />
-              </div>
-              <div className='small-single-img'>
-                <div className='small-img'>
-                  <div class="img-upload">
-                    <File />
-                  </div>
-                </div>
-                <div className='small-img'>
-                  <div class="img-upload">
-                    <SecondFile />
-                  </div>
-                </div>
-                <div className='small-img'>
-                  <div class="img-upload">
-                    <ThirdFile />
-                  </div>
-                </div>
-                <div className='small-img'>
-                  <div class="img-upload">
-                    <FourthFile />
-                  </div>
-                </div>
               </div>
             </div>
             <div className='single-book-details'>
@@ -71,35 +62,60 @@ const Story = () => {
                 <p>Title</p>
               </div>
               <div className='my-text'>
-                <TextInput />
+                <Title
+                  getTitle={storyContent}
+                />
               </div>
               <div className='price'>
                 <p>Price</p>
               </div>
               <div className='my-number'>
-                <NumberInput />
+                <Price
+                  getPrice={storyContent}
+                />
               </div>
               <div className='pdf'>
                 <p>Pdf</p>
               </div>
               <div className='my-file'>
-                <FileInput />
+                <Pdf
+                  getPdf={pdfFile}
+                />
               </div>
               <div className='description'>
                 <p>Description</p>
               </div>
               <div className='my-texarea'>
-                <Textarea />
+                <Description
+                  getDescription={storyContent}
+                />
+              </div>
+              <div class='error'>
+                <p>{error}</p>
               </div>
               <div className='my-button'>
-                <CreateBookButton />
+                <CreateBookButton
+                  click={createBook}
+                />
               </div>
             </div>
           </div>
-        </div>
+          </div>
+            : <div className='home-content'>
+            <div className='invalid'>
+              <div className='heads'>
+                <h>Login Expired</h>
+              </div>
+              <div className='again'>
+                <Link to='/signin'>Login Again</Link>
+              </div>
+            </div>
+          </div>
+        }
       </section>
+      <Outlet />
     </>
-  )
+  );
 };
 
 export default Story;

@@ -1,0 +1,179 @@
+@import 'signup';
+
+.navigate {
+  nav {
+    .first-icon {
+      @include margin_top(20px);
+      margin-left: 50px;
+    }
+    .first-icon i {
+      font-size: 60px;
+      color: #088178;
+    }
+  }
+}
+.main-container {
+  text-align: center;
+  width: $defaultWidth;
+
+  .second-container {
+    border: 0.5px solid rgb(218, 211, 211);
+    width: 550px;
+    height: 460px;
+    margin: auto;
+    text-align: start;
+    border-radius: 18px;
+    .error {
+      @include media_spaces(50px, 50px);
+      p {
+        color: red;
+        @include fontDesign(15px);
+      }
+    }
+    .first-head {
+      margin: 50px;
+      h2 {
+        @include fontDesign(25px);
+      }
+    }
+    .second-head {
+      margin: 0 50px;
+      display: $defaultDisplay;
+      justify-content: space-between;
+      .left {
+        text-align: start;
+        h6 {
+          @include fontDesign(15px);
+          font-weight: 500;
+        }
+      }
+      .right {
+        text-align: right;
+        display: $defaultDisplay;
+        p {
+          @include fontDesign(14px);
+          font-weight: 100;
+          margin-right: 10px;
+          color: grey;
+        }
+        a {
+          color: green;
+          text-decoration: none;
+          @include fontDesign(13px);
+        }
+      }
+    }
+    .third-header {
+      @include margin_top(5px);
+      @include media_spaces(50px, 50px);
+      input[type='text'] {
+        @include inputDesign;
+      }
+    }
+    .fourth-head {
+      @include margin_top(30px);
+      margin-left: 50px;
+      display: $defaultDisplay;
+      h6 {
+        @include fontDesign(15px);
+        font-weight: 500;
+      }
+      .right {
+        text-align: right;
+        width: $defaultWidth;
+        padding-right: 50px;
+        p {
+          @include fontDesign(14px);
+          i {
+            cursor: defaultCursor;
+          }
+        }
+      }
+    }
+    .fifth-header {
+      @include margin_top(5px);
+      @include media_spaces(50px, 50px);
+      input[type='text'] {
+        @include inputDesign;
+      }
+      input[type='password'] {
+        @include inputDesign;
+      }
+    }
+    .sixth-head {
+      @include margin_top(30px);
+      padding: 0 50px;
+      button {
+        background: #088178;
+        color: #fff;
+        @include fontDesign(16px);
+        letter-spacing: 2px;
+        border-radius: 30px;
+        border: none;
+        width: $defaultWidth;
+        height: 45px;
+        cursor: $defaultCursor;
+      }
+    }
+    .forgotten {
+      @include margin_top(30px);
+      text-align: center;
+      a {
+        text-decoration: none;
+        font-family: verdana;
+        font-size: 15px;
+        color: black;
+        cursor: $defaultCursor;
+      }
+      a:hover {
+        color: green;
+      }
+    }
+  }
+}
+
+@media (max-width: 600px) {
+  .navigate {
+    nav { 
+      text-align: center;
+    }
+  }
+  .main-container {
+    text-align: center;
+    width: $defaultWidth;
+    .second-container {
+      width: $defaultWidth;
+      height: 420px;
+      border: none;
+      .first-head {
+        @include margin_top(40px);
+        @include media_spaces(20px, 20px);
+      }
+      .second-head {
+        @include margin_top(30px);
+        @include media_spaces(20px, 20px);
+      }
+      .third-head {
+        @include margin_top(30px);
+        @include media_spaces(20px, 20px);
+      }
+      .fourth-head {
+        @include margin_top(30px);
+        @include media_spaces(20px, 20px);
+
+        .right {
+          padding-right: 0;
+        }
+      }
+      .fifth-header {
+        @include margin_top(5px);
+        @include media_spaces(20px, 20px);
+      }
+      .sixth-header {
+        @include margin_top(5px);
+        @include media_spaces(20px, 20px);
+        padding: 0;
+      }
+    }
+  }
+}
