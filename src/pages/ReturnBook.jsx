@@ -8,23 +8,22 @@ import useBookDetails from '../utils/useBookDetails';
 import useBorrowBook from '../utils/useBorrowBook';
 import '../Assets/bookdetails.scss';
 
-const BookDetails = () => {
+const ReturnBook = () => {
   // sidebar toggle
   const {
     toggle,
     storage,
     handleToggle,
   } = useBoolean(false);
-
   // book details
   const {
     book,
   } = useBookDetails();
-
   const {
     result,
     isloading,
-    borrowBook,
+    returnBook,
+    openInNewTab,
   } = useBorrowBook();
 
   return (
@@ -49,11 +48,11 @@ const BookDetails = () => {
                     <h6>{ book.author }</h6>
                     <h4>{ book.title }</h4>
                     <h2>${ book.price }</h2>
-                    <div className='pdf-content'>
-                      <img src='https://cdn-icons-png.flaticon.com/512/2921/2921451.png' alt='' />
+                    <div className='pdf-content-url'>
+                      <img onClick={() => openInNewTab(book.bookUrl)} src='https://cdn-icons.flaticon.com/png/512/2140/premium/2140758.png?token=exp=1661181162~hmac=9f25222e868d8b3c6935b1b501d964cb' alt='' />
+                      <p onClick={() => openInNewTab(book.bookUrl)}>Click</p>
                     </div>
-                    <input type='number' value='1' />
-                    <button class='normal' onClick={() => borrowBook()}>Borrow Book</button>
+                    <button class='normal' onClick={() => returnBook()}>Return Book</button>
                     <h3>Book Details</h3>
                     <span>
                       { book.description }
@@ -67,8 +66,8 @@ const BookDetails = () => {
                         </div>
                       </div>
                     </div>
-                  }
-                </div>
+          }
+            </div>
             : <div className='home-content'>
                 <div className='invalid'>
                   <div className='heads'>
@@ -86,4 +85,4 @@ const BookDetails = () => {
   );
 };
 
-export default BookDetails;
+export default ReturnBook;

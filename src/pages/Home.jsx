@@ -3,11 +3,11 @@ import React from 'react';
 import { Outlet, Link } from 'react-router-dom';
 import { GrFormPrevious, GrFormNext, GrAdd } from 'react-icons/gr';
 import { AiOutlineStar } from 'react-icons/ai';
-import Box from '../Layouts/main/Box.jsx';
 import Sidebar from '../Layouts/main/Sidebar.jsx';
 import Navbar from '../Layouts/main/Nav.jsx';
 import useBook from '../utils/useBook';
 import useBoolean from '../utils/useTogglSidebar';
+import useBorrowBook from '../utils/useBorrowBook';
 import '../Assets/homepage.scss';
 
 const Homepage = () => {
@@ -22,7 +22,13 @@ const Homepage = () => {
   const {
     books,
     bookDetails,
+    borrowedHistory,
+    returnedHistory,
   } = useBook();
+
+  const {
+    returnBookRoute,
+  } = useBorrowBook();
 
   return (
     <>
@@ -85,7 +91,26 @@ const Homepage = () => {
                 <h>Borrowed History</h>
               </div>
               <div className='content'>
-                <Box />
+              {
+                borrowedHistory.map((item) => (
+                    <div className='pro' key={item.id}>
+                      <img src={item.imageUrl} alt='' />
+                      <div className='des'>
+                        <span>{item.author}</span>
+                        <h5>{item.title}</h5>
+                        <div className='star'>
+                          <i><AiOutlineStar /></i>
+                          <i><AiOutlineStar /></i>
+                          <i><AiOutlineStar /></i>
+                          <i><AiOutlineStar /></i>
+                          <i><AiOutlineStar /></i>
+                        </div>
+                        <h4>${item.price}</h4>
+                      </div>
+                      <button onClick={() => returnBookRoute(item.id)}><i className='cart'><GrAdd/></i></button>
+                    </div>
+                ))
+              }
               </div>
               <div className='border'>
                 </div>
@@ -93,7 +118,26 @@ const Homepage = () => {
                 <h>Returned History</h>
               </div>
               <div className='content'>
-                <Box />
+              {
+                returnedHistory.map((item) => (
+                    <div className='pro' key={item.id}>
+                      <img src={item.imageUrl} alt='' />
+                      <div className='des'>
+                        <span>{item.author}</span>
+                        <h5>{item.title}</h5>
+                        <div className='star'>
+                          <i><AiOutlineStar /></i>
+                          <i><AiOutlineStar /></i>
+                          <i><AiOutlineStar /></i>
+                          <i><AiOutlineStar /></i>
+                          <i><AiOutlineStar /></i>
+                        </div>
+                        <h4>${item.price}</h4>
+                      </div>
+                      <button onClick={() => bookDetails(item.id)}><i className='cart'><GrAdd/></i></button>
+                    </div>
+                ))
+              }
               </div>
               </div>
               <div className='button-container'>

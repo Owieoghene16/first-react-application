@@ -3,26 +3,28 @@ import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
   books: [],
-  user: '',
-  isAuthenticated: false,
+  borrowedBook: [],
+  returnedBook: [],
 };
 
 export const bookSlice = createSlice({
   name: 'books',
   initialState,
   reducers: {
-    addUser(state, action) {
-      state.user = action.payload;
-    },
-    authenticateUser(state, action) {
-      state.isAuthenticated = action.payload;
-    },
     updateBooks: (state, action) => {
       state.books = action.payload;
+    },
+    borrowBook(state, action) {
+      state.borrowedBook = action.payload;
+    },
+    returnBook(state, action) {
+      state.returnedBook = action.payload;
     },
   },
 });
 
-export const { addUser, authenticateUser, updateBooks } = bookSlice.actions;
+export const {
+  updateBooks, borrowBook, returnBook,
+} = bookSlice.actions;
 
 export default bookSlice.reducer;

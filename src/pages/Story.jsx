@@ -22,7 +22,8 @@ const Story = () => {
 
   // story
   const {
-    error,
+    result,
+    loading,
     imagename,
     storyContent,
     imageFile,
@@ -42,65 +43,72 @@ const Story = () => {
         {
           storage
             ? <div className='main-story'>
-              <div className='img-story'>
-                <div className='single-img'>
-                  <div className='book-header'>
-                    <h3>Book Images</h3>
+              {
+                loading
+                  ? <div className='img-story'>
+                      <div className='single-img'>
+                        <div className='book-header'>
+                          <h3>Book Images</h3>
+                        </div>
+                      <div class="image-upload">
+                      <MainFile
+                        getImage={imageFile}
+                        message={imagename}
+                      />
+                    </div>
                   </div>
-                <div class="image-upload">
-                <MainFile
-                  getImage={imageFile}
-                  message={imagename}
-                />
+                  <div className='single-book-details'>
+                    <div className='book-header'>
+                      <h3>Book Details</h3>
+                    </div>
+                  <div className='book-title'>
+                    <p>Title</p>
+                  </div>
+                  <div className='my-text'>
+                    <Title
+                      getTitle={storyContent}
+                    />
+                  </div>
+                  <div className='price'>
+                    <p>Price</p>
+                  </div>
+                  <div className='my-number'>
+                    <Price
+                      getPrice={storyContent}
+                    />
+                  </div>
+                  <div className='pdf'>
+                    <p>Pdf</p>
+                  </div>
+                  <div className='my-file'>
+                    <Pdf
+                      getPdf={pdfFile}
+                    />
+                  </div>
+                  <div className='description'>
+                    <p>Description</p>
+                  </div>
+                  <div className='my-texarea'>
+                    <Description
+                      getDescription={storyContent}
+                    />
+                  </div>
+                  <div className='my-button'>
+                    <CreateBookButton
+                      click={createBook}
+                    />
+                  </div>
+                </div>
               </div>
+                  : <div className='home-content'>
+                  <div className='invalid'>
+                    <div className='heads'>
+                      <h>{result}</h>
+                    </div>
+                  </div>
+                </div>
+              }
             </div>
-            <div className='single-book-details'>
-              <div className='book-header'>
-                <h3>Book Details</h3>
-              </div>
-              <div className='book-title'>
-                <p>Title</p>
-              </div>
-              <div className='my-text'>
-                <Title
-                  getTitle={storyContent}
-                />
-              </div>
-              <div className='price'>
-                <p>Price</p>
-              </div>
-              <div className='my-number'>
-                <Price
-                  getPrice={storyContent}
-                />
-              </div>
-              <div className='pdf'>
-                <p>Pdf</p>
-              </div>
-              <div className='my-file'>
-                <Pdf
-                  getPdf={pdfFile}
-                />
-              </div>
-              <div className='description'>
-                <p>Description</p>
-              </div>
-              <div className='my-texarea'>
-                <Description
-                  getDescription={storyContent}
-                />
-              </div>
-              <div class='error'>
-                <p>{error}</p>
-              </div>
-              <div className='my-button'>
-                <CreateBookButton
-                  click={createBook}
-                />
-              </div>
-            </div>
-          </div>
-          </div>
             : <div className='home-content'>
             <div className='invalid'>
               <div className='heads'>

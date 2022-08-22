@@ -4,21 +4,21 @@ import { useState } from 'react';
 const useToggleVisibility = () => {
   const [passwordIcon, setpasswordIcon] = useState(false);
 
-  const handleToggle = (password, passwordagain) => {
+  const switchToggle = (password, confirmpassword) => {
     if (password.current.type === 'password') {
       password.current.type = 'text';
-      passwordagain.current.type = 'text';
+      confirmpassword.current.type = 'text';
       setpasswordIcon(true);
     } else {
       password.current.type = 'password';
-      passwordagain.current.type = 'password';
+      confirmpassword.current.type = 'password';
       setpasswordIcon(false);
     }
   };
 
   return {
     passwordIcon,
-    handleToggle,
+    switchToggle,
   };
 };
 

@@ -10,6 +10,7 @@ import BookDetails from './pages/BookDetails.jsx';
 import Story from './pages/Story.jsx';
 import Login from './pages/Signin.jsx';
 import Register from './pages/Signup.jsx';
+import ReturnBook from './pages/ReturnBook.jsx';
 
 const Api = axios.create({
   baseURL: 'http://localhost:5000/api',
@@ -27,6 +28,7 @@ const App = () => (
       <Route path='/book' element={<Book/>}></Route>
       <Route path='/story' element={<Story/>}></Route>
       <Route path='/book/:id' element={<BookDetails/>}></Route>
+      <Route path='/book/:id/borrow' element={<ReturnBook/>}></Route>
     </Routes>
   </BrowserRouter>
 );
