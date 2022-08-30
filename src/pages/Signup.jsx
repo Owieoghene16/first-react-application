@@ -18,7 +18,7 @@ const	Register = () => {
   const Passwordfield = useRef();
   const Confirmpassword = useRef();
   const {
-    switchIcon,
+    passwordIcon,
     switchToggle,
   } = useToggleVisibility();
 
@@ -76,7 +76,7 @@ const	Register = () => {
               </div>
               <div className='right'>
                 {
-                  switchIcon
+                  passwordIcon
                     ? <p><i onClick={() => switchToggle(Passwordfield, Confirmpassword)
                       }><AiOutlineEyeInvisible /></i> Hide</p>
                     : <p><i onClick={() => switchToggle(Passwordfield, Confirmpassword)

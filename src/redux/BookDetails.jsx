@@ -22,8 +22,6 @@ const BookDetails = () => {
   } = useBookDetails();
 
   const {
-    result,
-    isloading,
     borrowBook,
   } = useBorrowBook();
 
@@ -39,36 +37,26 @@ const BookDetails = () => {
         {
           storage
             ? <div className='home-con'>
-              {
-                isloading
-                  ? <div className='single'>
-                      <div className='single-pro-image'>
-                        <img src={ book.imageUrl } alt='' />
-                      </div>
-                    <div className='single-pro-details'>
-                    <h6>{ book.author }</h6>
-                    <h4>{ book.title }</h4>
-                    <h2>${ book.price }</h2>
-                    <div className='pdf-content'>
-                      <img src='https://cdn-icons-png.flaticon.com/512/2921/2921451.png' alt='' />
-                    </div>
-                    <input type='number' value='1' />
-                    <button class='normal' onClick={() => borrowBook()}>Borrow Book</button>
-                    <h3>Book Details</h3>
-                    <span>
-                      { book.description }
-                    </span>
-                  </div>
-                  </div>
-                  : <div className='home-content'>
-                      <div className='invalid'>
-                        <div className='heads'>
-                          <h>{result}</h>
-                        </div>
-                      </div>
-                    </div>
-                  }
+              <div className='single'>
+                <div className='single-pro-image'>
+                  <img src={ book.imageUrl } alt='' />
                 </div>
+            <div className='single-pro-details'>
+              <h6>{ book.author }</h6>
+              <h4>{ book.title }</h4>
+              <h2>${ book.price }</h2>
+              <div className='pdf-content'>
+                <img src='https://cdn-icons-png.flaticon.com/512/2921/2921451.png' alt='' />
+              </div>
+              <input type='number' value='1' />
+              <button class='normal' onClick={() => borrowBook()}>Borrow Book</button>
+              <h3>Book Details</h3>
+              <span>
+                { book.description }
+              </span>
+            </div>
+          </div>
+          </div>
             : <div className='home-content'>
                 <div className='invalid'>
                   <div className='heads'>

@@ -8,7 +8,8 @@ const useStory = () => {
   const [image, setImage] = useState();
   const [imagename, setImageName] = useState('');
   const [pdf, setPdf] = useState();
-  const [error, setError] = useState('');
+  const [result, setResult] = useState('');
+  const [loading, setLoading] = useState(true);
   const storage = JSON.parse(sessionStorage.getItem('user'));
 
   // onChange function
@@ -37,19 +38,23 @@ const useStory = () => {
     form.append('file', image);
     form.append('file', pdf);
     try {
-      await Api.post('/book', form, {
+      const res = await Api.post('/book', form, {
         headers: {
           'content-type': 'multipart/form-data',
           authorization: storage.token,
         },
       });
+      setResult(res.data.message);
+      setLoading(false);
     } catch (err) {
-      setError(err.response.data.message);
+      setResult(err.response.data.message);
+      setLoading(false);
     }
   };
 
   return {
-    error,
+    result,
+    loading,
     imagename,
     storyContent,
     imageFile,

@@ -89,6 +89,19 @@
             max-height: 60px;
           }
         }
+        .pdf-content-url {
+          width: 100%;
+          margin-top: 15px;
+          margin-bottom: 20px;
+          text-align: start;
+          img {
+            max-width: 60px;
+            max-height: 60px;
+          }
+        }
+        .pdf-content-url:hover {
+          cursor: pointer;
+        }
       }
     }
   }
