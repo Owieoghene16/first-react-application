@@ -12,10 +12,29 @@
     }
   }
 }
+.home-content {
+  width: $defaultWidth;
+  margin: auto;
+  .container {
+    margin-top: 150px;
+    text-align: center;
+    p {
+      @include fontDesign(25px);
+    }
+  }
+}
+
 .main-container {
   text-align: center;
   width: $defaultWidth;
-
+  .confirm {
+    margin-top: 30px;
+    margin-left: 50px;
+    h6 {
+      @include fontDesign(15px);
+      font-weight: 500;
+    }
+  }
   .second-container {
     border: 0.5px solid rgb(218, 211, 211);
     width: 550px;
@@ -25,6 +44,7 @@
     border-radius: 18px;
     .error {
       @include media_spaces(50px, 50px);
+      margin-bottom: 10px;
       p {
         color: red;
         @include fontDesign(15px);
@@ -40,6 +60,13 @@
       margin: 0 50px;
       display: $defaultDisplay;
       justify-content: space-between;
+      .error {
+        margin-bottom: 10px;
+        p {
+          @include fontDesign(14px);
+          color: red;
+        }
+      }
       .left {
         text-align: start;
         h6 {

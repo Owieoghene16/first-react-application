@@ -61,6 +61,9 @@ const Story = () => {
                     <div className='book-header'>
                       <h3>Book Details</h3>
                     </div>
+                  <div className='book-error'>
+                    <p>{result}</p>
+                  </div>
                   <div className='book-title'>
                     <p>Title</p>
                   </div>

@@ -6,6 +6,7 @@ import { Outlet, Link } from 'react-router-dom';
 import { FaBook } from 'react-icons/fa';
 import { FiEye } from 'react-icons/fi';
 import { AiOutlineEyeInvisible } from 'react-icons/ai';
+import Button from '../Components/buttons/Index.jsx';
 import { Email, Password } from '../Components/inputs/Register.jsx';
 import useSignIn from '../utils/useSignIn';
 import '../Assets/signin.scss';
@@ -74,7 +75,10 @@ const	Login = () => {
             toggle={Passwordfield}
           />
           <div className='sixth-head'>
-            <button onClick={() => logInUser()}>Sign In</button>
+            <Button
+              click={() => logInUser()}
+              value={'Sign In'}
+            />
           </div>
           <div className='forgotten'>
             <Link to='/reset'>

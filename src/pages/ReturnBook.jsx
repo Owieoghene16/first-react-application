@@ -49,8 +49,8 @@ const ReturnBook = () => {
                     <h4>{ book.title }</h4>
                     <h2>${ book.price }</h2>
                     <div className='pdf-content-url'>
-                      <img onClick={() => openInNewTab(book.bookUrl)} src='https://cdn-icons.flaticon.com/png/512/2140/premium/2140758.png?token=exp=1661181162~hmac=9f25222e868d8b3c6935b1b501d964cb' alt='' />
-                      <p onClick={() => openInNewTab(book.bookUrl)}>Click</p>
+                      <img src='https://cdn-icons.flaticon.com/png/512/2140/premium/2140758.png?token=exp=1661181162~hmac=9f25222e868d8b3c6935b1b501d964cb' alt='' />
+                      <p onClick={() => openInNewTab(book.bookUrl)}>Read Book</p>
                     </div>
                     <button class='normal' onClick={() => returnBook()}>Return Book</button>
                     <h3>Book Details</h3>

@@ -6,6 +6,7 @@ import { Outlet, Link } from 'react-router-dom';
 import { FaBook } from 'react-icons/fa';
 import { FiEye } from 'react-icons/fi';
 import { AiOutlineEyeInvisible } from 'react-icons/ai';
+import Button from '../Components/buttons/Index.jsx';
 import {
   Username, Email, Password, Reenterpassword,
 } from '../Components/inputs/Register.jsx';
@@ -98,7 +99,10 @@ const	Register = () => {
               toggle={Confirmpassword}
             />
             <div className='sixth-header'>
-              <button onClick={() => registerUser()}>Sign Up</button>
+              <Button
+                click={() => registerUser()}
+                value={'Sign Up'}
+              />
             </div>
           </div>
         </div>
