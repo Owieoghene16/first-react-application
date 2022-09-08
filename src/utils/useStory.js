@@ -48,7 +48,6 @@ const useStory = () => {
       setLoading(false);
     } catch (err) {
       setResult(err.response.data.message);
-      setLoading(false);
     }
   };
 

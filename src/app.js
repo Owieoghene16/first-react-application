@@ -11,6 +11,7 @@ import Story from './pages/Story.jsx';
 import Login from './pages/Signin.jsx';
 import Register from './pages/Signup.jsx';
 import ReturnBook from './pages/ReturnBook.jsx';
+import ResetPassword from './pages/ResetPassword.jsx';
 
 const Api = axios.create({
   baseURL: 'http://localhost:5000/api',
@@ -23,6 +24,9 @@ const App = () => (
       <Route path='/' element={<Register />}></Route>
       <Route path='/signin' element={<Login />}></Route>
       <Route path='/reset' element={<Reset />}></Route>
+      <Route
+        path='/reset-password/:email/:accessToken' element={<ResetPassword />}>
+      </Route>
       <Route path='/home' element={<Homepage/>}></Route>
       <Route path='/profile' element={<Profile/>}></Route>
       <Route path='/book' element={<Book/>}></Route>

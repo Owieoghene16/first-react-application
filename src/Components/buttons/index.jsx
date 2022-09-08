@@ -1,11 +1,9 @@
 import React from 'react';
 
-const CreateBookButton = ({ click }) => (
+const Button = ({ click, value }) => (
   <>
-    <div>
-      <button onClick={click} >Create Book</button>
-    </div>
+    <button onClick={click} >{value}</button>
   </>
 );
 
-export default CreateBookButton;
+export default Button;
